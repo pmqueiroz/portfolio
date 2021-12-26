@@ -1,26 +1,20 @@
 import styled from 'styled-components'
 
-import { Navigation } from '../components'
-import { theme } from '../styles/theme'
+import { withNavigation } from '../hocs'
 
-const Wrapper = styled.main`
+const Wrapper = styled.section`
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
-`
-const Container = styled.div`
-  height: calc(100vh - ${theme.global.sizes.navigationHeight});
+  flex-grow: 1;
 `
 
-export default function Blog() {
+function Projects() {
   return (
-    <Container>
-      <Navigation />
-      <Wrapper>
-        Soon
-      </Wrapper>
-    </Container>
+    <Wrapper>
+      Soon
+    </Wrapper>
   )
 }
+
+export default withNavigation(Projects)

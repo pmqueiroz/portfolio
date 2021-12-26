@@ -1,30 +1,26 @@
 import Typewriter from 'typewriter-effect'
 import styled from 'styled-components'
 
-import { Navigation } from '../components'
 import { theme } from '../styles/theme'
+import { withNavigation } from '../hocs'
 
-const Wrapper = styled.main`
+const Wrapper = styled.section`
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  flex-direction: column;
+  flex-grow: 1;
 `
-const Container = styled.div`
-  height: calc(100vh - ${theme.global.sizes.navigationHeight});
-`
+
 const Title = styled.h1`
   font-size: 9rem;
   font-weight: 700;
   text-transform: uppercase;
 `
 
-export default function Home() {
+function Home() {
   return (
-    <Container>
-      <Navigation />
-      <Wrapper>
+    <Wrapper>
         <Title>pmqueiroz</Title>
         <Typewriter options={{ loop: true }} onInit={(typewriter) => {
           typewriter
@@ -41,6 +37,7 @@ export default function Home() {
             .start()
         }} />
       </Wrapper>
-    </Container>
   )
 }
+
+export default withNavigation(Home)

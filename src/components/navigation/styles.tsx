@@ -35,6 +35,9 @@ export const _Link = styled.span`
       font-weight: 700;
       text-decoration: none;
       color: ${({ theme }) => theme.colors.dark};
+   }
+   
+   * {
       cursor: pointer;
    }
 `

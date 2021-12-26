@@ -21,7 +21,9 @@ const Navigation = forwardRef((_props, ref: ForwardedRef<HTMLDivElement>) => (
             <S.Link href="/blog">blog</S.Link>
          </ScaleUp>
       </S.LinkGroup>
-      <S.Logo>{`<pmqueiroz />`}</S.Logo>
+      <S.Link href="/">
+         <S.Logo>{`<pmqueiroz />`}</S.Logo>
+      </S.Link>
       <S.LinkGroup space="2rem">
          <ScaleUp intensity="low">
             <S.ExternalLink href={_references['github']} target="_blank" >
