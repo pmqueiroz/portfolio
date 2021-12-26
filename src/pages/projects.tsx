@@ -10,11 +10,11 @@ const Wrapper = styled.section`
 `
 
 function Projects() {
-  return (
-    <Wrapper>
+    return (
+        <Wrapper>
       Soon
-    </Wrapper>
-  )
+        </Wrapper>
+    )
 }
 
 export default withNavigation(Projects)

@@ -19,32 +19,32 @@ const Title = styled.h1`
 `
 
 function Home() {
-  return (
-    <Wrapper>
-        <Title>
-          <Typewriter onInit={(typewriter) => {
-            typewriter
-              .typeString('pmqueiroz')
-              .start()
-          }} />
-        </Title>
-        <Typewriter options={{ loop: true }} onInit={(typewriter) => {
-          typewriter
-            .pauseFor(1500)
-            .typeString('developer')
-            .pauseFor(1500)
-            .deleteAll()
-            .typeString('front ender')
-            .pauseFor(1500)
-            .deleteAll()
-            .typeString('open source enthusiastic')
-            .pauseFor(1500)
-            .deleteAll()
-            .typeString(`react submissive <span style="color: ${theme.colors.red};">( ͡° ͜ʖ ͡°)</span>`)
-            .start()
-        }} />
-      </Wrapper>
-  )
+    return (
+        <Wrapper>
+            <Title>
+                <Typewriter onInit={(typewriter) => {
+                    typewriter
+                        .typeString('pmqueiroz')
+                        .start()
+                }} />
+            </Title>
+            <Typewriter options={{ loop: true }} onInit={(typewriter) => {
+                typewriter
+                    .pauseFor(1500)
+                    .typeString('developer')
+                    .pauseFor(1500)
+                    .deleteAll()
+                    .typeString('front ender')
+                    .pauseFor(1500)
+                    .deleteAll()
+                    .typeString('open source enthusiastic')
+                    .pauseFor(1500)
+                    .deleteAll()
+                    .typeString(`react submissive <span style="color: ${theme.colors.red};">( ͡° ͜ʖ ͡°)</span>`)
+                    .start()
+            }} />
+        </Wrapper>
+    )
 }
 
 export default withNavigation(Home)

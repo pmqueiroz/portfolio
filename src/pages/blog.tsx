@@ -10,11 +10,11 @@ const Wrapper = styled.section`
 `
 
 function Blog() {
-  return (
-   <Wrapper>
+    return (
+        <Wrapper>
       Soon
-   </Wrapper>
-  )
+        </Wrapper>
+    )
 }
 
 export default withNavigation(Blog)

@@ -9,18 +9,18 @@ const Wrapper = styled.main`
   min-height: calc(100vh - ${theme.global.sizes.navigationHeight});
 `
 export const withNavigation = (Page: NextPage) => {
-  function WrappedPage() {
-      return (
-         <>
-            <Navigation />
-            <Wrapper>
-               <Page />
-            </Wrapper>
-         </>
-      )
-  }
+    function WrappedPage() {
+        return (
+            <>
+                <Navigation />
+                <Wrapper>
+                    <Page />
+                </Wrapper>
+            </>
+        )
+    }
 
-  WrappedPage.displayName = `withNavigation(${Page.displayName})`
+    WrappedPage.displayName = `withNavigation(${Page.displayName})`
 
-  return WrappedPage
+    return WrappedPage
 }

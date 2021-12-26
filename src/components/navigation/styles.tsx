@@ -43,13 +43,13 @@ export const _Link = styled.span`
 `
 
 export const Link = ({ children, ...linkProps}: React.PropsWithChildren<LinkProps>) => {
-   return (
-      <_Link>
-         <NextLink {...linkProps}>
-            {children}
-         </NextLink>
-      </_Link>
-   )
+    return (
+        <_Link>
+            <NextLink {...linkProps}>
+                {children}
+            </NextLink>
+        </_Link>
+    )
 }
 
 export const ExternalLink = styled.a`
