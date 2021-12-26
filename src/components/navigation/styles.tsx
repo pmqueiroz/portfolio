@@ -16,6 +16,10 @@ export const Logo = styled.span`
    font-size: 3rem;
    font-weight: 700;
    text-transform: uppercase;
+
+   @media (max-width: 920px) {
+      display: none;
+   }
 `
 
 export const LinkGroup = styled.section<{ space: string }>`

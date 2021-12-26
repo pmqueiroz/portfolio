@@ -22,4 +22,10 @@ export default createGlobalStyle`
       background: ${theme.colors.base};
       color: ${theme.colors.dark};
    }
+
+   @media (max-width: 920px) {
+      :root{
+        font-size: 62.5%
+      }
+   }
 `;
