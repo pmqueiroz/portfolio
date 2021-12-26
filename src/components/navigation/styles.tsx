@@ -8,10 +8,11 @@ export const Wrapper = styled.nav`
    justify-content: space-between;
    align-items: center;
    width: 100vw;
+   height: ${({ theme }) => theme.global.sizes.navigationHeight};
    padding: 2rem 3.5rem;
 `
 
-export const Logo = styled.h1`
+export const Logo = styled.span`
    font-size: 3rem;
    font-weight: 700;
    text-transform: uppercase;
