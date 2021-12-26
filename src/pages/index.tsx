@@ -21,9 +21,16 @@ const Title = styled.h1`
 function Home() {
   return (
     <Wrapper>
-        <Title>pmqueiroz</Title>
+        <Title>
+          <Typewriter onInit={(typewriter) => {
+            typewriter
+              .typeString('pmqueiroz')
+              .start()
+          }} />
+        </Title>
         <Typewriter options={{ loop: true }} onInit={(typewriter) => {
           typewriter
+            .pauseFor(1500)
             .typeString('developer')
             .pauseFor(1500)
             .deleteAll()
