@@ -22,7 +22,7 @@ const Navigation = forwardRef((_props, ref: ForwardedRef<HTMLDivElement>) => (
             </ScaleUp>
         </S.LinkGroup>
         <S.Link href="/">
-            <S.Logo>{'<pmqueiroz />'}</S.Logo>
+            <S.Logo>{'<peam />'}</S.Logo>
         </S.Link>
         <S.LinkGroup space="2rem">
             <ScaleUp intensity="low">
