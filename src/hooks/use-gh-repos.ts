@@ -8,8 +8,8 @@ import { GHRepo } from '../types'
 export const useGithubRepos = (username: string) => {
     const { data: axiosResponse, ...restQuery } = useQuery(
         ['github-repos', username], 
-        () => githubApi({ url: dynamicTemplate('/users/${username}/repos', { username }) }) as Promise<AxiosResponse<GHRepo>>, {
+        () => githubApi({ url: dynamicTemplate('/users/${username}/repos', { username }) }) as Promise<AxiosResponse<GHRepo[]>> | undefined, {
             enabled: Boolean(username)
         })
-    return { repos: axiosResponse?.data, ...restQuery }
+    return { repos: axiosResponse?.data , ...restQuery }
 }

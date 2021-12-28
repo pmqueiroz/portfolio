@@ -13,7 +13,7 @@ export const ProjectCard = (props: ProjectCardProps) => {
     const { repo } = props
 
     return (
-        <a href={repo.html_url}>
+        <a href={repo.html_url} target="_blank" rel="noreferrer">
             <S.Wrapper>
                 <Flex gap="0.5rem" align="center">
                     <FaBook />

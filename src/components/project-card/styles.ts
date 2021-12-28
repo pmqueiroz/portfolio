@@ -3,8 +3,11 @@ import { Languages } from '../../types'
 
 const languageColorMap: Record<Languages, string> = {
     Go: '#00ADD8',
-    Javascript: '#F1E05A',
-    Typescript: '#2B7489',
+    JavaScript: '#F1E05A',
+    TypeScript: '#2B7489',
+    EJS: '#A91E50',
+    Python: '#3572A5'
+
 }
 
 export const Wrapper = styled.div`

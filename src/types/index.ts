@@ -19,7 +19,7 @@ export interface RepoOwner {
    site_admin: boolean;
 }
 
-export type Languages = 'Go' | 'Typescript' | 'Javascript'
+export type Languages = 'Go' | 'TypeScript' | 'JavaScript' | 'EJS' | 'Python'
 
 export interface GHRepo {
    id: number;
