@@ -23,6 +23,16 @@ export default createGlobalStyle`
       color: ${theme.colors.dark};
    }
 
+   a {
+      color: ${theme.colors.dark};
+      text-decoration: none;
+   }
+
+   a:hover {
+      text-decoration:none; 
+      cursor:pointer;  
+   }
+
    @media (max-width: 920px) {
       :root{
         font-size: 62.5%
