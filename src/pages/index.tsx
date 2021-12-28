@@ -34,13 +34,13 @@ function Home() {
                     .typeString('developer')
                     .pauseFor(1500)
                     .deleteAll()
-                    .typeString('front ender')
+                    .typeString('<strong>front</strong> end')
                     .pauseFor(1500)
                     .deleteAll()
-                    .typeString('open source enthusiastic')
+                    .typeString('open source <strong>enthusiastic</strong>')
                     .pauseFor(1500)
                     .deleteAll()
-                    .typeString(`react submissive <span style="color: ${theme.colors.red};">( ͡° ͜ʖ ͡°)</span>`)
+                    .typeString('typescript lover <span style="color: #2B7489;">:blue_heart:</span>')
                     .start()
             }} />
         </Wrapper>
