@@ -1,0 +1,1 @@
+export { useGithubRepos } from './use-gh-repos'

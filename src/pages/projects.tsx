@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import { withNavigation } from '../hocs'
+import { useGithubRepos } from '../hooks'
 
 const Wrapper = styled.section`
   display: flex;
@@ -10,9 +11,14 @@ const Wrapper = styled.section`
 `
 
 function Projects() {
+    const { repos } = useGithubRepos('pmqueiroz')
+
+
+    console.log(repos)
+
     return (
         <Wrapper>
-      Soon
+          Soon
         </Wrapper>
     )
 }

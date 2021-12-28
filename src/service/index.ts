@@ -1,0 +1,1 @@
+export { githubApi } from './api'
