@@ -13,7 +13,7 @@ export const Wrapper = styled.nav`
 `
 
 export const Logo = styled.span`
-   font-size: 3rem;
+   font-size: 2rem;
    font-weight: 700;
    text-transform: uppercase;
 
