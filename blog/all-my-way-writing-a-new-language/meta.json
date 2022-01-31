@@ -1,5 +1,5 @@
 {
-   "sections": [
+   "rewrites": [
       {
          "source": "index",
          "name": "Introduction"

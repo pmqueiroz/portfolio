@@ -25,6 +25,7 @@
     "unified": "^10.1.1"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.178",
     "@types/node": "^17.0.4",
     "@types/react": "^17.0.38",
     "@types/react-html-parser": "^2.0.2",

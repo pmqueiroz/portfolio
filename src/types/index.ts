@@ -100,7 +100,7 @@ export interface GHRepo {
    default_branch: string;
 }
 
-interface SectionMeta {
+interface RewriteMeta {
    source: string
    name: string
 }
@@ -111,6 +111,7 @@ export interface Post {
       description: string
       draft?: boolean
       slug: string
-   }
-   sections: SectionMeta[]
+      rewrites: RewriteMeta[]
+   },
+   sections: Record<string, string>
 }
