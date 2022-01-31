@@ -1,6 +1,7 @@
 import path from 'path'
 import fs from 'fs'
 import styled from 'styled-components'
+import mdx from '@mdx-js/mdx'
 
 import { withNavigation } from '../hocs'
 
@@ -12,6 +13,7 @@ const Wrapper = styled.section`
 `
 
 function Blog(props) {
+
     console.log(props)
 
     return (
@@ -25,29 +27,35 @@ export async function getStaticProps() {
     const postsDir = path.join(process.cwd(), 'blog')
     const posts = fs.readdirSync(postsDir)
 
-    const blogPosts = posts.map(currPostDir => {
+    const blogPosts = await Promise.all(posts.map(async currPostDir => {
         const currPostFiles = fs.readdirSync(path.join(postsDir, currPostDir))
         const meta = fs.readFileSync(path.join(postsDir, currPostDir, 'meta.json'), 'utf8')
 
-        const postFiles = currPostFiles.reduce((acc, curr) => {
+        const promisedPostFiles = currPostFiles.reduce(async (promisedAcc, curr) => {
+            const acc = await promisedAcc
+
             if(curr.endsWith('.md')) {
                 const content = fs.readFileSync(path.join(postsDir, currPostDir, curr), 'utf8')
                 const name = curr.replace('.md', '')
 
+                const parsedContent = await mdx(content)
+
                 return {
                     ...acc,
-                    [name]: content
+                    [name]: parsedContent
                 }
             } 
 
             return acc
-        }, {})
+        }, Promise.resolve([]))
+
+        const postsContent = await promisedPostFiles
 
         return {
             meta: JSON.parse(meta),
-            chapters: postFiles
+            sections: postsContent
         }
-    })
+    }))
 
     return {
         props: { blogPosts },
