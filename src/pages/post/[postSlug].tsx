@@ -33,16 +33,11 @@ const Content = styled.article`
 `
 
 interface PostProps {
-   posts: Post[]
+   post: Post
 }
 
 function PostPage(props: PostProps) {
-    const { posts } = props
-    const { query } = useRouter()
-
-    const { postSlug } = query
-
-    const post = posts.find(post => post.meta.slug === postSlug)
+    const { post } = props
 
     return (
         <Wrapper>
@@ -55,10 +50,14 @@ function PostPage(props: PostProps) {
     )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({ params }) {
+    const posts = await getBlogPosts(fs)
+
+    const post = posts.find(post => post.meta.slug === params.postSlug)
+
     return {
         props: {
-            posts: await getBlogPosts(fs)
+            post
         }
     }
 }
