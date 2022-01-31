@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mdx-js/mdx": "^1.6.22",
     "axios": "^0.24.0",
     "dynamic-string": "^0.1.0",
     "fluid-layout": "^0.1.3",
