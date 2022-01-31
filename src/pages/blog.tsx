@@ -1,7 +1,10 @@
 import path from 'path'
 import fs from 'fs'
 import styled from 'styled-components'
-import mdx from '@mdx-js/mdx'
+import { unified } from 'unified'
+import remarkParse from 'remark-parse'
+import remarkHtml from 'remark-html'
+import ReactHtmlParser from 'react-html-parser'
 
 import { withNavigation } from '../hocs'
 
@@ -13,12 +16,12 @@ const Wrapper = styled.section`
 `
 
 function Blog(props) {
-
-    console.log(props)
+    const { blogPosts } = props
+    const [firstPost] = blogPosts
 
     return (
         <Wrapper>
-      Soon
+            {ReactHtmlParser(firstPost.sections.index)}
         </Wrapper>
     )
 }
@@ -38,11 +41,14 @@ export async function getStaticProps() {
                 const content = fs.readFileSync(path.join(postsDir, currPostDir, curr), 'utf8')
                 const name = curr.replace('.md', '')
 
-                const parsedContent = await mdx(content)
+                const parsedContent = await unified()
+                    .use(remarkParse)
+                    .use(remarkHtml)
+                    .process(content)
 
                 return {
                     ...acc,
-                    [name]: parsedContent
+                    [name]: parsedContent.value
                 }
             } 
 
