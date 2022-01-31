@@ -6,7 +6,7 @@ import fs from 'fs'
 import { Post } from '../types'
 import { slugFactory } from '.'
 
-import 'prismjs/themes/prism-coy.css'
+import 'prismjs/themes/prism-okaidia.css'
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 
 export async function getBlogPosts(fileSystem: typeof fs): Promise<Post[]> {
@@ -41,6 +41,7 @@ export async function getBlogPosts(fileSystem: typeof fs): Promise<Post[]> {
         const postsContent = await promisedPostFiles as unknown as Post['sections']
 
         const parsedMeta = JSON.parse(meta)
+
 
         return {
             meta: {...parsedMeta, slug: slugFactory(parsedMeta.title)} as Post['meta'],

@@ -441,6 +441,11 @@
   resolved "https://registry.npmjs.org/@types/node/-/node-17.0.4.tgz"
   integrity sha512-6xwbrW4JJiJLgF+zNypN5wr2ykM9/jHcL7rQ8fZe2vuftggjzZeRSM4OwRc6Xk8qWjwJ99qVHo/JgOGmomWRog==
 
+"@types/prismjs@^1.26.0":
+  version "1.26.0"
+  resolved "https://registry.yarnpkg.com/@types/prismjs/-/prismjs-1.26.0.tgz#a1c3809b0ad61c62cac6d4e0c56d610c910b7654"
+  integrity sha512-ZTaqn/qSqUuAq1YwvOFQfVW1AR/oQJlLSZVustdjwI+GZ8kr0MSHBj0tsXPW1EqHubx50gtBEjbPGsdZwQwCjQ==
+
 "@types/prop-types@*":
   version "15.7.4"
   resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.4.tgz"
@@ -1289,6 +1294,11 @@ domutils@^1.5.1:
   dependencies:
     dom-serializer "0"
     domelementtype "1"
+
+dracula-prism@^2.1.7:
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/dracula-prism/-/dracula-prism-2.1.7.tgz#d251dd14a839d73fd9a44e4f1c94ffb897c0113f"
+  integrity sha512-u2tvMzuDFUOpqh8WIyFrIl229ftz2cRbrIsiK8Qc+3BfbAJiW8PeOpIBW4BW+SFPzYYAoRd9Oe3aCerGZa6ENA==
 
 dynamic-string@^0.1.0:
   version "0.1.0"
