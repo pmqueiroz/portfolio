@@ -35,13 +35,15 @@ export async function getBlogPosts(fileSystem: typeof fs): Promise<Post[]> {
             return acc
         }, Promise.resolve([]))
 
-        const postsContent = await promisedPostFiles
+        const postsContent = await promisedPostFiles as unknown as Post['sections']
 
         const parsedMeta = JSON.parse(meta)
 
+        console.log(postsContent)
+
         return {
-            meta: {...parsedMeta, slug: slugFactory(parsedMeta.title)},
-            sections: postsContent
+            meta: {...parsedMeta, slug: slugFactory(parsedMeta.title)} as Post['meta'],
+            sections: postsContent 
         }
     }))
 
