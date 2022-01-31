@@ -11,8 +11,26 @@ import { withNavigation } from '../hocs'
 const Wrapper = styled.section`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
+  flex-direction: column;
   flex-grow: 1;
+`
+
+const Content = styled.article`
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+  flex-grow: 1;
+  max-width: 100ch;
+
+  h1 {
+    margin: 2rem 0;
+  }
+
+  strong {
+    background: #ffff0050;
+  }
 `
 
 function Blog(props) {
@@ -21,7 +39,9 @@ function Blog(props) {
 
     return (
         <Wrapper>
-            {ReactHtmlParser(firstPost.sections.index)}
+            <Content>
+                {ReactHtmlParser(firstPost.sections.index)}
+            </Content>
         </Wrapper>
     )
 }
