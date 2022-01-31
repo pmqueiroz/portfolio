@@ -1,14 +1,22 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-   display: grid;
-   grid-template-columns: 1fr 4fr;
+   display: grid; 
+   grid-template-areas: 
+            "title title title"
+            "aside article article"
+            "aside article article";
    gap: 4rem;
    margin: 4rem 0;
 `
 
 export const Summary = styled.aside`
-   
+   grid-area: aside;
+`
+
+export const Title = styled.h1`
+   grid-area: title;
+   text-align: center;
 `
 
 export const ChapterTitle = styled.h2`
@@ -34,6 +42,7 @@ export const Content = styled.article`
   flex-direction: column;
   flex-grow: 1;
   max-width: 80ch;
+  grid-area: article;
 
   h1 {
     margin: 2rem 0;

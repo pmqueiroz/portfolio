@@ -30,6 +30,7 @@ export const Article = (props: BlogCardProps) => {
 
     return (
         <S.Wrapper>
+            <S.Title>{post.meta.title}</S.Title>
             <S.Summary>
                 <ul>
                     {sections.map(([name]) => <li key={name}>{getRewriteName(name, post.meta.rewrites)}</li>)}
