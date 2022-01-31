@@ -1,3 +1,4 @@
+import React from 'react'
 import ReactHtmlParser from 'react-html-parser'
 import { FaCommentDots } from 'react-icons/fa'
 import { theme } from '../../styles/theme'
@@ -40,10 +41,10 @@ export const Article = (props: BlogCardProps) => {
             </S.Summary>
             <S.Content>
                 {sections.map(([name, content]) => (
-                    <>
+                    <React.Fragment key={name}>
                         <ChapterTitle>{getRewriteName(name, post.meta.rewrites)}</ChapterTitle>
                         {ReactHtmlParser(content)}
-                    </>
+                    </React.Fragment>
                 ))}
             </S.Content>
         </S.Wrapper>

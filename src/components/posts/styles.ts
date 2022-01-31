@@ -47,12 +47,13 @@ export const ChapterTitleWrapper = styled.div`
 
 export const Content = styled.article`
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: start;
   flex-direction: column;
   flex-grow: 1;
   max-width: 80ch;
   grid-area: article;
+  gap: 2rem;
 
   h1 {
     margin: 2rem 0;

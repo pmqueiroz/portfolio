@@ -1,7 +1,6 @@
 import Typewriter from 'typewriter-effect'
 import styled from 'styled-components'
 
-import { theme } from '../styles/theme'
 import { withNavigation } from '../hocs'
 
 const Wrapper = styled.section`

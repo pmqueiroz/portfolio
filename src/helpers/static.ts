@@ -6,6 +6,9 @@ import fs from 'fs'
 import { Post } from '../types'
 import { slugFactory } from '.'
 
+import 'prismjs/themes/prism-coy.css'
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
+
 export async function getBlogPosts(fileSystem: typeof fs): Promise<Post[]> {
     const postsDir = path.join(process.cwd(), 'blog')
     const posts = fileSystem.readdirSync(postsDir)
@@ -23,7 +26,7 @@ export async function getBlogPosts(fileSystem: typeof fs): Promise<Post[]> {
 
                 const parsedContent = await unified()
                     .use(remarkParse)
-                    .use(remarkHtml)
+                    .use(remarkHtml, { sanitize: false })
                     .process(content)
 
                 return {
@@ -38,8 +41,6 @@ export async function getBlogPosts(fileSystem: typeof fs): Promise<Post[]> {
         const postsContent = await promisedPostFiles as unknown as Post['sections']
 
         const parsedMeta = JSON.parse(meta)
-
-        console.log(postsContent)
 
         return {
             meta: {...parsedMeta, slug: slugFactory(parsedMeta.title)} as Post['meta'],

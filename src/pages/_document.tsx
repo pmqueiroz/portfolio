@@ -30,8 +30,6 @@ export default class MyDocument extends Document {
         return (
             <Html>
                 <Head>
-                    {/* eslint-disable-next-line */}
-                    <title>pmqueiroz</title>
                     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="preload" as="style" /> 
                     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" /> 
                 </Head>
