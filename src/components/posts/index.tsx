@@ -23,7 +23,7 @@ const ChapterTitle = ({ children }: { children: React.ReactNode }) => (
 export const Article = (props: BlogCardProps) => {
     const { post } = props
 
-    const sections = Object.entries(post.sections)
+    const { meta, sections } = post
 
     function getRewriteName(name: string, rewrites: Post['meta']['rewrites']) {
         const rewrite = rewrites.find(rewrite => rewrite.source === name)
@@ -33,16 +33,16 @@ export const Article = (props: BlogCardProps) => {
 
     return (
         <S.Wrapper>
-            <S.Title> {post.meta.draft && <FaCommentDots title='Work in progress' color={theme.colors.orange}/>} {post.meta.title}</S.Title>
+            <S.Title> {meta.draft && <FaCommentDots title='Work in progress' color={theme.colors.orange}/>} {meta.title}</S.Title>
             <S.Summary>
                 <ul>
-                    {sections.map(([name]) => <li key={name}>{getRewriteName(name, post.meta.rewrites)}</li>)}
+                    {sections.map(({ name }) => <li key={name}>{getRewriteName(name, meta.rewrites)}</li>)}
                 </ul>
             </S.Summary>
             <S.Content>
-                {sections.map(([name, content]) => (
+                {sections.map(({ content, name }) => (
                     <React.Fragment key={name}>
-                        <ChapterTitle>{getRewriteName(name, post.meta.rewrites)}</ChapterTitle>
+                        <ChapterTitle>{getRewriteName(name, meta.rewrites)}</ChapterTitle>
                         {ReactHtmlParser(content)}
                     </React.Fragment>
                 ))}

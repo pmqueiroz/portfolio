@@ -13,38 +13,28 @@ export async function getBlogPosts(fileSystem: typeof fs): Promise<Post[]> {
     const posts = fileSystem.readdirSync(postsDir)
 
     const blogPosts = await Promise.all(posts.map(async currPostDir => {
-        const currPostFiles = fileSystem.readdirSync(path.join(postsDir, currPostDir))
         const meta = fileSystem.readFileSync(path.join(postsDir, currPostDir, 'meta.json'), 'utf8')
 
-        const promisedPostFiles = currPostFiles.reduce(async (promisedAcc, curr) => {
-            const acc = await promisedAcc
+        const parsedMeta = JSON.parse(meta) as Post['meta']
 
-            if(curr.endsWith('.md')) {
-                const content = fileSystem.readFileSync(path.join(postsDir, currPostDir, curr), 'utf8')
-                const name = curr.replace('.md', '')
+        const postFilesMap = await Promise.all(parsedMeta.rewrites.map(async rwFile => {
 
-                const parsedContent = await unified()
-                    .use(remarkParse)
-                    .use(remarkHtml, { sanitize: false })
-                    .process(content)
+            const content = fileSystem.readFileSync(path.join(postsDir, currPostDir, rwFile.source + '.md'), 'utf8')
 
-                return {
-                    ...acc,
-                    [name]: parsedContent.value
-                }
-            } 
+            const parsedContent = await unified()
+                .use(remarkParse)
+                .use(remarkHtml, { sanitize: false })
+                .process(content)
 
-            return acc
-        }, Promise.resolve([]))
-
-        const postsContent = await promisedPostFiles as unknown as Post['sections']
-
-        const parsedMeta = JSON.parse(meta)
-
+            return {
+                name: rwFile.source,
+                content: parsedContent.value as string
+            }
+        }))
 
         return {
             meta: {...parsedMeta, slug: slugFactory(parsedMeta.title)} as Post['meta'],
-            sections: postsContent 
+            sections: postFilesMap 
         }
     }))
 

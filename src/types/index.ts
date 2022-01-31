@@ -105,6 +105,11 @@ interface RewriteMeta {
    name: string
 }
 
+interface Section {
+   name: string
+   content: string
+}
+
 export interface Post {
    meta: {
       title: string
@@ -113,5 +118,5 @@ export interface Post {
       slug: string
       rewrites: RewriteMeta[]
    },
-   sections: Record<string, string>
+   sections: Section[]
 }
