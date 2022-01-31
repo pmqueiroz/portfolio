@@ -12,6 +12,10 @@ export const Wrapper = styled.div`
 
 export const Summary = styled.aside`
    grid-area: aside;
+
+   @media (max-width: 920px) {
+      display: none;
+   }
 `
 
 export const Wip = styled.aside`
