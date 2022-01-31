@@ -1,7 +1,6 @@
 import fs from 'fs'
-import { useRouter } from 'next/router'
 import styled from 'styled-components'
-import ReactHtmlParser from 'react-html-parser'
+import { Article } from '../../components'
 
 import { getBlogPosts } from '../../helpers'
 import { withNavigation } from '../../hocs'
@@ -14,24 +13,6 @@ const Wrapper = styled.section`
   flex-direction: column;
   flex-grow: 1;
 `
-
-const Content = styled.article`
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  flex-direction: column;
-  flex-grow: 1;
-  max-width: 100ch;
-
-  h1 {
-    margin: 2rem 0;
-  }
-
-  strong {
-    background: #ffff0050;
-  }
-`
-
 interface PostProps {
    post: Post
 }
@@ -41,11 +22,7 @@ function PostPage(props: PostProps) {
 
     return (
         <Wrapper>
-            <Content>
-                {Object.entries(post.sections).map(([name, content]) => (
-                    ReactHtmlParser(content)
-                ))}
-            </Content>
+            <Article post={post} />
         </Wrapper>
     )
 }
