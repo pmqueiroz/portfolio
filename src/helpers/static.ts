@@ -3,8 +3,9 @@ import { unified } from 'unified'
 import remarkParse from 'remark-parse'
 import remarkHtml from 'remark-html'
 import fs from 'fs'
+import { Post } from '../types'
 
-export async function getBlogPosts(fileSystem: typeof fs) {
+export async function getBlogPosts(fileSystem: typeof fs): Promise<Post[]> {
     const postsDir = path.join(process.cwd(), 'blog')
     const posts = fileSystem.readdirSync(postsDir)
 

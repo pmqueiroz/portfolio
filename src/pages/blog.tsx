@@ -1,9 +1,10 @@
 import styled from 'styled-components'
-import ReactHtmlParser from 'react-html-parser'
 
 import { withNavigation } from '../hocs'
 import { getBlogPosts } from '../helpers'
 import fs from 'fs'
+import { BlogCard } from '../components'
+import { Post } from '../types'
 
 const Wrapper = styled.section`
   display: flex;
@@ -30,14 +31,16 @@ const Content = styled.article`
   }
 `
 
-function Blog(props) {
-    const { blogPosts } = props
-    const [firstPost] = blogPosts
+interface BlobProps {
+  blogPosts: Post[]
+}
 
+function Blog(props: BlobProps) {
+    const { blogPosts } = props
     return (
         <Wrapper>
             <Content>
-                {ReactHtmlParser(firstPost.sections.index)}
+                {blogPosts.map(post => <BlogCard key={post.meta.title} post={post} />)}
             </Content>
         </Wrapper>
     )

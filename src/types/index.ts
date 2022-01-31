@@ -99,3 +99,17 @@ export interface GHRepo {
    watchers: number;
    default_branch: string;
 }
+
+interface SectionMeta {
+   source: string
+   name: string
+}
+
+export interface Post {
+   meta: {
+      title: string
+      description: string
+      draft?: boolean
+      sections: SectionMeta[]
+   }
+}

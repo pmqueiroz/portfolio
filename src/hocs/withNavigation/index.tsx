@@ -8,7 +8,7 @@ const Wrapper = styled.main`
   display: flex;
   min-height: calc(100vh - ${theme.global.sizes.navigationHeight});
 `
-export const withNavigation = (Page: NextPage) => {
+export const withNavigation = (Page: NextPage<any>) => {
     function WrappedPage(props: unknown) {
         return (
             <>
