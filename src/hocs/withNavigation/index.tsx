@@ -9,12 +9,12 @@ const Wrapper = styled.main`
   min-height: calc(100vh - ${theme.global.sizes.navigationHeight});
 `
 export const withNavigation = (Page: NextPage) => {
-    function WrappedPage() {
+    function WrappedPage(props: unknown) {
         return (
             <>
                 <Navigation />
                 <Wrapper>
-                    <Page />
+                    <Page {...props} />
                 </Wrapper>
             </>
         )
