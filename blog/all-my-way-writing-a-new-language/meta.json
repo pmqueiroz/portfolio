@@ -3,6 +3,10 @@
       {
          "source": "index",
          "name": "Introduction"
+      },
+      {
+         "source": "decisions",
+         "name": "Decisions of decisions"
       }
    ],
    "draft": true,
