@@ -14,9 +14,15 @@ export const Summary = styled.aside`
    grid-area: aside;
 `
 
+export const Wip = styled.aside`
+`
+
 export const Title = styled.h1`
    grid-area: title;
-   text-align: center;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 1rem;
 `
 
 export const ChapterTitle = styled.h2`

@@ -1,4 +1,6 @@
 import ReactHtmlParser from 'react-html-parser'
+import { FaCommentDots } from 'react-icons/fa'
+import { theme } from '../../styles/theme'
 
 import { Post } from '../../types'
 
@@ -30,7 +32,7 @@ export const Article = (props: BlogCardProps) => {
 
     return (
         <S.Wrapper>
-            <S.Title>{post.meta.title}</S.Title>
+            <S.Title> {post.meta.draft && <FaCommentDots title='Work in progress' color={theme.colors.orange}/>} {post.meta.title}</S.Title>
             <S.Summary>
                 <ul>
                     {sections.map(([name]) => <li key={name}>{getRewriteName(name, post.meta.rewrites)}</li>)}

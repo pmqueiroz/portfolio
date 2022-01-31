@@ -5,7 +5,8 @@ export const theme = {
         base: '#fafafa',
         dark: '#061818',
         gray: '#bababa',
-        red: '#F02D3A'
+        red: '#F02D3A',
+        orange: '#f8961e'
     },
     global: {
         sizes: {
