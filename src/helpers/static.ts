@@ -4,6 +4,7 @@ import remarkParse from 'remark-parse'
 import remarkHtml from 'remark-html'
 import fs from 'fs'
 import { Post } from '../types'
+import { slugFactory } from '.'
 
 export async function getBlogPosts(fileSystem: typeof fs): Promise<Post[]> {
     const postsDir = path.join(process.cwd(), 'blog')
@@ -36,8 +37,10 @@ export async function getBlogPosts(fileSystem: typeof fs): Promise<Post[]> {
 
         const postsContent = await promisedPostFiles
 
+        const parsedMeta = JSON.parse(meta)
+
         return {
-            meta: JSON.parse(meta),
+            meta: {...parsedMeta, slug: slugFactory(parsedMeta.title)},
             sections: postsContent
         }
     }))

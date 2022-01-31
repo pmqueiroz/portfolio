@@ -110,6 +110,7 @@ export interface Post {
       title: string
       description: string
       draft?: boolean
-      sections: SectionMeta[]
+      slug: string
    }
+   sections: SectionMeta[]
 }

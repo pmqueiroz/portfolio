@@ -1,19 +1,8 @@
 import styled from 'styled-components'
-import { Languages } from '../../types'
-
-const languageColorMap: Record<Languages, string> = {
-    Go: '#00ADD8',
-    JavaScript: '#F1E05A',
-    TypeScript: '#2B7489',
-    EJS: '#A91E50',
-    Python: '#3572A5'
-
-}
-
 export const Wrapper = styled.div`
    width: 35ch;
    height: 20ch;
-   padding: 1rem;
+   padding: 2rem 1rem;
 
    border-radius: 10px;
    border: 1px solid ${props => props.theme.colors.gray};
@@ -31,21 +20,13 @@ export const Wrapper = styled.div`
       fill: ${props => props.theme.colors.gray};
    }
 `
-export const DescriptionWrapper = styled.div`
+export const Description = styled.p`
+   margin-top: 0.5rem;
+   color: ${props => props.theme.colors.gray};
    max-height: 8ch;
    overflow: hidden;
    text-overflow: ellipsis;   
    display: -webkit-box;
    -webkit-line-clamp: 3;
    -webkit-box-orient: vertical;
-`
-export const Description = styled.p`
-   margin-top: 0.5rem;
-   color: ${props => props.theme.colors.gray};
-`
-export const LanguageColor = styled.span<{ color: keyof typeof languageColorMap }>`
-   width: 0.8em;
-   border-radius: 50%;
-   aspect-ratio: 1;
-   background-color: ${props => languageColorMap[props.color]};
 `
