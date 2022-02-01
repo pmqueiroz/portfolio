@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Article } from '../../src/components'
 
 import { getBlogPosts } from '../../src/helpers'
-import { withNavigation } from '../../src/hocs'
+import { WithMenuNavigationProps, withNavigation } from '../../src/hocs'
 import { Post } from '../../src/types'
 
 const Wrapper = styled.section`
@@ -13,7 +13,7 @@ const Wrapper = styled.section`
   flex-direction: column;
   flex-grow: 1;
 `
-interface PostProps {
+interface PostProps extends WithMenuNavigationProps {
    post: Post
 }
 
