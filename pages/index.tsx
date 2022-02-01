@@ -1,8 +1,9 @@
 import Typewriter from 'typewriter-effect'
 import styled from 'styled-components'
 
-import { withNavigation } from '../src/hocs'
+import { WithMenuNavigationProps, withNavigation } from '../src/hocs'
 import { theme } from '../src/styles/theme'
+import { If, Then } from 'react-if'
 
 const Wrapper = styled.section`
   display: flex;
@@ -22,31 +23,41 @@ const Title = styled.h1`
   }
 `
 
-function Home() {
+function Home(props: WithMenuNavigationProps) {
+    const { isMenuOpen } = props
+
     return (
         <Wrapper>
             <Title>
-                <Typewriter onInit={(typewriter) => {
-                    typewriter
-                        .typeString('pmqueiroz')
-                        .start()
-                }} />
+                <If condition={!isMenuOpen}>
+                    <Then>
+                        <Typewriter onInit={(typewriter) => {
+                            typewriter
+                                .typeString('pmqueiroz')
+                                .start()
+                        }} />
+                    </Then>
+                </If>
             </Title>
-            <Typewriter options={{ loop: true }} onInit={(typewriter) => {
-                typewriter
-                    .pauseFor(1500)
-                    .typeString('developer')
-                    .pauseFor(1500)
-                    .deleteAll()
-                    .typeString('<strong>front</strong> end')
-                    .pauseFor(1500)
-                    .deleteAll()
-                    .typeString('open source <strong>enthusiastic</strong>')
-                    .pauseFor(1500)
-                    .deleteAll()
-                    .typeString('typescript lover <span style="color: #2B7489;">:blue_heart:</span>')
-                    .start()
-            }} />
+            <If condition={!isMenuOpen}>
+                <Then>
+                    <Typewriter options={{ loop: true }} onInit={(typewriter) => {
+                        typewriter
+                            .pauseFor(1500)
+                            .typeString('developer')
+                            .pauseFor(1500)
+                            .deleteAll()
+                            .typeString('<strong>front</strong> end')
+                            .pauseFor(1500)
+                            .deleteAll()
+                            .typeString('open source <strong>enthusiastic</strong>')
+                            .pauseFor(1500)
+                            .deleteAll()
+                            .typeString('typescript lover <span style="color: #2B7489;">:blue_heart:</span>')
+                            .start()
+                    }} />
+                </Then>
+            </If>
         </Wrapper>
     )
 }

@@ -5,7 +5,6 @@ import { Divider, Flex, ScaleUp } from '..'
 
 import * as S from './styles'
 import { theme } from '../../styles/theme'
-import { useState } from 'react'
 
 const _references = {
     github: 'https://github.com/pmqueiroz',
@@ -62,8 +61,13 @@ const Menu = ({ isOpen, callback }: { isOpen: boolean, callback: () => void }) =
     </S.MenuWrapper>
 )
 
-const Navigation = () => {
-    const [isMenuOpen, toggleMenuOpen] = useState(false)
+interface NavigationProps {
+    isOpen: boolean
+    toggleOpen: (next: boolean) => void
+}
+
+const Navigation = (props: NavigationProps) => {
+    const { isOpen: isMenuOpen, toggleOpen: toggleMenuOpen } = props
     const { width } = useWindowSize()
 
     const isSmallSize = width < theme.global.breakpoints.mobile

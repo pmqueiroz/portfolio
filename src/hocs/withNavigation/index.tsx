@@ -1,4 +1,5 @@
 import { NextPage } from 'next'
+import { useState } from 'react'
 import styled from 'styled-components'
 
 import { Navigation } from '../../components'
@@ -15,14 +16,20 @@ const Wrapper = styled.div`
     overflow-x: hidden;
 `
 
+export interface WithMenuNavigationProps {
+    isMenuOpen: boolean
+}
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const withNavigation = (Page: NextPage<any>) => {
+export const withNavigation = (Page: NextPage<WithMenuNavigationProps>) => {
     function WrappedPage(props: unknown) {
+        const [isMenuOpen, toggleMenuOpen] = useState(false)
+
         return (
             <Wrapper>
-                <Navigation />
+                <Navigation isOpen={isMenuOpen} toggleOpen={toggleMenuOpen} />
                 <PageWrapper>
-                    <Page {...props} />
+                    <Page {...props} isMenuOpen={isMenuOpen}/>
                 </PageWrapper>
             </Wrapper>
         )
