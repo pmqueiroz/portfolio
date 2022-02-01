@@ -3,32 +3,15 @@ import styled from 'styled-components'
 import { withNavigation } from '../src/hocs'
 import { getBlogPosts } from '../src/helpers'
 import fs from 'fs'
-import { BlogCard } from '../src/components'
+import { BlogCard, Grid } from '../src/components'
 import { Post } from '../src/types'
 
 const Wrapper = styled.section`
   display: flex;
   align-items: center;
-  justify-content: start;
-  flex-direction: column;
+  justify-content: center;
   flex-grow: 1;
-`
-
-const Content = styled.article`
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  flex-direction: column;
-  flex-grow: 1;
-  max-width: 100ch;
-
-  h1 {
-    margin: 2rem 0;
-  }
-
-  strong {
-    background: #ffff0050;
-  }
+  padding: 5rem;
 `
 
 interface BlobProps {
@@ -39,9 +22,9 @@ function Blog(props: BlobProps) {
     const { blogPosts } = props
     return (
         <Wrapper>
-            <Content>
+            <Grid gutter="5rem" min="40ch">
                 {blogPosts.map(post => <BlogCard key={post.meta.title} post={post} />)}
-            </Content>
+            </Grid>
         </Wrapper>
     )
 }
