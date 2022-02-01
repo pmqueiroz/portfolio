@@ -7,7 +7,7 @@ import { theme } from '../../styles/theme'
 import { Post } from '../../types'
 
 import * as S from './styles'
-import { Flex } from '..'
+import { Divider, Flex } from '..'
 
 interface BlogCardProps {
    post: Post
@@ -20,7 +20,7 @@ const ChapterTitle = ({ children, id }: { children: React.ReactNode; id: string 
                 <S.ChapterTitle>{children}</S.ChapterTitle>
                 <S.TitleAnchor href={`#${id}`}>#</S.TitleAnchor>
             </Flex>
-            <S.Divider />
+            <Divider />
         </S.ChapterTitleWrapper>
     </>
 )

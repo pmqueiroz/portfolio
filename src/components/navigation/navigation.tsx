@@ -1,7 +1,7 @@
 import { useWindowSize } from 'react-use'
 import { If, Then, Else } from 'react-if'
 import { FaGithub, FaLinkedin, FaDev, FaMailBulk, FaGripLines } from 'react-icons/fa'
-import { Flex, ScaleUp } from '..'
+import { Divider, Flex, ScaleUp } from '..'
 
 import * as S from './styles'
 import { theme } from '../../styles/theme'
@@ -50,9 +50,14 @@ const Social = () => (
     </Flex>
 )
 
-const Menu = ({ isOpen }: { isOpen: boolean }) => (
+const Menu = ({ isOpen, callback }: { isOpen: boolean, callback: () => void }) => (
     <S.MenuWrapper isOpen={isOpen} >
+        <Flex as="h2" onClick={callback}>
+            voltar
+        </Flex>
+        <Divider />
         <Links isSmallSize />
+        <Divider />
         <Social />
     </S.MenuWrapper>
 )
@@ -71,7 +76,7 @@ const Navigation = () => {
                 </Then>
                 <Else>
                     <FaGripLines size={30} onClick={() => toggleMenuOpen(true)} />
-                    <Menu isOpen={isMenuOpen} />
+                    <Menu isOpen={isMenuOpen} callback={() => toggleMenuOpen(false)} />
                 </Else>
             </If>
             <S.Link href="/">

@@ -69,11 +69,6 @@ export const TitleAnchor = styled.a`
    }
 `
 
-export const Divider = styled.hr`
-   width: 100%;
-   background: #ccc;
-`
-
 export const ChapterTitleWrapper = styled.div`
    flex: 1;
    width: 100%;
