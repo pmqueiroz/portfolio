@@ -1,6 +1,7 @@
 import NextLink, { LinkProps } from 'next/link'
 import React from 'react'
 import styled from 'styled-components'
+import { theme } from '../../styles/theme'
 
 export const Wrapper = styled.nav`
    display: flex;
@@ -12,14 +13,30 @@ export const Wrapper = styled.nav`
    padding: 2rem 3.5rem;
 `
 
+export const MenuWrapper = styled.nav<{ isOpen: boolean }>`
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   gap: 2rem;
+   width: 100vw;
+   height: 100vh;
+   background: ${theme.colors.base};
+   padding: 2rem 3.5rem;
+
+   display: ${({ isOpen }) => isOpen ? 'block' : 'none'};
+`
+
 export const Logo = styled.span`
    font-size: 2rem;
    font-weight: 700;
    text-transform: uppercase;
-
-   @media (max-width: 920px) {
-      display: none;
-   }
 `
 
 export const LinkGroup = styled.section<{ space: string }>`

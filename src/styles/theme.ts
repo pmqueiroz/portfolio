@@ -11,6 +11,9 @@ export const theme = {
     global: {
         sizes: {
             navigationHeight: toRem(128)
+        },
+        breakpoints: {
+            mobile: 920
         }
     }
 }
