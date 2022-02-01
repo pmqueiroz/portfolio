@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { withNavigation } from '../src/hocs'
+import { WithMenuNavigationProps, withNavigation } from '../src/hocs'
 import { getBlogPosts } from '../src/helpers'
 import fs from 'fs'
 import { BlogCard, Grid } from '../src/components'
@@ -14,7 +14,7 @@ const Wrapper = styled.section`
   padding: 5rem;
 `
 
-interface BlobProps {
+interface BlobProps extends WithMenuNavigationProps{
   blogPosts: Post[]
 }
 
