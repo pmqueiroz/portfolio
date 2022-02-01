@@ -2,6 +2,7 @@ import Typewriter from 'typewriter-effect'
 import styled from 'styled-components'
 
 import { withNavigation } from '../src/hocs'
+import { theme } from '../src/styles/theme'
 
 const Wrapper = styled.section`
   display: flex;
@@ -15,6 +16,10 @@ const Title = styled.h1`
   font-size: 9rem;
   font-weight: 700;
   text-transform: uppercase;
+
+  @media (max-width: ${theme.global.breakpoints.mobile + 'px'}) {
+    font-size: 4rem;
+  }
 `
 
 function Home() {
