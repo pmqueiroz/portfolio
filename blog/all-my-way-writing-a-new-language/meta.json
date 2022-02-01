@@ -7,6 +7,10 @@
       {
          "source": "decisions",
          "name": "Decisions of decisions"
+      },
+      {
+         "source": "first-researches",
+         "name": "First Researches"
       }
    ],
    "draft": true,

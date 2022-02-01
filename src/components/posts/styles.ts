@@ -22,7 +22,7 @@ export const Summary = styled.aside`
    grid-area: aside;
 
    ul {
-      list-style: lower-roman inside none;
+      list-style: lower-roman outside none;
 
       a {
          li {
