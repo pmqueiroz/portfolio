@@ -13,6 +13,22 @@ export const Wrapper = styled.div`
 export const Summary = styled.aside`
    grid-area: aside;
 
+   ul {
+      list-style: lower-roman inside none;
+
+      a {
+         li {
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease-in-out;
+            width: content;
+
+            &:hover {
+               border-color: black;
+            }
+         }
+      }
+   }
+
    @media (max-width: 920px) {
       display: none;
    }

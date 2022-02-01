@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactHtmlParser from 'react-html-parser'
 import { FaCommentDots } from 'react-icons/fa'
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 import { theme } from '../../styles/theme'
 
 import { Post } from '../../types'
@@ -11,9 +12,9 @@ interface BlogCardProps {
    post: Post
 }
 
-const ChapterTitle = ({ children }: { children: React.ReactNode }) => (
+const ChapterTitle = ({ children, id }: { children: React.ReactNode; id: string }) => (
     <>
-        <S.ChapterTitleWrapper>
+        <S.ChapterTitleWrapper id={id}>
             <S.ChapterTitle>{children}</S.ChapterTitle>
             <S.Divider />
         </S.ChapterTitleWrapper>
@@ -36,13 +37,13 @@ export const Article = (props: BlogCardProps) => {
             <S.Title> {meta.draft && <FaCommentDots title='Work in progress' color={theme.colors.orange}/>} {meta.title}</S.Title>
             <S.Summary>
                 <ul>
-                    {sections.map(({ name }) => <li key={name}>{getRewriteName(name, meta.rewrites)}</li>)}
+                    {sections.map(({ name }) => <AnchorLink key={name} href={`#${name}`}><li>{getRewriteName(name, meta.rewrites)}</li></AnchorLink>)}
                 </ul>
             </S.Summary>
             <S.Content>
                 {sections.map(({ content, name }) => (
                     <React.Fragment key={name}>
-                        <ChapterTitle>{getRewriteName(name, meta.rewrites)}</ChapterTitle>
+                        <ChapterTitle id={name}>{getRewriteName(name, meta.rewrites)}</ChapterTitle>
                         {ReactHtmlParser(content)}
                     </React.Fragment>
                 ))}
