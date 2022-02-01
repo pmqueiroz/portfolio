@@ -11,8 +11,8 @@ const _references = {
     mail: 'mailto:contato@pmqueiroz.com'
 }
 
-const Navigation = forwardRef((_props, ref: ForwardedRef<HTMLDivElement>) => (
-    <S.Wrapper ref={ref}>
+const Navigation = () => (
+    <S.Wrapper>
         <S.LinkGroup space="2rem">
             <ScaleUp intensity="low">
                 <S.Link href="/projects">projects</S.Link>
@@ -47,7 +47,7 @@ const Navigation = forwardRef((_props, ref: ForwardedRef<HTMLDivElement>) => (
             </ScaleUp>
         </S.LinkGroup>
     </S.Wrapper>
-))
+)
 
 Navigation.displayName =  '__Navigation__'
 
