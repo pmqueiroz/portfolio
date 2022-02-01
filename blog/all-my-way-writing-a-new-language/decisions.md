@@ -7,5 +7,5 @@ Basically a *compiler* receive the code as input and outputs a translated versio
 For Umbra I preferred to create a interpreter, and if you ask I had no fundamental reason for that I just rather run directly the code instead of compiling and executing a binary, so the usage will be something like that:
 
 ```shell
-umbra example.u #outputs the executed code
+umbra example.u # outputs the executed code
 ```

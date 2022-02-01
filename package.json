@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.24.0",
+    "babel-plugin-prismjs": "^2.1.0",
     "dracula-prism": "^2.1.7",
     "dynamic-string": "^0.1.0",
     "fluid-layout": "^0.1.3",

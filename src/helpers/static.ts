@@ -6,8 +6,6 @@ import fs from 'fs'
 import { Post } from '../types'
 import { slugFactory } from '.'
 
-import 'prismjs/themes/prism-okaidia.css'
-
 export async function getBlogPosts(fileSystem: typeof fs): Promise<Post[]> {
     const postsDir = path.join(process.cwd(), 'blog')
     const posts = fileSystem.readdirSync(postsDir)
