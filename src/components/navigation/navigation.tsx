@@ -1,7 +1,7 @@
 import { useWindowSize } from 'react-use'
 import { If, Then, Else } from 'react-if'
 import { FaGithub, FaLinkedin, FaDev, FaMailBulk, FaGripLines } from 'react-icons/fa'
-import { ScaleUp } from '..'
+import { Flex, ScaleUp } from '..'
 
 import * as S from './styles'
 import { theme } from '../../styles/theme'
@@ -14,19 +14,19 @@ const _references = {
     mail: 'mailto:contato@pmqueiroz.com'
 }
 
-const Links = () => (
-    <S.LinkGroup space="2rem">
+const Links = ({ isSmallSize }: { isSmallSize: boolean }) => (
+    <Flex direction={isSmallSize ? 'column' : 'row'} gap="2rem" align="center" >
         <ScaleUp intensity="low">
             <S.Link href="/projects">projects</S.Link>
         </ScaleUp>
         <ScaleUp intensity="low">
             <S.Link href="/blog">blog</S.Link>
         </ScaleUp>
-    </S.LinkGroup>
+    </Flex>
 )
 
 const Social = () => (
-    <S.LinkGroup space="2rem">
+    <Flex direction="row" gap="2rem" align="center" justify='center'>
         <ScaleUp intensity="low">
             <S.ExternalLink href={_references['github']} target="_blank" >
                 <FaGithub size={28}/>
@@ -47,12 +47,12 @@ const Social = () => (
                 <FaMailBulk size={28}/>
             </S.ExternalLink>
         </ScaleUp>
-    </S.LinkGroup>
+    </Flex>
 )
 
-const Menu = ({ isOpen, callback }: { isOpen: boolean, callback: () => void }) => (
-    <S.MenuWrapper isOpen={isOpen} onClick={callback} >
-        <Links />
+const Menu = ({ isOpen }: { isOpen: boolean }) => (
+    <S.MenuWrapper isOpen={isOpen} >
+        <Links isSmallSize />
         <Social />
     </S.MenuWrapper>
 )
@@ -67,18 +67,20 @@ const Navigation = () => {
         <S.Wrapper >
             <If condition={!isSmallSize}>
                 <Then>
-                    <Links />
+                    <Links isSmallSize={false} />
                 </Then>
                 <Else>
                     <FaGripLines size={30} onClick={() => toggleMenuOpen(true)} />
-                    <Menu isOpen={isMenuOpen} callback={() => toggleMenuOpen(false)} />
+                    <Menu isOpen={isMenuOpen} />
                 </Else>
             </If>
             <S.Link href="/">
                 <S.Logo>{'<peam />'}</S.Logo>
             </S.Link>
             <If condition={!isSmallSize}>
-                <Social />
+                <Then>
+                    <Social />
+                </Then>
             </If>
         </S.Wrapper>
     )}

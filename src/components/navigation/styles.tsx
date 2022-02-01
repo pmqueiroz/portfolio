@@ -20,17 +20,16 @@ export const MenuWrapper = styled.nav<{ isOpen: boolean }>`
    right: 0;
    bottom: 0;
 
-   display: flex;
    flex-direction: column;
    justify-content: center;
    align-items: center;
-   gap: 2rem;
+   gap: 5rem;
    width: 100vw;
    height: 100vh;
    background: ${theme.colors.base};
    padding: 2rem 3.5rem;
 
-   display: ${({ isOpen }) => isOpen ? 'block' : 'none'};
+   display: ${({ isOpen }) => isOpen ? 'flex' : 'none'};
 `
 
 export const Logo = styled.span`
