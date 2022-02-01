@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { theme } from '../../styles/theme'
 
 export const Wrapper = styled.div`
    display: grid; 
@@ -53,8 +54,19 @@ export const Title = styled.h1`
 `
 
 export const ChapterTitle = styled.h2`
-   display: block;
-   flex: 1;
+`
+
+export const TitleAnchor = styled.a`
+   background: ${theme.colors.gray};
+   color: ${theme.colors.base};
+   padding: 3px;
+   border-radius: 3px;
+   opacity: 0;
+   transition: opacity 0.2s ease-in-out;
+
+   &:hover {
+      opacity: 1;
+   }
 `
 
 export const Divider = styled.hr`
