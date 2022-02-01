@@ -1,7 +1,7 @@
 import Typewriter from 'typewriter-effect'
 import styled from 'styled-components'
 
-import { withNavigation } from '../hocs'
+import { withNavigation } from '../src/hocs'
 
 const Wrapper = styled.section`
   display: flex;

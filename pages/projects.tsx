@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { Grid, ProjectCard } from '../components'
+import { Grid, ProjectCard } from '../src/components'
 
-import { withNavigation } from '../hocs'
-import { useGithubRepos } from '../hooks'
-import { GHRepo } from '../types'
+import { withNavigation } from '../src/hocs'
+import { useGithubRepos } from '../src/hooks'
+import { GHRepo } from '../src/types'
 
 const Wrapper = styled.section`
   display: flex;

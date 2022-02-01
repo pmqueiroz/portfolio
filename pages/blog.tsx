@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
-import { withNavigation } from '../hocs'
-import { getBlogPosts } from '../helpers'
+import { withNavigation } from '../src/hocs'
+import { getBlogPosts } from '../src/helpers'
 import fs from 'fs'
-import { BlogCard } from '../components'
-import { Post } from '../types'
+import { BlogCard } from '../src/components'
+import { Post } from '../src/types'
 
 const Wrapper = styled.section`
   display: flex;

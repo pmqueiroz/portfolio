@@ -2,8 +2,8 @@ import { ThemeProvider } from 'styled-components'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import Prism from 'prismjs'
 
-import GlobalStyle from '../styles/global'
-import { theme } from '../styles/theme'
+import GlobalStyle from '../src/styles/global'
+import { theme } from '../src/styles/theme'
 import Head from 'next/head'
 import { useEffect } from 'react'
 
