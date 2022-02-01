@@ -7,7 +7,14 @@ export const Wrapper = styled.div`
             "aside article article"
             "aside article article";
    gap: 4rem;
-   margin: 4rem 0;
+   margin: 4rem 2rem;
+
+   @media (max-width: 920px) {
+      grid-template-areas: 
+            "title"
+            "article"
+            "article";
+   }
 `
 
 export const Summary = styled.aside`
