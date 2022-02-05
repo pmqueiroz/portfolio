@@ -106,6 +106,10 @@ export const Content = styled.article`
      text-decoration: underline;
   }
 
+  pre {
+     max-width: 90%;
+  }
+
   code:not(pre > code) {
       background: ${theme.colors.lightGray};
       padding: 0.3rem;

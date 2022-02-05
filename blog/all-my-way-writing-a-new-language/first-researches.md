@@ -25,7 +25,12 @@ Each language has a specific way to generate tokens, I decided to make the umbra
 
 There are the latest version of umbra tokenizer output:
 
-`<type: STRING_TYPE__KEYWORD, value: 'str', ln: 1, col: 4>`
+```coffee
+<type: STRING_TYPE__KEYWORD,          value: 'str',      ln: 1, col: 4>
+<type: IDENTIFIER__KEYWORD,           value: 'name',     ln: 1, col: 9>
+<type: ASSIGNMENT__OPERATOR,          value: '<-',       ln: 1, col: 12>
+<type: IDENTIFIER__KEYWORD,           value: '"Pedro"',  ln: 2, col: 0>
+```
 
 <!-- variables -->
 
