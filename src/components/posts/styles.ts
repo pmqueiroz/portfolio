@@ -83,17 +83,26 @@ export const Content = styled.article`
   flex-grow: 1;
   max-width: 80ch;
   grid-area: article;
-  gap: 2rem;
+  gap: 1rem;
+  margin-bottom: 10rem;
 
   h1 {
-    margin: 2rem 0;
+    margin: 3rem 0;
 
     &:first-of-type {
        margin-top: 0;
     }
   }
 
+  p {
+   margin: 0.5rem 0;
+  }
+
   strong {
     background: #ffff0050;
+  }
+
+  a {
+     text-decoration: underline;
   }
 `
