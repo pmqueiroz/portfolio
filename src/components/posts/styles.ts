@@ -108,7 +108,7 @@ export const Content = styled.article`
 
   @media (max-width: ${theme.global.breakpoints.mobile + 'px'}) {
      pre {
-        max-width: 80%;
+        max-width: 50%;
      }
   }
 
