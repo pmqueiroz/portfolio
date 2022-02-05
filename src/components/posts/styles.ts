@@ -106,8 +106,10 @@ export const Content = styled.article`
      text-decoration: underline;
   }
 
-  pre {
-     max-width: 90%;
+  @media (max-width: ${theme.global.breakpoints.mobile + 'px'}) {
+     pre {
+        max-width: 80%;
+     }
   }
 
   code:not(pre > code) {
