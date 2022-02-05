@@ -9,6 +9,10 @@ export default createGlobalStyle`
       font-family: 'JetBrains Mono', monospace;
    }
 
+   code {
+      font-family: 'JetBrains Mono'!important;
+   }
+
    body,
    input,
    button,
