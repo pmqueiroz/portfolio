@@ -80,10 +80,10 @@ export const Content = styled.article`
   align-items: start;
   justify-content: start;
   flex-direction: column;
-  flex-grow: 1;
   max-width: 80ch;
   grid-area: article;
   gap: 1rem;
+  flex-wrap: wrap;
   margin-bottom: 10rem;
 
   h1 {
@@ -105,4 +105,10 @@ export const Content = styled.article`
   a {
      text-decoration: underline;
   }
+
+  code:not(pre > code) {
+      background: ${theme.colors.lightGray};
+      padding: 0.3rem;
+      border-radius: 3px;
+} 
 `
