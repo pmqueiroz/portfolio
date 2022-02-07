@@ -86,6 +86,10 @@ export const Content = styled.article`
   gap: 1rem;
   flex-wrap: wrap;
   margin-bottom: 10rem;
+  text-align: justify;
+  text-justify: inter-word;
+  text-indent: 2rem;
+  line-height: 1.8;
 
   h1 {
     margin: 3rem 0;
