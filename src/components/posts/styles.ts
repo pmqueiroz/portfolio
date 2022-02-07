@@ -98,6 +98,10 @@ export const Content = styled.article`
    margin: 0.5rem 0;
   }
 
+  s {
+      color: ${theme.colors.gray};
+  }
+
   strong {
     background: #ffff0050;
   }

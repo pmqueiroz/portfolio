@@ -2,7 +2,7 @@ Before starting coding something I must have a entry point, and guess what, I ha
 
 My first impression was that tokens are kind of a way to represent a small piece of the code with it value and name for what this code does basically. I was sure that I have made nice discovery when I reach this point so I decide to search something about this tokens and how they work or something.
 
-Here comes the book that fell up my hands and I'm literally in passion with it: [<b>*Compilers: Principles, Techniques and Tools*</b>][compilers-book], although the book it's about compilers there are some comparisons with interpreters and this will work awesome for me. The firsts chapters of the book are about how compilers works and I found that I was right when I gave myself a definition of tokens, they are literally what I thought they are.
+Here comes the book that fell up my hands and I'm literally fascinated with it: [<b>*Compilers: Principles, Techniques and Tools*</b>][compilers-book], although the book it's about compilers there are some comparisons with interpreters and this will work awesome for me. The firsts chapters of the book are about how compilers works and I found that I was right when I gave myself a definition of tokens, they are literally what I thought they are.
 
 Basically the compiler or interpreter read a <b>stream of characters</b> (just a know-it-all way to say 'the code') and then through the **lexical analysis** separate all the lexemes (what I called 'piece of code') and translate them to a token.
 
