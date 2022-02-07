@@ -2,15 +2,17 @@ import styled from 'styled-components'
 import { theme } from '../../styles/theme'
 
 export const Wrapper = styled.div`
-   display: grid; 
+   display: grid;
+   grid-template-columns: 1fr 80ch;
    grid-template-areas: 
-            "title title title"
-            "aside article article"
-            "aside article article";
+            "title title"
+            "aside article"
+            "aside article";
    gap: 4rem;
    margin: 4rem 2rem;
 
-   @media (max-width: 920px) {
+   @media (max-width: 1000px) {
+      grid-template-columns: 1fr;
       grid-template-areas: 
             "title"
             "article"
@@ -37,7 +39,7 @@ export const Summary = styled.aside`
       }
    }
 
-   @media (max-width: 920px) {
+   @media (max-width: 1000px) {
       display: none;
    }
 `
@@ -80,7 +82,6 @@ export const Content = styled.article`
   align-items: start;
   justify-content: start;
   flex-direction: column;
-  max-width: 80ch;
   grid-area: article;
   gap: 1rem;
   flex-wrap: wrap;
@@ -110,10 +111,9 @@ export const Content = styled.article`
      text-decoration: underline;
   }
 
-  @media (max-width: ${theme.global.breakpoints.mobile + 'px'}) {
-     pre {
-        max-width: 50%;
-     }
+  pre {
+     overflow-x: auto;
+     max-width: 90vw;
   }
 
   code:not(pre > code) {

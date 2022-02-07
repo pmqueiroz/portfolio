@@ -14,7 +14,7 @@ export const theme = {
             navigationHeight: toRem(128)
         },
         breakpoints: {
-            mobile: 920
+            mobile: 1000
         }
     }
 }

@@ -37,7 +37,7 @@ export default createGlobalStyle`
       cursor:pointer;  
    }
 
-   @media (max-width: 920px) {
+   @media (max-width: 1000px) {
       :root{
         font-size: 62.5%
       }
