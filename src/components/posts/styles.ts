@@ -88,7 +88,6 @@ export const Content = styled.article`
   margin-bottom: 10rem;
   text-align: justify;
   text-justify: inter-word;
-  text-indent: 2rem;
   line-height: 1.8;
 
   h1 {
@@ -101,6 +100,7 @@ export const Content = styled.article`
 
   p {
    margin: 0.5rem 0;
+   text-indent: 2rem;
   }
 
   s {
