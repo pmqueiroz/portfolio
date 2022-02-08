@@ -44,15 +44,15 @@ export const Summary = styled.aside`
    }
 `
 
-export const Wip = styled.aside`
-`
-
-export const Title = styled.h1`
+export const Title = styled.header`
    grid-area: title;
    display: flex;
+   width: 100%;
    align-items: center;
+   flex-direction: column;
    justify-content: center;
    gap: 1rem;
+   width: 100%;
 `
 
 export const ChapterTitle = styled.h2`

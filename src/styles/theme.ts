@@ -7,7 +7,8 @@ export const theme = {
         gray: '#bababa',
         lightGray: '#eaeaea',
         red: '#F02D3A',
-        orange: '#f8961e'
+        orange: '#f8961e',
+        orangeLight: '#f8961e60'
     },
     global: {
         sizes: {

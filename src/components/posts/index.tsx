@@ -1,13 +1,12 @@
 import React from 'react'
 import ReactHtmlParser from 'react-html-parser'
-import { FaCommentDots } from 'react-icons/fa'
+import { FaExclamationTriangle } from 'react-icons/fa'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
-import { theme } from '../../styles/theme'
 
 import { Post } from '../../types'
 
 import * as S from './styles'
-import { Divider, Flex } from '..'
+import { Alert, Divider, Flex } from '..'
 
 interface BlogCardProps {
    post: Post
@@ -38,7 +37,10 @@ export const Article = (props: BlogCardProps) => {
 
     return (
         <S.Wrapper>
-            <S.Title> {meta.draft && <FaCommentDots title='Work in progress' color={theme.colors.orange}/>} {meta.title}</S.Title>
+            <S.Title>
+                <h1>{meta.title}</h1>
+                {meta.draft && <Alert><FaExclamationTriangle /> This article is marked as draft</Alert>}
+            </S.Title>
             <S.Summary>
                 <ul>
                     {sections.map(({ name }) => <AnchorLink key={name} href={`#${name}`}><li>{getRewriteName(name, meta.rewrites)}</li></AnchorLink>)}
