@@ -11,3 +11,5 @@ Along with syntax tree we have a symbol table that storages information about th
 To be honest I'm feeling that I will get stuck here for a while, I spent few hours already reading about this and I didn't come to any decision in how to implement. In fact C don't have too many ways to implement this properly (with properly i meant "not a trash way to do") as a high-level program language has but I have not enough knowledgement in C to discern the best way.
 
 Somehow the way I will structure the data of the symbol table and the syntax tree will take me a few hours or even days, I have to think a way more the best way to avoid many regrets that I'm sure and expect that I will have, just need to reduce them.
+
+The purpose of this article is document all my decisions and I cannot write all this chapter without choose at least one so I will take the risk and start to code the Symbol Table first. The main problem with symbol tables is the scopes, each scope should have a unique table but at this first version I will ignore scopes and stores all identifiers as global symbols in a single one program table.
