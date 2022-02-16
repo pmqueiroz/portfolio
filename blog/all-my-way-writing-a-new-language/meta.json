@@ -13,6 +13,14 @@
          "name": "First Researches"
       },
       {
+         "source": "parsing",
+         "name": "Parsing"
+      },
+      {
+         "source": "symbol-table",
+         "name": "Symbol Table"
+      },
+      {
          "source": "ast",
          "name": "Abstract Syntax Tree"
       }
