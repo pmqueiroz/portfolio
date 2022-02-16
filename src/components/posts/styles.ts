@@ -122,7 +122,14 @@ export const Content = styled.article`
 
   code:not(pre > code) {
       background: ${theme.colors.lightGray};
-      padding: 0.3rem;
-      border-radius: 3px;
-} 
+      padding: 0.2rem;
+      border-radius: 5px;
+  } 
+
+  cluster {
+     display: flex;
+     justify-content: space-evenly;
+     align-items: center;
+     width: 100%;
+  }
 `
