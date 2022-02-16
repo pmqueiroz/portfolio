@@ -131,5 +131,14 @@ export const Content = styled.article`
      justify-content: space-evenly;
      align-items: center;
      width: 100%;
+
+     @media (max-width: 1000px) {
+      flex-direction: column;
+      gap: 4rem;
+     }
+  }
+
+  img {
+      max-width: 80%;
   }
 `
