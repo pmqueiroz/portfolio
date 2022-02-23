@@ -84,7 +84,7 @@ const Navigation = (props: NavigationProps) => {
                 </Else>
             </If>
             <S.Link href="/">
-                <S.Logo>{'<peam />'}</S.Logo>
+                <S.Logo>{'<!-- peam -->'}</S.Logo>
             </S.Link>
             <If condition={!isSmallSize}>
                 <Then>
