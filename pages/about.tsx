@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Image from 'next/image'
+import moment from 'moment'
 
 import { withNavigation } from '../src/hocs'
 import { theme } from '../src/styles/theme'
@@ -49,6 +50,8 @@ const ImageWrapper = styled.div`
 `
 
 function Projects() {
+    const age = moment().diff(moment(['2000','04','11' ]), 'years')
+
     return (
         <Wrapper>
             <ImageWrapper>
@@ -56,7 +59,7 @@ function Projects() {
             </ImageWrapper>
             <div className="bio">
                 <p>
-                    Pedro Queiroz, {22} years <br/>
+                    Pedro Queiroz, {age} years <br/>
                   front-end developer since 2017<br/>
                   living in Brazil
                 </p>
