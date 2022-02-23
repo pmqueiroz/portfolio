@@ -46,8 +46,8 @@ export default createGlobalStyle`
       :root{
         font-size: 62.5%;
 
-        --image-size-normal: 100px;
-        --image-size-default: 200px;
+        --image-size-normal: 150px;
+        --image-size-default: 250px;
       }
    }
 
