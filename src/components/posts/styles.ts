@@ -118,6 +118,7 @@ export const Content = styled.article`
   pre {
      overflow-x: auto;
      max-width: 90vw;
+     align-self: center;
   }
 
   code:not(pre > code) {
