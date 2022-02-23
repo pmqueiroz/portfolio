@@ -68,4 +68,18 @@ export default createGlobalStyle`
       color: ${theme.colors.dark};
       text-shadow: none;
    }
+   
+   .token {
+      &.operator, &.entity, &.url, .language-css &.string, .style &.string, &.variable, &.punctuation {
+         color: ${theme.colors.darkHover};
+      }
+
+      &.selector, &.attr-name, &.string, &.char, &.builtin, &.inserted {
+         color: ${theme.colors.blue};
+      }
+
+      &.atrule, &.attr-value, &.function, &.class-name {
+         color: ${theme.colors.green};
+      }
+   }
 `
