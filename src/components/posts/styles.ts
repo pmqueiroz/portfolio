@@ -146,4 +146,8 @@ export const Content = styled.article`
      float: right;
      margin-left: 0.5rem;
   }
+
+  [shape~="ellipse"] {
+      shape-outside: ellipse();
+  }
 `

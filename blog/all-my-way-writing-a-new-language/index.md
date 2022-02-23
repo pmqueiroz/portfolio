@@ -1,6 +1,6 @@
 <div>
 
-<img src="/blog/umbra-draw.svg" style="width: var(--image-size-normal);"  float="right"/>
+<img src="/blog/umbra-draw.svg" style="width: var(--image-size-normal);"  float="right" shape="ellipse" />
 
 One thing that fascinates me in programming language is the syntax, most time I started to 'play' with a language was because of it, sometimes I thought it simple and easy or even complicated and fulfilled of weirdo characters, both bring me attention.
 But more important than how code will be written, each language has major features underneath.
