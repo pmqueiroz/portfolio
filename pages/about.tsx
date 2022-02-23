@@ -8,8 +8,28 @@ const Wrapper = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-grow: 1;
+  gap: 2rem;
   padding: 5rem;
+  width: 100%;
+  flex-wrap: wrap;
+  
+  * > p, p {
+     font-size: 1.2em;
+     font-family: 'Cutive Mono', monospace;
+  }
+
+  p {
+     &.typo {
+         text-decoration: underline wavy ${({ theme }) => theme.colors.red};
+         text-underline-offset: 5px;
+         text-decoration-thickness: 1px;
+     }
+  }
+
+  .bio {
+     line-height: 1.5;
+  }
+
 `
 
 const ImageWrapper = styled.div`
@@ -34,8 +54,15 @@ function Projects() {
             <ImageWrapper>
                 <Image src="/me.png" alt="me" width="200px" height="200px" />
             </ImageWrapper>
-        </Wrapper>
-    )
+            <div className="bio">
+                <p>
+                    Pedro Queiroz, {22} years <br/>
+                  front-end developer since 2017<br/>
+                  living in Brazil
+                </p>
+                <p className="typo">{' '}typescripter</p>
+            </div>
+        </Wrapper>    )
 }
 
 export default withNavigation(Projects)
