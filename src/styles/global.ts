@@ -50,4 +50,22 @@ export default createGlobalStyle`
         --image-size-default: 200px;
       }
    }
+
+   // code syntax
+
+   pre[class*="language-"] {
+     border: 1px solid;
+     border-radius: 0;
+     background: ${theme.colors.base};
+     box-shadow: 6px 6px 0 0 ${theme.colors.darkGray};
+     padding: 8px;
+
+     color: ${theme.colors.dark};
+     text-shadow: none;
+   }
+   
+   code[class*="language-"] {
+      color: ${theme.colors.dark};
+      text-shadow: none;
+   }
 `
