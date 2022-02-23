@@ -37,9 +37,17 @@ export default createGlobalStyle`
       cursor:pointer;  
    }
 
+   :root {
+      --image-size-normal: 200px;
+      --image-size-default: 300px;
+   }
+
    @media (max-width: 1000px) {
       :root{
-        font-size: 62.5%
+        font-size: 62.5%;
+
+        --image-size-normal: 100px;
+        --image-size-default: 200px;
       }
    }
 `
