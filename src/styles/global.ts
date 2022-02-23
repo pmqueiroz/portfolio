@@ -71,11 +71,11 @@ export default createGlobalStyle`
    
    .token {
       &.operator, &.entity, &.url, .language-css &.string, .style &.string, &.variable, &.punctuation {
-         color: ${theme.colors.darkHover};
+         color: #ff79c6;
       }
 
-      &.selector, &.attr-name, &.string, &.char, &.builtin, &.inserted {
-         color: ${theme.colors.blue};
+      &.selector, &.attr-name, &.string, &.char, &.builtin, &.inserted, &.keyword {
+         color: #bd93f9;
       }
 
       &.atrule, &.attr-value, &.function, &.class-name {
