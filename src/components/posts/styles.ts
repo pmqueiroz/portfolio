@@ -141,4 +141,9 @@ export const Content = styled.article`
   img {
       max-width: 80%;
   }
+
+  [float~="right"] {
+     float: right;
+     margin-left: 0.5rem;
+  }
 `
