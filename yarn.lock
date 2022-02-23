@@ -3964,6 +3964,11 @@ typewriter-effect@^2.18.2:
     prop-types "^15.6.2"
     raf "^3.4.0"
 
+umbra-prism@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/umbra-prism/-/umbra-prism-0.0.1.tgz#726f110a27c33141dc48000da5096e39539dd7ad"
+  integrity sha512-G7TXkaWyT00OVpAyc7n/d/DDIxeRurnJf4ofewEEzG0IFYcEVy2AodnB8d5QaKR/mYFavjV9cMt4uUMtUbyfJg==
+
 unbox-primitive@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/unbox-primitive/-/unbox-primitive-1.0.1.tgz"
