@@ -16,6 +16,9 @@ const _references = {
 const Links = ({ isSmallSize }: { isSmallSize: boolean }) => (
     <Flex direction={isSmallSize ? 'column' : 'row'} gap="2rem" align="center" >
         <ScaleUp intensity="low">
+            <S.Link href="/about">about</S.Link>
+        </ScaleUp>
+        <ScaleUp intensity="low">
             <S.Link href="/projects">projects</S.Link>
         </ScaleUp>
         <ScaleUp intensity="low">
