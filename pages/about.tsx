@@ -55,7 +55,7 @@ function Projects() {
     return (
         <Wrapper>
             <ImageWrapper>
-                <Image src="/me.png" alt="me" width="200px" height="200px" />
+                <Image src="/me.png" alt="me" width="200" height="200" />
             </ImageWrapper>
             <div className="bio">
                 <p>

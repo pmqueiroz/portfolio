@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import { useState } from 'react'
+import { PropsWithChildren, useState } from 'react'
 import styled from 'styled-components'
 
 import { Navigation } from '../../components'
@@ -22,7 +22,7 @@ export interface WithMenuNavigationProps {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const withNavigation = (Page: NextPage<WithMenuNavigationProps>) => {
-    function WrappedPage(props: unknown) {
+    function WrappedPage(props: PropsWithChildren<unknown>) {
         const [isMenuOpen, toggleMenuOpen] = useState(false)
 
         return (

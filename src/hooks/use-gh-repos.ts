@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios'
-import dynamicTemplate from 'dynamic-string'
+import { dynamicTemplate } from 'dynamic-string'
 import { useQuery } from 'react-query'
 
 import { githubApi } from '../service'
