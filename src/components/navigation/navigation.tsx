@@ -5,6 +5,7 @@ import { Divider, Flex, ScaleUp } from '..'
 
 import * as S from './styles'
 import { theme } from '../../styles/theme'
+import Image from 'next/image'
 
 const _references = {
     github: 'https://github.com/pmqueiroz',
@@ -87,7 +88,7 @@ const Navigation = (props: NavigationProps) => {
                 </Else>
             </If>
             <S.Link href="/">
-                <S.Logo>{'<!-- peam -->'}</S.Logo>
+                <Image src="/logo.svg" width="150" height="150" alt="peam" ></Image>
             </S.Link>
             <If condition={!isSmallSize}>
                 <Then>
