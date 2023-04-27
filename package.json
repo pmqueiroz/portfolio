@@ -26,12 +26,9 @@
     "react-if": "^4.1.1",
     "react-query": "^3.34.6",
     "react-use": "^17.3.2",
-    "remark-html": "^15.0.1",
-    "remark-parse": "^10.0.1",
     "styled-components": "^5.3.3",
     "typewriter-effect": "^2.18.2",
-    "umbra-prism": "^0.0.1",
-    "unified": "^10.1.1"
+    "umbra-prism": "^0.0.1"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.178",
