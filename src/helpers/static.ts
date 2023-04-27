@@ -1,8 +1,6 @@
 import path from 'path'
-import { unified } from 'unified'
-import remarkParse from 'remark-parse'
-import remarkHtml from 'remark-html'
 import fs from 'fs'
+import { parse } from '@pmqueiroz/ease-mark'
 import { Post } from '../types'
 import { slugFactory } from '.'
 
@@ -19,14 +17,9 @@ export async function getBlogPosts(fileSystem: typeof fs): Promise<Post[]> {
 
             const content = fileSystem.readFileSync(path.join(postsDir, currPostDir, rwFile.source + '.md'), 'utf8')
 
-            const parsedContent = await unified()
-                .use(remarkParse)
-                .use(remarkHtml, { sanitize: false })
-                .process(content)
-
             return {
                 name: rwFile.source,
-                content: parsedContent.value as string
+                content: parse(content)
             }
         }))
 
