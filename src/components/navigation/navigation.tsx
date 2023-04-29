@@ -11,7 +11,7 @@ const _references = {
     github: 'https://github.com/pmqueiroz',
     linkedin: 'https://www.linkedin.com/in/pmqueiroz/',
     dev: 'https://dev.to/pmqueiroz',
-    mail: 'mailto:contato@pmqueiroz.com'
+    mail: 'mailto:contact@pmqueiroz.dev'
 }
 
 const Links = ({ isSmallSize }: { isSmallSize: boolean }) => (
