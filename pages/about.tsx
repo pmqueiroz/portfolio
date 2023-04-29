@@ -50,7 +50,7 @@ const ImageWrapper = styled.div`
 `
 
 function Projects() {
-    const age = moment().diff(moment(['2000','04','11' ]), 'years')
+    const age = moment().diff(moment('04/11/2000', 'MM/DD/YYYY'), 'years')
 
     return (
         <Wrapper>
