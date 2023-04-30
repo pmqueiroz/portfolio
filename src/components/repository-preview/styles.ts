@@ -6,11 +6,15 @@ export const Wrapper = styled.div`
    align-items: center;
    flex-direction: column;
    gap: 2rem;
-   max-width: 830px;
+   max-width: 890px;
    padding: 2rem;
    border-radius: 10px;
    border: 1px solid ${props => props.theme.colors.dark};
    background: ${props => props.theme.colors.base};
+
+   code {
+      overflow-x: scroll;
+   }
 `
 
 export const Header = styled.header`

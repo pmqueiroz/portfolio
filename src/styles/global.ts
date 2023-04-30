@@ -53,20 +53,22 @@ export default createGlobalStyle`
 
    // code syntax
 
-   pre[class*="language-"] {
-     border: 1px solid;
-     border-radius: 0;
-     background: ${theme.colors.base};
-     box-shadow: 6px 6px 0 0 ${theme.colors.darkGray};
-     padding: 8px;
+   pre {
+     border: 1px solid!important;
+     border-radius: 0!important;
+     background: ${theme.colors.base}!important;
+     box-shadow: 6px 6px 0 0 ${theme.colors.darkGray}!important;
+     padding: 8px!important;
 
-     color: ${theme.colors.dark};
-     text-shadow: none;
+     color: ${theme.colors.dark}!important;
+     text-shadow: none!important;
+     max-width: 100%!important;
+     overflow-x: scroll!important;
    }
    
-   code[class*="language-"] {
-      color: ${theme.colors.dark};
-      text-shadow: none;
+   code {
+      color: ${theme.colors.dark}!important;
+      text-shadow: none!important;
    }
    
    .token {
