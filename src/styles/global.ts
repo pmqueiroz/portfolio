@@ -22,6 +22,12 @@ export default createGlobalStyle`
       background: none;
    }
 
+   table th, table td {
+      padding: 6px 13px;
+      border-collapse: collapse;
+      border: 1px solid ${theme.colors.dark};
+   }
+
    body {
       background: ${theme.colors.base};
       color: ${theme.colors.dark};
