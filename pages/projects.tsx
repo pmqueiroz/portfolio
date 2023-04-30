@@ -6,6 +6,7 @@ import { useGithubRepos } from '../src/hooks'
 import { GHRepo } from '../src/types'
 import { RepositoryPreview } from '../src/components/repository-preview'
 import { useState } from 'react'
+import { Case, Default, Switch } from 'react-if'
 
 const Wrapper = styled.section`
   display: flex;
@@ -28,10 +29,16 @@ function Projects() {
     
     return (
         <Wrapper>
-            {selectedRepo && <RepositoryPreview repo={selectedRepo} onClose={() => selectRepo(null)} />}
-            <Grid gutter="5rem" min="40ch">
-                {projects?.map(project => <ProjectCard key={project.id} repo={project} onClick={selectRepo} />)}
-            </Grid>
+            <Switch>
+                <Case condition={selectedRepo != null}>
+                    <RepositoryPreview repo={selectedRepo} onClose={() => selectRepo(null)} />
+                </Case>
+                <Default>
+                    <Grid gutter="5rem" min="40ch">
+                        {projects?.map(project => <ProjectCard key={project.id} repo={project} onClick={selectRepo} />)}
+                    </Grid>
+                </Default>
+            </Switch>
         </Wrapper>
     )
 }

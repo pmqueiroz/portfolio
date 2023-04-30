@@ -1,23 +1,11 @@
 import styled from 'styled-components'
 
-export const Dimmer = styled.div<{ visible: boolean }>`
-   position: fixed;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
-   height: 100vh;
-   width: 100vw;
-   background: #000;
-   opacity: .3;
-   z-index: 100;
-`
-
 export const Wrapper = styled.div`
-   z-index: 200;
-   position: fixed;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   gap: 2rem;
    max-width: 830px;
    padding: 2rem;
    border-radius: 10px;
@@ -30,6 +18,7 @@ export const Header = styled.header`
    gap: 5rem;
    justify-content: space-between;
    align-items: start;
+   width: 100%;
 `
 
 export const Link = styled.a`
