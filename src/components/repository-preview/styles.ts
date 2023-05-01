@@ -2,15 +2,21 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
    display: flex;
+   flex-wrap: wrap;
    justify-content: center;
    align-items: center;
    flex-direction: column;
    gap: 2rem;
    max-width: 890px;
-   padding: 2rem;
    border-radius: 10px;
    border: 1px solid ${props => props.theme.colors.dark};
    background: ${props => props.theme.colors.base};
+   padding: 2rem;
+   
+   @media (max-width: ${props => props.theme.global.breakpoints.mobile}px) {
+      max-width: 100%;
+      border: none;
+   }
 
    code {
       overflow-x: scroll;

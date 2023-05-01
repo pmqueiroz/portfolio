@@ -13,7 +13,6 @@ const Wrapper = styled.section`
   align-items: center;
   justify-content: center;
   flex-grow: 1;
-  padding: 5rem;
 `
 
 const filterProjects = (repos?: GHRepo[]) => {
@@ -34,7 +33,7 @@ function Projects() {
                     <RepositoryPreview repo={selectedRepo} onClose={() => selectRepo(null)} />
                 </Case>
                 <Default>
-                    <Grid gutter="5rem" min="40ch">
+                    <Grid style={{ padding: '5rem' }} gutter="5rem" min="40ch">
                         {projects?.map(project => <ProjectCard key={project.id} repo={project} onClick={selectRepo} />)}
                     </Grid>
                 </Default>
