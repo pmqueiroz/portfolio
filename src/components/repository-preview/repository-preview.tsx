@@ -29,14 +29,11 @@ export const RepositoryPreview = ({ repo, onClose }: PreviewProps) => {
                 </Flex>
                 <Flex align='center' justify='center' gap='.5rem'>
                     <S.Link href={repo.html_url} target='_blank' rel="noreferrer" >open in github</S.Link>
-                    <Flex 
+                    <S.CloseButton 
                         onClick={onClose}
-                        align='center'
-                        justify='center'
-                        style={{ padding: '.5rem', cursor: 'pointer' }}
                     >
                         <FaTimes fill={theme.colors.red} size={18}></FaTimes>
-                    </Flex>
+                    </S.CloseButton>
                 </Flex>
             </S.Header>
             <If condition={Boolean(readme)}>
