@@ -22,6 +22,14 @@ export default createGlobalStyle`
       background: none;
    }
 
+   div[align="center"] {
+      width: 100%;
+      
+      p {
+         width: 100%;
+      }
+   }
+
    table th, table td {
       padding: 6px 13px;
       border-collapse: collapse;
