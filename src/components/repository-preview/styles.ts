@@ -29,9 +29,9 @@ export const Link = styled.a`
    color: ${props => props.theme.colors.darkGray};
    border-bottom: 1px solid transparent;
    transition: border .1s ease-in-out;
-
+   
    &:hover {
-      border-bottom: 1px solid ${props => props.theme.colors.dark};
+      text-decoration: underline;
    }
 `
 
@@ -53,6 +53,6 @@ export const CloseButton = styled.div`
    transition: border .1s ease-in-out;
 
    &:hover {
-      border: 1px solid ${props => props.theme.colors.dark};
+      border: 1px solid ${props => props.theme.colors.darkGray};
    }
 `
