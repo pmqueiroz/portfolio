@@ -4,6 +4,7 @@ import { Flex } from '..'
 import { GHRepo } from '../../types'
 
 import * as S from './styles'
+import { parseEmojis } from '../../helpers/parse-emojis'
 
 interface ProjectCardProps {
    repo: GHRepo
@@ -19,7 +20,7 @@ export const ProjectCard = ({ repo, onClick }: ProjectCardProps) => {
             </Flex>
             <S.DescriptionWrapper>
                 <S.Description >
-                    {repo.description}
+                    {parseEmojis(repo.description)}
                 </S.Description>
             </S.DescriptionWrapper>
             <Flex gap="1rem" align="center">

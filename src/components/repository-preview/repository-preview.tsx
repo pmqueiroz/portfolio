@@ -8,6 +8,7 @@ import { theme } from '../../styles/theme'
 import { GHRepo } from '../../types'
 import { If } from 'react-if'
 import { useRepoReadme } from '../../hooks'
+import { parseEmojis } from '../../helpers/parse-emojis'
 interface PreviewProps {
    repo: GHRepo
    onClose(): void
@@ -39,7 +40,7 @@ export const RepositoryPreview = ({ repo, onClose }: PreviewProps) => {
                 </Flex>
             </S.Header>
             <If condition={Boolean(readme)}>
-                <Flex direction='column' gap='1rem' style={{ maxWidth: '100%' }}>{reactHtmlParser(readme)}</Flex>
+                <Flex direction='column' gap='1rem' style={{ maxWidth: '100%' }}>{reactHtmlParser(parseEmojis(readme))}</Flex>
             </If>
         </S.Wrapper>
     )
