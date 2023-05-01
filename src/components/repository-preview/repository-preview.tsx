@@ -29,7 +29,7 @@ export const RepositoryPreview = ({ repo, onClose }: PreviewProps) => {
                 <Flex direction='column'>
                     <Flex gap=".5rem" align='center'>
                         <FaBook fill={theme.colors.gray} size={24} ></FaBook>
-                        <S.RepoTitle>{repo.full_name}</S.RepoTitle>
+                        <h1>{repo.full_name}</h1>
                     </Flex>
                     <S.RepoDescription>{repo.description}</S.RepoDescription>
                 </Flex>
