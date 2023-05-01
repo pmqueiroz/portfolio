@@ -39,6 +39,7 @@ export const RepoTitle = styled.h1``
 
 export const RepoDescription = styled.p`
    color: ${props => props.theme.colors.gray};
+   max-width: 50ch;
 `
 
 export const CloseButton = styled.div`

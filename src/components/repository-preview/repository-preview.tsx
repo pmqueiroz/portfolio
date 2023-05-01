@@ -1,3 +1,5 @@
+import { useRef } from 'react'
+import { useClickAway, useKey } from 'react-use'
 import { FaBook, FaTimes } from 'react-icons/fa'
 import reactHtmlParser from 'react-html-parser'
 
@@ -16,9 +18,13 @@ interface PreviewProps {
 
 export const RepositoryPreview = ({ repo, onClose }: PreviewProps) => {
     const { readme } = useRepoReadme(repo.full_name)
+    const wrapperRef = useRef(null)
+    
+    useClickAway(wrapperRef, onClose)
+    useKey('Escape', onClose)
 
     return (
-        <S.Wrapper>
+        <S.Wrapper ref={wrapperRef}>
             <S.Header>
                 <Flex direction='column'>
                     <Flex gap=".5rem" align='center'>
