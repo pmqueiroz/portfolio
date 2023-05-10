@@ -32,7 +32,7 @@ const Links = ({ isSmallSize }: { isSmallSize: boolean }) => (
 const Social = () => (
     <Flex direction="row" gap="2rem" align="center" justify='center'>
         <ScaleUp intensity="low">
-            <S.ExternalLink href={_references['github']} target="_blank" >
+            <S.ExternalLink href={_references['bmc']} target="_blank" >
                 <SiBuymeacoffee size={28}/>
             </S.ExternalLink>
         </ScaleUp>
