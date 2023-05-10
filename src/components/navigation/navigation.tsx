@@ -1,6 +1,7 @@
 import { useWindowSize } from 'react-use'
 import { If, Then, Else } from 'react-if'
-import { FaGithub, FaLinkedin, FaDev, FaMailBulk, FaGripLines } from 'react-icons/fa'
+import { FaGripLines } from 'react-icons/fa'
+import { SiBuymeacoffee, SiGithub, SiLinkedin, SiMaildotru } from 'react-icons/si'
 import { Divider, Flex, ScaleUp } from '..'
 
 import * as S from './styles'
@@ -10,8 +11,8 @@ import Image from 'next/image'
 const _references = {
     github: 'https://github.com/pmqueiroz',
     linkedin: 'https://www.linkedin.com/in/pmqueiroz/',
-    dev: 'https://dev.to/pmqueiroz',
-    mail: 'mailto:contact@pmqueiroz.dev'
+    mail: 'mailto:contact@pmqueiroz.dev',
+    bmc: 'buymeacoffee.com/pmqueiroz'
 }
 
 const Links = ({ isSmallSize }: { isSmallSize: boolean }) => (
@@ -32,22 +33,22 @@ const Social = () => (
     <Flex direction="row" gap="2rem" align="center" justify='center'>
         <ScaleUp intensity="low">
             <S.ExternalLink href={_references['github']} target="_blank" >
-                <FaGithub size={28}/>
+                <SiBuymeacoffee size={28}/>
+            </S.ExternalLink>
+        </ScaleUp>
+        <ScaleUp intensity="low">
+            <S.ExternalLink href={_references['github']} target="_blank" >
+                <SiGithub size={28}/>
             </S.ExternalLink>
         </ScaleUp>
         <ScaleUp intensity="low">
             <S.ExternalLink href={_references['linkedin']} target="_blank" >
-                <FaLinkedin size={28}/>
-            </S.ExternalLink>
-        </ScaleUp>
-        <ScaleUp intensity="low">
-            <S.ExternalLink href={_references['dev']} target="_blank" >
-                <FaDev size={28}/>
+                <SiLinkedin size={28}/>
             </S.ExternalLink>
         </ScaleUp>
         <ScaleUp intensity="low">
             <S.ExternalLink href={_references['mail']} target="_blank" >
-                <FaMailBulk size={28}/>
+                <SiMaildotru size={28}/>
             </S.ExternalLink>
         </ScaleUp>
     </Flex>
