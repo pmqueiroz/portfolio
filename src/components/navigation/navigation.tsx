@@ -12,7 +12,7 @@ const _references = {
     github: 'https://github.com/pmqueiroz',
     linkedin: 'https://www.linkedin.com/in/pmqueiroz/',
     mail: 'mailto:contact@pmqueiroz.dev',
-    bmc: 'buymeacoffee.com/pmqueiroz'
+    bmc: 'https://buymeacoffee.com/pmqueiroz'
 }
 
 const Links = ({ isSmallSize }: { isSmallSize: boolean }) => (
