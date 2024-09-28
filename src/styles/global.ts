@@ -84,6 +84,20 @@ export default createGlobalStyle`
       color: ${theme.colors.dark}!important;
       text-shadow: none!important;
    }
+
+   blockquote {
+      position: relative;
+      opacity: 0.3;
+      ::before {
+         content: '';
+         width: 2px;
+         background: ${theme.colors.dark};
+         position: absolute;
+         top: 0;
+         bottom: 0;
+         left: -10px;
+      }
+   }
    
    .token {
       &.operator, &.entity, &.url, .language-css &.string, .style &.string, &.variable, &.punctuation {
