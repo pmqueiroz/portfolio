@@ -8,5 +8,3 @@ export const _remConverter = (pixels: number) => (1 / BASE_REM_PIXEL) * pixels
 export const toRem = (pixels: number) => dynamicTemplate('${converted}rem', { converted: _remConverter(pixels) })
 
 export const slugFactory = (str: string) => _.kebabCase(str)
-
-export * from './static'

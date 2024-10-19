@@ -1,10 +1,10 @@
-import fs from 'fs'
 import styled from 'styled-components'
 import { Article } from '../../src/components'
 
-import { getBlogPosts } from '../../src/helpers'
 import { WithMenuNavigationProps, withNavigation } from '../../src/hocs'
 import { Post } from '../../src/types'
+import { getPosts } from '../../src/service/get-posts'
+import { getPostBySlug } from '../../src/service/get-post-by-slug'
 
 const Wrapper = styled.section`
   display: flex;
@@ -28,9 +28,7 @@ function PostPage(props: PostProps) {
 }
 
 export async function getStaticProps({ params }) {
-    const posts = await getBlogPosts(fs)
-
-    const post = posts.find(post => post.meta.slug === params.postSlug)
+    const post = await getPostBySlug({ slug: params.postSlug })
 
     return {
         props: {
@@ -40,9 +38,9 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-    const posts = await getBlogPosts(fs)
+    const posts = await getPosts()
 
-    const paths = posts.map(post => '/post/' + post.meta.slug)
+    const paths = posts.map(post => '/post/' + post.slug)
 
     return {
         paths: paths,

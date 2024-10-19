@@ -6,15 +6,13 @@ interface BlogCardProps {
    post: Post
 }
 
-export const BlogCard = (props: BlogCardProps) => {
-    const { post: { meta } } = props
-
+export const BlogCard = ({ post }: BlogCardProps) => {
     return (
-        <a href={`/post/${meta.slug}`}>
+        <a href={`/post/${post.slug}`}>
             <S.Wrapper>
-                {meta.title}
+                {post.title}
                 <S.Description >
-                    {meta.description}
+                    {post.description}
                 </S.Description>
             </S.Wrapper>
         </a>

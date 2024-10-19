@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 
 import { WithMenuNavigationProps, withNavigation } from '../src/hocs'
-import { getBlogPosts } from '../src/helpers'
-import fs from 'fs'
+import { getPosts } from '../src/service/get-posts'
 import { BlogCard, Grid } from '../src/components'
 import { Post } from '../src/types'
 
@@ -15,15 +14,14 @@ const Wrapper = styled.section`
 `
 
 interface BlobProps extends WithMenuNavigationProps{
-  blogPosts: Post[]
+  posts: Post[]
 }
 
-function Blog(props: BlobProps) {
-    const { blogPosts } = props
+function Blog({ posts }: BlobProps) {
     return (
         <Wrapper>
             <Grid gutter="5rem" min="40ch">
-                {blogPosts.map(post => <BlogCard key={post.meta.title} post={post} />)}
+                {posts.map(post => <BlogCard key={post.slug} post={post} />)}
             </Grid>
         </Wrapper>
     )
@@ -32,7 +30,7 @@ function Blog(props: BlobProps) {
 export async function getStaticProps() {
     return {
         props: {
-            blogPosts: await getBlogPosts(fs)
+            posts: await getPosts(),
         }
     }
 }

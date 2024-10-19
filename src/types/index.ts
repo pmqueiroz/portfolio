@@ -100,23 +100,22 @@ export interface GHRepo {
    default_branch: string;
 }
 
-interface RewriteMeta {
-   source: string
-   name: string
-}
-
-interface Section {
+interface Chapter {
    name: string
    content: string
 }
 
+type CmsCollectionItem<T> = {
+   id: string
+   attributes: T
+}
+
+export type RawPost = CmsCollectionItem<Post>
+
 export interface Post {
-   meta: {
-      title: string
-      description: string
-      draft?: boolean
-      slug: string
-      rewrites: RewriteMeta[]
-   },
-   sections: Section[]
+   title: string
+   description: string
+   draft?: boolean
+   slug: string
+   chapters: Chapter[]
 }
