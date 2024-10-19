@@ -50,22 +50,22 @@ const ImageWrapper = styled.div`
 `
 
 function Projects() {
-    const age = moment().diff(moment('04/11/2000', 'MM/DD/YYYY'), 'years')
+  const age = moment().diff(moment('04/11/2000', 'MM/DD/YYYY'), 'years')
 
-    return (
-        <Wrapper>
-            <ImageWrapper>
-                <Image src="/me.png" alt="me" width="200" height="200" />
-            </ImageWrapper>
-            <div className="bio">
-                <p>
+  return (
+    <Wrapper>
+      <ImageWrapper>
+        <Image src="/me.png" alt="me" width="200" height="200" />
+      </ImageWrapper>
+      <div className="bio">
+        <p>
                     Pedro Queiroz, {age} years <br/>
                   front-end developer since 2017<br/>
                   living in Brazil
-                </p>
-                <p className="typo">{' '}typescripter</p>
-            </div>
-        </Wrapper>    )
+        </p>
+        <p className="typo">{' '}typescripter</p>
+      </div>
+    </Wrapper>    )
 }
 
 export default withNavigation(Projects)

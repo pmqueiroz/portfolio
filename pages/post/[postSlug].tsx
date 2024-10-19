@@ -18,34 +18,34 @@ interface PostProps extends WithMenuNavigationProps {
 }
 
 function PostPage(props: PostProps) {
-    const { post } = props
+  const { post } = props
 
-    return (
-        <Wrapper>
-            <Article post={post} />
-        </Wrapper>
-    )
+  return (
+    <Wrapper>
+      <Article post={post} />
+    </Wrapper>
+  )
 }
 
 export async function getStaticProps({ params }) {
-    const post = await getPostBySlug({ slug: params.postSlug })
+  const post = await getPostBySlug({ slug: params.postSlug })
 
-    return {
-        props: {
-            post
-        }
+  return {
+    props: {
+      post
     }
+  }
 }
 
 export async function getStaticPaths() {
-    const posts = await getPosts()
+  const posts = await getPosts()
 
-    const paths = posts.map(post => '/post/' + post.slug)
+  const paths = posts.map(post => '/post/' + post.slug)
 
-    return {
-        paths: paths,
-        fallback: false,
-    }
+  return {
+    paths: paths,
+    fallback: false,
+  }
 }
 
 export default withNavigation(PostPage)

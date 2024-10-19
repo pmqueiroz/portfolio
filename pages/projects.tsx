@@ -16,30 +16,30 @@ const Wrapper = styled.section`
 `
 
 const filterProjects = (repos?: GHRepo[]) => {
-    return repos?.filter(r => r.topics.includes('portfolio-visible'))
+  return repos?.filter(r => r.topics.includes('portfolio-visible'))
 }
 
 function Projects() {
-    const [selectedRepo, selectRepo] = useState<GHRepo | null>(null)
+  const [selectedRepo, selectRepo] = useState<GHRepo | null>(null)
 
-    const { repos } = useGithubRepos('pmqueiroz')
+  const { repos } = useGithubRepos('pmqueiroz')
 
-    const projects = filterProjects(repos)
+  const projects = filterProjects(repos)
     
-    return (
-        <Wrapper>
-            <Switch>
-                <Case condition={selectedRepo != null}>
-                    <RepositoryPreview repo={selectedRepo} onClose={() => selectRepo(null)} />
-                </Case>
-                <Default>
-                    <Grid style={{ padding: '5rem' }} gutter="5rem" min="40ch">
-                        {projects?.map(project => <ProjectCard key={project.id} repo={project} onClick={selectRepo} />)}
-                    </Grid>
-                </Default>
-            </Switch>
-        </Wrapper>
-    )
+  return (
+    <Wrapper>
+      <Switch>
+        <Case condition={selectedRepo != null}>
+          <RepositoryPreview repo={selectedRepo} onClose={() => selectRepo(null)} />
+        </Case>
+        <Default>
+          <Grid style={{ padding: '5rem' }} gutter="5rem" min="40ch">
+            {projects?.map(project => <ProjectCard key={project.id} repo={project} onClick={selectRepo} />)}
+          </Grid>
+        </Default>
+      </Switch>
+    </Wrapper>
+  )
 }
 
 export default withNavigation(Projects)

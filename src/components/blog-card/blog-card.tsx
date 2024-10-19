@@ -7,14 +7,14 @@ interface BlogCardProps {
 }
 
 export const BlogCard = ({ post }: BlogCardProps) => {
-    return (
-        <a href={`/post/${post.slug}`}>
-            <S.Wrapper>
-                {post.title}
-                <S.Description >
-                    {post.description}
-                </S.Description>
-            </S.Wrapper>
-        </a>
-    )
+  return (
+    <a href={`/post/${post.slug}`}>
+      <S.Wrapper>
+        {post.title}
+        <S.Description >
+          {post.description}
+        </S.Description>
+      </S.Wrapper>
+    </a>
+  )
 }

@@ -12,27 +12,27 @@ interface ProjectCardProps {
 }
 
 export const ProjectCard = ({ repo, onClick }: ProjectCardProps) => {
-    return (
-        <S.Wrapper onClick={() => onClick(repo)}>
-            <Flex gap="0.5rem" align="center">
-                <FaBook />
-                {repo.name}
-            </Flex>
-            <S.DescriptionWrapper>
-                <S.Description >
-                    {parseEmojis(repo.description)}
-                </S.Description>
-            </S.DescriptionWrapper>
-            <Flex gap="1rem" align="center">
-                <Flex gap="0.5rem" align="center">
-                    <S.LanguageColor color={repo.language} />
-                    {repo.language}
-                </Flex>
-                <Flex gap="0.5rem" align="center">
-                    <FaStar />
-                    {repo.stargazers_count}
-                </Flex>
-            </Flex>
-        </S.Wrapper>
-    )
+  return (
+    <S.Wrapper onClick={() => onClick(repo)}>
+      <Flex gap="0.5rem" align="center">
+        <FaBook />
+        {repo.name}
+      </Flex>
+      <S.DescriptionWrapper>
+        <S.Description >
+          {parseEmojis(repo.description)}
+        </S.Description>
+      </S.DescriptionWrapper>
+      <Flex gap="1rem" align="center">
+        <Flex gap="0.5rem" align="center">
+          <S.LanguageColor color={repo.language} />
+          {repo.language}
+        </Flex>
+        <Flex gap="0.5rem" align="center">
+          <FaStar />
+          {repo.stargazers_count}
+        </Flex>
+      </Flex>
+    </S.Wrapper>
+  )
 }

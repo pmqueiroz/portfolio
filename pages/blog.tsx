@@ -18,21 +18,21 @@ interface BlobProps extends WithMenuNavigationProps{
 }
 
 function Blog({ posts }: BlobProps) {
-    return (
-        <Wrapper>
-            <Grid gutter="5rem" min="40ch">
-                {posts.map(post => <BlogCard key={post.slug} post={post} />)}
-            </Grid>
-        </Wrapper>
-    )
+  return (
+    <Wrapper>
+      <Grid gutter="5rem" min="40ch">
+        {posts.map(post => <BlogCard key={post.slug} post={post} />)}
+      </Grid>
+    </Wrapper>
+  )
 }
 
 export async function getStaticProps() {
-    return {
-        props: {
-            posts: await getPosts(),
-        }
+  return {
+    props: {
+      posts: await getPosts(),
     }
+  }
 }
 
 export default withNavigation(Blog)

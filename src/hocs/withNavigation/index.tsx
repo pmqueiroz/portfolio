@@ -22,20 +22,20 @@ export interface WithMenuNavigationProps {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const withNavigation = (Page: NextPage<WithMenuNavigationProps>) => {
-    function WrappedPage(props: PropsWithChildren<unknown>) {
-        const [isMenuOpen, toggleMenuOpen] = useState(false)
+  function WrappedPage(props: PropsWithChildren<unknown>) {
+    const [isMenuOpen, toggleMenuOpen] = useState(false)
 
-        return (
-            <Wrapper>
-                <Navigation isOpen={isMenuOpen} toggleOpen={toggleMenuOpen} />
-                <PageWrapper>
-                    <Page {...props} isMenuOpen={isMenuOpen}/>
-                </PageWrapper>
-            </Wrapper>
-        )
-    }
+    return (
+      <Wrapper>
+        <Navigation isOpen={isMenuOpen} toggleOpen={toggleMenuOpen} />
+        <PageWrapper>
+          <Page {...props} isMenuOpen={isMenuOpen}/>
+        </PageWrapper>
+      </Wrapper>
+    )
+  }
 
-    WrappedPage.displayName = `withNavigation(${Page.displayName})`
+  WrappedPage.displayName = `withNavigation(${Page.displayName})`
 
-    return WrappedPage
+  return WrappedPage
 }

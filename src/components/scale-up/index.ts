@@ -6,10 +6,10 @@ interface ScaleUpProps {
 }
 
 const intensityMap: Record<ScaleUpProps['intensity'], string> = {
-    tiny: toRem(-4),
-    low: toRem(-8),
-    medium: toRem(-16),
-    high: toRem(-24)
+  tiny: toRem(-4),
+  low: toRem(-8),
+  medium: toRem(-16),
+  high: toRem(-24)
 }
 
 export const ScaleUp = styled.div<ScaleUpProps>`

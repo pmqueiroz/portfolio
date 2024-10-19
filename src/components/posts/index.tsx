@@ -13,37 +13,37 @@ interface BlogCardProps {
 }
 
 const ChapterTitle = ({ children, id }: { children: React.ReactNode; id: string }) => (
-    <>
-        <S.ChapterTitleWrapper id={id}>
-            <Flex align='center' justify='start' gap='0.5rem'>
-                <S.ChapterTitle>{children}</S.ChapterTitle>
-                <S.TitleAnchor href={`#${id}`}>#</S.TitleAnchor>
-            </Flex>
-            <Divider />
-        </S.ChapterTitleWrapper>
-    </>
+  <>
+    <S.ChapterTitleWrapper id={id}>
+      <Flex align='center' justify='start' gap='0.5rem'>
+        <S.ChapterTitle>{children}</S.ChapterTitle>
+        <S.TitleAnchor href={`#${id}`}>#</S.TitleAnchor>
+      </Flex>
+      <Divider />
+    </S.ChapterTitleWrapper>
+  </>
 )
 
 export const Article = ({ post }: BlogCardProps) => {
-    return (
-        <S.Wrapper>
-            <S.Title>
-                <h1>{post.title}</h1>
-                {post.draft && <Alert><FaExclamationTriangle /> This article is marked as draft</Alert>}
-            </S.Title>
-            <S.Summary>
-                <ul>
-                    {post.chapters.map(({ name }) => <AnchorLink key={name} href={`#${name}`}><li>{name}</li></AnchorLink>)}
-                </ul>
-            </S.Summary>
-            <S.Content>
-                {post.chapters.map(({ content, name }) => (
-                    <React.Fragment key={name}>
-                        <ChapterTitle id={name}>{name}</ChapterTitle>
-                        {ReactHtmlParser(content)}
-                    </React.Fragment>
-                ))}
-            </S.Content>
-        </S.Wrapper>
-    )
+  return (
+    <S.Wrapper>
+      <S.Title>
+        <h1>{post.title}</h1>
+        {post.draft && <Alert><FaExclamationTriangle /> This article is marked as draft</Alert>}
+      </S.Title>
+      <S.Summary>
+        <ul>
+          {post.chapters.map(({ name }) => <AnchorLink key={name} href={`#${name}`}><li>{name}</li></AnchorLink>)}
+        </ul>
+      </S.Summary>
+      <S.Content>
+        {post.chapters.map(({ content, name }) => (
+          <React.Fragment key={name}>
+            <ChapterTitle id={name}>{name}</ChapterTitle>
+            {ReactHtmlParser(content)}
+          </React.Fragment>
+        ))}
+      </S.Content>
+    </S.Wrapper>
+  )
 }

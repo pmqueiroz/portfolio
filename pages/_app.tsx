@@ -11,23 +11,23 @@ import { useEffect } from 'react'
 const client = new QueryClient()
 
 function MyApp({ Component, pageProps }) {
-    useEffect(() => {
-        Prism.highlightAll()
-    }, [])
+  useEffect(() => {
+    Prism.highlightAll()
+  }, [])
 
-    return (
-        <>
-            <Head>
-                <title>pmqueiroz</title>
-            </Head>
-            <QueryClientProvider client={client}>
-                <ThemeProvider theme={theme}>
-                    <GlobalStyle />
-                    <Component {...pageProps} />
-                </ThemeProvider>
-            </QueryClientProvider>
-        </>
-    )
+  return (
+    <>
+      <Head>
+        <title>pmqueiroz</title>
+      </Head>
+      <QueryClientProvider client={client}>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </QueryClientProvider>
+    </>
+  )
 }
 
 export default MyApp

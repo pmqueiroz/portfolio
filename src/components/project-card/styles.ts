@@ -2,11 +2,11 @@ import styled from 'styled-components'
 import { Languages } from '../../types'
 
 const languageColorMap: Record<Languages, string> = {
-    Go: '#00ADD8',
-    JavaScript: '#F1E05A',
-    TypeScript: '#2B7489',
-    EJS: '#A91E50',
-    Python: '#3572A5'
+  Go: '#00ADD8',
+  JavaScript: '#F1E05A',
+  TypeScript: '#2B7489',
+  EJS: '#A91E50',
+  Python: '#3572A5'
 
 }
 

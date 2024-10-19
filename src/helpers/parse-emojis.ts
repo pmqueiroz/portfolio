@@ -4,7 +4,7 @@ import { snakeCase } from 'lodash'
 const emojiLike = /(:[\w-]+:)/gm
 
 export const parseEmojis = (text: string) => {
-    return text.replace(emojiLike, match => {
-        return nameToEmoji[snakeCase(match || '')] ?? match
-    })
+  return text.replace(emojiLike, match => {
+    return nameToEmoji[snakeCase(match || '')] ?? match
+  })
 }
