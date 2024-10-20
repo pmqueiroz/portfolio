@@ -1,9 +1,11 @@
+'use client'
+
 import styled from 'styled-components'
 
-import { WithMenuNavigationProps, withNavigation } from '../src/hocs'
-import { getPosts } from '../src/service/get-posts'
-import { BlogCard, Grid } from '../src/components'
-import { Post } from '../src/types'
+import { WithMenuNavigationProps, withNavigation } from '../../hocs'
+import { getPosts } from '../../service/get-posts'
+import { BlogCard, Grid } from '../../components'
+import { Post } from '../../types'
 
 const Wrapper = styled.section`
   display: flex;
@@ -17,7 +19,7 @@ interface BlobProps extends WithMenuNavigationProps{
   posts: Post[]
 }
 
-function Blog({ posts }: BlobProps) {
+export const ListPage = withNavigation<{ posts: Post[] }>(({ posts }: BlobProps) => {
   return (
     <Wrapper>
       <Grid gutter="5rem" min="40ch">
@@ -25,7 +27,7 @@ function Blog({ posts }: BlobProps) {
       </Grid>
     </Wrapper>
   )
-}
+})
 
 export async function getStaticProps() {
   return {
@@ -34,5 +36,3 @@ export async function getStaticProps() {
     }
   }
 }
-
-export default withNavigation(Blog)

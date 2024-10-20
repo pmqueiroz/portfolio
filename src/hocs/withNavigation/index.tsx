@@ -20,9 +20,9 @@ export interface WithMenuNavigationProps {
     isMenuOpen: boolean
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const withNavigation = (Page: NextPage<WithMenuNavigationProps>) => {
-  function WrappedPage(props: PropsWithChildren<unknown>) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types
+export const withNavigation = <T extends {}>(Page: NextPage<WithMenuNavigationProps>) => {
+  function WrappedPage(props: PropsWithChildren<T>) {
     const [isMenuOpen, toggleMenuOpen] = useState(false)
 
     return (

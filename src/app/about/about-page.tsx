@@ -1,9 +1,11 @@
+'use client'
+
 import styled from 'styled-components'
 import Image from 'next/image'
 import moment from 'moment'
 
-import { withNavigation } from '../src/hocs'
-import { theme } from '../src/styles/theme'
+import { withNavigation } from '../../hocs'
+import { theme } from '../../styles/theme'
 
 const Wrapper = styled.section`
   display: flex;
@@ -49,7 +51,7 @@ const ImageWrapper = styled.div`
    }
 `
 
-function Projects() {
+export const AboutPage = withNavigation(() => {
   const age = moment().diff(moment('04/11/2000', 'MM/DD/YYYY'), 'years')
 
   return (
@@ -59,13 +61,12 @@ function Projects() {
       </ImageWrapper>
       <div className="bio">
         <p>
-                    Pedro Queiroz, {age} years <br/>
-                  front-end developer since 2017<br/>
-                  living in Brazil
+          Pedro Queiroz, {age} years <br/>
+          front-end developer since 2017<br/>
+          living in Brazil
         </p>
         <p className="typo">{' '}typescripter</p>
       </div>
-    </Wrapper>    )
-}
-
-export default withNavigation(Projects)
+    </Wrapper>
+  )
+})

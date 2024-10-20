@@ -1,10 +1,12 @@
+'use client'
+
 import styled from 'styled-components'
 
-import { Grid, ProjectCard } from '../src/components'
-import { withNavigation } from '../src/hocs'
-import { useGithubRepos } from '../src/hooks'
-import { GHRepo } from '../src/types'
-import { RepositoryPreview } from '../src/components/repository-preview'
+import { Grid, ProjectCard } from '../../components'
+import { withNavigation } from '../../hocs'
+import { useGithubRepos } from '../../hooks'
+import { GHRepo } from '../../types'
+import { RepositoryPreview } from '../../components/repository-preview'
 import { useState } from 'react'
 
 const Wrapper = styled.section`
@@ -18,7 +20,7 @@ const filterProjects = (repos?: GHRepo[]) => {
   return repos?.filter(r => r.topics.includes('portfolio-visible'))
 }
 
-function Projects() {
+export const ProjectsPage = withNavigation(() => {
   const [selectedRepo, selectRepo] = useState<GHRepo | null>(null)
 
   const { repos } = useGithubRepos('pmqueiroz')
@@ -40,6 +42,4 @@ function Projects() {
       </Grid>
     </Wrapper>
   )
-}
-
-export default withNavigation(Projects)
+})

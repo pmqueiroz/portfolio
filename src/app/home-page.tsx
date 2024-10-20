@@ -1,8 +1,10 @@
+'use client'
+
 import Typewriter from 'typewriter-effect'
 import styled from 'styled-components'
 
-import { WithMenuNavigationProps, withNavigation } from '../src/hocs'
-import { theme } from '../src/styles/theme'
+import { WithMenuNavigationProps, withNavigation } from '../hocs'
+import { theme } from '../styles/theme'
 import { If, Then } from 'react-if'
 
 const Wrapper = styled.section`
@@ -23,7 +25,7 @@ const Title = styled.h1`
   }
 `
 
-function Home(props: WithMenuNavigationProps) {
+export const HomePage = withNavigation((props: WithMenuNavigationProps) => {
   const { isMenuOpen } = props
 
   return (
@@ -60,6 +62,4 @@ function Home(props: WithMenuNavigationProps) {
       </If>
     </Wrapper>
   )
-}
-
-export default withNavigation(Home)
+})
