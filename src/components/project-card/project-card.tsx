@@ -20,7 +20,7 @@ export const ProjectCard = ({ repo, onClick }: ProjectCardProps) => {
       </Flex>
       <S.DescriptionWrapper>
         <S.Description >
-          {parseEmojis(repo.description)}
+          {parseEmojis(repo.description ?? '')}
         </S.Description>
       </S.DescriptionWrapper>
       <Flex gap="1rem" align="center">

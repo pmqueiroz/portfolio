@@ -5,7 +5,7 @@ interface ScaleUpProps {
   intensity?: 'tiny' | 'low' | 'medium' | 'high'
 }
 
-const intensityMap: Record<ScaleUpProps['intensity'], string> = {
+const intensityMap: Record<Required<ScaleUpProps>['intensity'], string> = {
   tiny: toRem(-4),
   low: toRem(-8),
   medium: toRem(-16),

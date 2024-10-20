@@ -6,7 +6,6 @@ import { useGithubRepos } from '../src/hooks'
 import { GHRepo } from '../src/types'
 import { RepositoryPreview } from '../src/components/repository-preview'
 import { useState } from 'react'
-import { Case, Default, Switch } from 'react-if'
 
 const Wrapper = styled.section`
   display: flex;
@@ -25,19 +24,20 @@ function Projects() {
   const { repos } = useGithubRepos('pmqueiroz')
 
   const projects = filterProjects(repos)
+
+  if (selectedRepo) {
+    return (
+      <Wrapper>
+        <RepositoryPreview repo={selectedRepo} onClose={() => selectRepo(null)} />
+      </Wrapper>
+    )
+  }
     
   return (
     <Wrapper>
-      <Switch>
-        <Case condition={selectedRepo != null}>
-          <RepositoryPreview repo={selectedRepo} onClose={() => selectRepo(null)} />
-        </Case>
-        <Default>
-          <Grid style={{ padding: '5rem' }} gutter="5rem" min="40ch">
-            {projects?.map(project => <ProjectCard key={project.id} repo={project} onClick={selectRepo} />)}
-          </Grid>
-        </Default>
-      </Switch>
+      <Grid style={{ padding: '5rem' }} gutter="5rem" min="40ch">
+        {projects?.map(project => <ProjectCard key={project.id} repo={project} onClick={selectRepo} />)}
+      </Grid>
     </Wrapper>
   )
 }
