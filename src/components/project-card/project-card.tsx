@@ -1,38 +1,46 @@
-import { FaBook, FaStar } from 'react-icons/fa'
-import { Flex } from '..'
+'use client'
+
+import { useState } from 'react'
 
 import { GHRepo } from '../../types'
+import { stampMeta } from '../../helpers/stamp'
+import { StampFace } from '../stamp-face'
 
 import * as S from './styles'
-import { parseEmojis } from '../../helpers/parse-emojis'
 
 interface ProjectCardProps {
    repo: GHRepo
+   index: number
+   visited: boolean
    onClick(project: GHRepo): void
+   variant?: 'featured' | 'full'
 }
 
-export const ProjectCard = ({ repo, onClick }: ProjectCardProps) => {
+export const ProjectCard = ({ repo, index, visited, onClick, variant = 'full' }: ProjectCardProps) => {
+  const [hover, setHover] = useState(false)
+  const meta = stampMeta(repo, index)
+  const peel = hover ? 26 : 0
+
   return (
-    <S.Wrapper onClick={() => onClick(repo)}>
-      <Flex gap="0.5rem" align="center">
-        <FaBook />
-        {repo.name}
-      </Flex>
-      <S.DescriptionWrapper>
-        <S.Description >
-          {parseEmojis(repo.description ?? '')}
-        </S.Description>
-      </S.DescriptionWrapper>
-      <Flex gap="1rem" align="center">
-        <Flex gap="0.5rem" align="center">
-          <S.LanguageColor color={repo.language} />
-          {repo.language}
-        </Flex>
-        <Flex gap="0.5rem" align="center">
-          <FaStar />
-          {repo.stargazers_count}
-        </Flex>
-      </Flex>
-    </S.Wrapper>
+    <S.Stamp
+      onClick={() => onClick(repo)}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+    >
+      <S.Face>
+        <StampFace meta={meta} visited={visited} />
+      </S.Face>
+      <S.TitleRow>
+        <S.Name>{meta.name}</S.Name>
+        <S.Denom>{meta.denom}</S.Denom>
+      </S.TitleRow>
+      <S.Blurb $lines={variant === 'featured' ? 2 : 3}>{meta.blurb}</S.Blurb>
+      <S.FootRow>
+        <span>{meta.lang}</span>
+        <span>{variant === 'featured' ? `'${meta.year}` : 'read →'}</span>
+      </S.FootRow>
+      <S.Perforation />
+      <S.Peel $size={peel} />
+    </S.Stamp>
   )
 }
