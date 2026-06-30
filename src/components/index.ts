@@ -1,4 +1,7 @@
 export * from './navigation'
+export * from './footer'
+export * from './seal'
+export * from './stamp-face'
 export * from './scale-up'
 export * from './project-card'
 export * from './blog-card'
