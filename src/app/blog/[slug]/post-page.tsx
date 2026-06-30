@@ -7,11 +7,9 @@ import { WithMenuNavigationProps, withNavigation } from '../../../hocs'
 import { Post } from '../../../types'
 
 const Wrapper = styled.section`
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  flex-direction: column;
   flex-grow: 1;
+  width: 100%;
+  padding-top: 3rem;
 `
 interface PostProps extends WithMenuNavigationProps {
    post: Post
