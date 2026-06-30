@@ -1,18 +1,19 @@
 import { NextPage } from 'next'
-import { PropsWithChildren, useState } from 'react'
+import { PropsWithChildren } from 'react'
 import styled from 'styled-components'
 
-import { Navigation } from '../../components'
-import { theme } from '../../styles/theme'
+import { Footer, Navigation } from '../../components'
 
 const PageWrapper = styled.main`
   display: flex;
-  min-height: calc(100vh - ${theme.global.sizes.navigationHeight});
+  flex-direction: column;
+  flex-grow: 1;
 `
 
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
     overflow-x: hidden;
 `
 
@@ -23,14 +24,13 @@ export interface WithMenuNavigationProps {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types
 export const withNavigation = <T extends {}>(Page: NextPage<WithMenuNavigationProps>) => {
   function WrappedPage(props: PropsWithChildren<T>) {
-    const [isMenuOpen, toggleMenuOpen] = useState(false)
-
     return (
       <Wrapper>
-        <Navigation isOpen={isMenuOpen} toggleOpen={toggleMenuOpen} />
+        <Navigation />
         <PageWrapper>
-          <Page {...props} isMenuOpen={isMenuOpen}/>
+          <Page {...props} isMenuOpen={false} />
         </PageWrapper>
+        <Footer />
       </Wrapper>
     )
   }
