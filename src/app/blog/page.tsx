@@ -1,4 +1,4 @@
-import { getPosts } from '../../service/get-posts'
+import { getPosts } from '../../service/posts'
 import { ListPage } from './list-page'
 
 export default async function() {

@@ -1,5 +1,4 @@
-import { getPosts } from '../../../service/get-posts'
-import { getPostBySlug } from '../../../service/get-post-by-slug'
+import { getAllSlugs, getPostBySlug } from '../../../service/posts'
 import {PostPage} from './post-page'
 
 export default async function({ params }: { params: { slug: string } }) {
@@ -15,7 +14,5 @@ export default async function({ params }: { params: { slug: string } }) {
 }
 
 export async function generateStaticParams() {
-  const posts = await getPosts()
-
-  return posts.map(post => ({ slug: post.slug }))
+  return getAllSlugs().map(slug => ({ slug }))
 }

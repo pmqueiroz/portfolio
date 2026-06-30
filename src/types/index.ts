@@ -105,13 +105,6 @@ interface Chapter {
    content: string
 }
 
-type CmsCollectionItem<T> = {
-   id: string
-   attributes: T
-}
-
-export type RawPost = CmsCollectionItem<Post>
-
 export interface Post {
    title: string
    description: string
