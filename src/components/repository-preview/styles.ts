@@ -4,22 +4,22 @@ export const Wrapper = styled.div`
    display: flex;
    flex-wrap: wrap;
    justify-content: center;
-   align-items: center;
+   align-items: stretch;
    flex-direction: column;
    gap: 2rem;
+   width: 100%;
    max-width: 890px;
-   border-radius: 10px;
-   border: 1px solid ${props => props.theme.colors.dark};
-   background: ${props => props.theme.colors.base};
+   border: 1.5px solid ${props => props.theme.colors.dark};
+   background: ${props => props.theme.colors.card};
+   box-shadow: 6px 6px 0 0 ${props => props.theme.colors.shadow};
    padding: 2rem;
-   
+
    @media (max-width: ${props => props.theme.global.breakpoints.mobile}px) {
       max-width: 100%;
-      border: none;
    }
 
    code {
-      overflow-x: scroll;
+      overflow-x: auto;
    }
 `
 
@@ -32,17 +32,21 @@ export const Header = styled.header`
 `
 
 export const Link = styled.a`
-   color: ${props => props.theme.colors.darkGray};
+   font-size: 0.72rem;
+   letter-spacing: 1px;
+   text-transform: uppercase;
+   color: ${props => props.theme.colors.muted};
    border-bottom: 1px solid transparent;
    transition: border .1s ease-in-out;
-   
+
    &:hover {
-      text-decoration: underline;
+      border-bottom: 1px solid ${props => props.theme.colors.dark};
    }
 `
 
 export const RepoDescription = styled.p`
-   color: ${props => props.theme.colors.gray};
+   font-family: 'Cutive Mono', monospace;
+   color: ${props => props.theme.colors.subtext};
    max-width: 50ch;
 `
 
@@ -52,11 +56,10 @@ export const CloseButton = styled.div`
    justify-content: center;
    padding: .5rem;
    cursor: pointer;
-   border-radius: 10px;
-   border: 1px solid transparent;
+   border: 1.5px solid transparent;
    transition: border .1s ease-in-out;
 
    &:hover {
-      border: 1px solid ${props => props.theme.colors.darkGray};
+      border: 1.5px solid ${props => props.theme.colors.dark};
    }
 `
