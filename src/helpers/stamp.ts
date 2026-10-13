@@ -23,6 +23,24 @@ const languagePalette: Record<string, { ink: string; ground: string }> = {
 
 const defaultPalette = { ink: '#7c2d2a', ground: '#e7cdb6' }
 
+const mintInk = '#17150f'
+const mintGround = '#e8e2d3'
+const mintPattern = 'repeating-linear-gradient(135deg,#d8d0bd 0 2px,#e8e2d3 2px 7px)'
+const canceledPattern = (ink: string) =>
+  `repeating-linear-gradient(135deg,${ink}24 0 1.5px,transparent 1.5px 6px)`
+
+export interface StampFace {
+  status: 'MINT' | 'CANCELED'
+  ink: string
+  ground: string
+  pattern: string
+}
+
+export const stampFace = (meta: StampMeta, visited: boolean): StampFace =>
+  visited
+    ? { status: 'CANCELED', ink: meta.ink, ground: meta.ground, pattern: canceledPattern(meta.ink) }
+    : { status: 'MINT', ink: mintInk, ground: mintGround, pattern: mintPattern }
+
 const glyphs = ['{ }', '¶', '~/', ':)', 'Aa', '▤', '/*', '<>', '#!', '=>', '::', '%']
 
 const hash = (s: string) => {
@@ -52,8 +70,8 @@ export const stampMeta = (repo: GHRepo, index: number): StampMeta => {
     glyph: glyphs[hash(repo.name) % glyphs.length],
     tag: tagFor(repo),
     year: twoDigitYear(repo),
-    lang: repo.language ?? '—',
-    blurb: repo.description ?? '',
+    lang: repo.language?.toUpperCase() ?? '—',
+    blurb: repo.description || '(no description)',
     ink: palette.ink,
     ground: palette.ground
   }
