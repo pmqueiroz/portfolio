@@ -1,4 +1,5 @@
 import { GHRepo } from '../types'
+import { parseEmojis } from './parse-emojis'
 
 export interface StampMeta {
   name: string
@@ -71,7 +72,7 @@ export const stampMeta = (repo: GHRepo, index: number): StampMeta => {
     tag: tagFor(repo),
     year: twoDigitYear(repo),
     lang: repo.language?.toUpperCase() ?? '—',
-    blurb: repo.description || '(no description)',
+    blurb: repo.description ? parseEmojis(repo.description) : '(no description)',
     ink: palette.ink,
     ground: palette.ground
   }
