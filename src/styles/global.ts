@@ -6,7 +6,6 @@ export default createGlobalStyle`
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'JetBrains Mono', monospace;
    }
 
    html {
@@ -14,14 +13,15 @@ export default createGlobalStyle`
    }
 
    code {
-      font-family: 'JetBrains Mono'!important;
+      font-family: ${theme.fonts.mono}!important;
    }
 
    body,
    input,
    button,
    textarea {
-      font: 400 1rem 'JetBrains Mono';
+      font: 400 1rem ${theme.fonts.mono};
+      color: inherit;
       border: none;
       background: none;
    }
@@ -69,13 +69,29 @@ export default createGlobalStyle`
    }
 
    a {
-      color: ${theme.colors.dark};
-      text-decoration: none;
+      color: ${theme.colors.link};
+   }
+
+   a:visited {
+      color: ${theme.colors.linkVisited};
    }
 
    a:hover {
-      text-decoration: none;
+      color: ${theme.colors.dark};
       cursor: pointer;
+   }
+
+   a:focus-visible,
+   button:focus-visible {
+      outline: 1px dotted ${theme.colors.dark};
+      outline-offset: 2px;
+   }
+
+   @media (prefers-reduced-motion: reduce) {
+      * {
+         animation: none!important;
+         transition: none!important;
+      }
    }
 
    :root {
@@ -92,12 +108,10 @@ export default createGlobalStyle`
       }
    }
 
-   // code — printed feel, syntax via weight not hue
-
    pre {
      border: 1.5px solid ${theme.colors.dark}!important;
      border-radius: 0!important;
-     background: ${theme.colors.card}!important;
+     background: ${theme.colors.paper}!important;
      box-shadow: 6px 6px 0 0 ${theme.colors.shadow}!important;
      padding: 14px 16px!important;
 
