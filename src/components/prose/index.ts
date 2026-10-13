@@ -73,6 +73,10 @@ export const Prose = styled.div`
       border: 1.5px solid ${theme.colors.dark};
    }
 
+   img[src$="#gh-dark-mode-only"] {
+      display: none;
+   }
+
    hr {
       border: none;
       border-top: 1px solid ${theme.colors.line};
