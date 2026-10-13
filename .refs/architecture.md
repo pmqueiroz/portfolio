@@ -70,6 +70,13 @@ Each renders as a postage stamp (`components/stamp`), with face data from
 - **Canceled** (README opened at least once): glyph and stripes take the
   repo language's ink and ground colour.
 
+READMEs come from GitHub's `/repos/<repo>/readme` JSON (base64 content plus
+`download_url` / `html_url`), so the default branch and filename case are
+resolved by GitHub. `helpers/resolve-readme-urls.ts` rewrites relative
+`src` to the raw file URL and relative `href` to the GitHub page, relative
+to the README's own directory (a leading `/` means repo root). `Prose`
+hides `#gh-dark-mode-only` images, since the site is light-only.
+
 The README view is addressable at `/projects?repo=<name>`. Opening it marks
 the repo visited regardless of how the URL was reached. `ProjectsWindow`
 reads `useSearchParams`, so its page wraps it in `<Suspense>` for static
@@ -109,7 +116,12 @@ deploy date and refresh on every build.
 compatibility; prefer the semantic ones.
 
 `theme.fonts.mono` / `theme.fonts.type` resolve to the `next/font` CSS
-variables. Never hard-code `'JetBrains Mono'`: `next/font` serves the face
+variables, each followed by Noto Emoji. Noto Emoji is monochrome, so every
+emoji on the site renders as a single-ink glyph (the old-phone look) instead
+of the OS colour set; `next/font` serves it in unicode-range slices, so only
+the emoji actually used are downloaded. `:shortcode:` emoji in READMEs and
+repo descriptions are converted by `helpers/parse-emojis.ts` (gemoji, plus
+GitHub-only aliases such as `:shipit:`). Never hard-code `'JetBrains Mono'`: `next/font` serves the face
 under a hashed family name, so the literal name only works where the font
 happens to be installed locally.
 
@@ -143,8 +155,5 @@ hierarchy comes from weight, italics and underline only.
 - GitHub calls are unauthenticated, so each visitor gets 60 requests an
   hour. The repo list is one call; every README opened is another
   (`/repos/<repo>/readme`, which resolves the default branch and filename).
-- Repo descriptions are shown as-is: `:shortcode:` emoji are not converted
-  and some emoji fall back to a missing-glyph box in the monospace fonts.
-- Relative image paths inside READMEs are not rewritten, so they break.
 - `typewriter-effect` and `react-anchor-link-smooth-scroll` are still in
   `package.json` but no longer imported.
