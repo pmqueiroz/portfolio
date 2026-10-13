@@ -4,7 +4,6 @@ import { ReactNode, useState } from 'react'
 import { useServerInsertedHTML } from 'next/navigation'
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components'
 
-// styled-components v5 types omit `instance`, but it exists at runtime
 type SheetWithInstance = ServerStyleSheet & { instance: { clearTag(): void } }
 
 export const StyledComponentsRegistry = ({ children }: { children: ReactNode }) => {
