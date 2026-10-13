@@ -32,6 +32,15 @@ export default createGlobalStyle`
       background-image: repeating-linear-gradient(0deg, #00000005 0 1px, transparent 1px 4px);
    }
 
+   img.emoji {
+      display: inline-block;
+      height: 1.25em;
+      width: auto;
+      margin: 0 0.1em;
+      vertical-align: -0.25em;
+      image-rendering: pixelated;
+   }
+
    ::selection {
       background: ${theme.colors.selection};
       color: ${theme.colors.dark};
