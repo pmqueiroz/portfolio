@@ -38,6 +38,17 @@
         "semi": [
             "error",
             "never"
-        ]
-    }
+        ],
+        "@next/next/link-passhref": "off"
+    },
+    "overrides": [
+        {
+            "files": [
+                "src/components/emoji/**"
+            ],
+            "rules": {
+                "@next/next/no-img-element": "off"
+            }
+        }
+    ]
 }
