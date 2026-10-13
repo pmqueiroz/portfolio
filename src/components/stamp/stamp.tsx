@@ -1,6 +1,8 @@
 import { GHRepo } from '../../types'
 import { stampFace, stampMeta } from '../../helpers/stamp'
 
+import { Emojify } from '../emoji'
+
 import * as S from './styles'
 
 interface StampProps {
@@ -23,7 +25,7 @@ export const Stamp = ({ repo, index, visited, onClick, size = 'full' }: StampPro
         {size === 'featured' && <S.Status>{face.status}</S.Status>}
       </S.Face>
       <S.Name $size={size}>{meta.name}</S.Name>
-      <S.Blurb $size={size}>{meta.blurb}</S.Blurb>
+      <S.Blurb $size={size}><Emojify text={meta.blurb} /></S.Blurb>
       {size === 'full' && (
         <S.Foot>
           <span>{meta.lang}</span>

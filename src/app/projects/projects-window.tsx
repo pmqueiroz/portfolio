@@ -10,6 +10,8 @@ import { Prose } from '../../components/prose'
 import { Stamp } from '../../components/stamp'
 import { Kicker, Window } from '../../components/window'
 import { useGithubRepos, useRepoReadme, useVisited } from '../../hooks'
+import { Emojify } from '../../components/emoji'
+import { emojifyHtml } from '../../helpers/emoji'
 import { parseEmojis } from '../../helpers/parse-emojis'
 import { selectProjects } from '../../helpers/projects'
 import { stampMeta } from '../../helpers/stamp'
@@ -77,8 +79,8 @@ export const ProjectsWindow = () => {
           <Kicker>README.md · {meta.lang} · {isVisited(repo.name) ? 'CANCELED' : 'MINT'}</Kicker>
           <Name>{meta.name}</Name>
           <Prose>
-            <p>{meta.blurb}</p>
-            {reactHtmlParser(parseEmojis(readme))}
+            <p><Emojify text={meta.blurb} /></p>
+            {reactHtmlParser(emojifyHtml(parseEmojis(readme)))}
           </Prose>
         </Stack>
       </Window>
