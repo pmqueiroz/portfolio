@@ -22,14 +22,6 @@ const Header = styled.header`
   margin-bottom: 2.6rem;
 `
 
-const Kicker = styled.div`
-  font-size: 0.68rem;
-  letter-spacing: 5px;
-  color: ${theme.colors.muted};
-  text-transform: uppercase;
-  margin-bottom: 0.7rem;
-`
-
 const Title = styled.h1`
   font-size: clamp(2.4rem, 6vw, 4rem);
   font-weight: 700;
@@ -142,7 +134,6 @@ export const ListPage = withNavigation<{ posts: Post[] }>(({ posts }: BlobProps)
   return (
     <Wrapper>
       <Header>
-        <Kicker>Bound volume · {posts.length} entries</Kicker>
         <Title>the journal</Title>
       </Header>
       <div>

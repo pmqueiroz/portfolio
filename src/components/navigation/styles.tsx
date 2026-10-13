@@ -38,14 +38,6 @@ export const BrandName = styled.span`
    letter-spacing: 1px;
 `
 
-export const BrandBadge = styled.span`
-   font-size: 0.62rem;
-   letter-spacing: 2px;
-   color: ${theme.colors.muted};
-   border: 1px solid ${theme.colors.lineStrong};
-   padding: 1px 5px;
-`
-
 export const Group = styled.div`
    display: flex;
    align-items: center;

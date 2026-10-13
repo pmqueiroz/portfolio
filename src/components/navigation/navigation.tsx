@@ -31,7 +31,6 @@ const Navigation = () => {
         <S.NavLink href="/" style={{ borderBottom: 'none' }}>
           <S.Brand>
             <S.BrandName>PMQUEIROZ</S.BrandName>
-            <S.BrandBadge>EST·2017</S.BrandBadge>
           </S.Brand>
         </S.NavLink>
         <S.Group>

@@ -29,28 +29,12 @@ const Header = styled.header`
   gap: 1rem;
 `
 
-const Kicker = styled.div`
-  font-size: 0.68rem;
-  letter-spacing: 4px;
-  color: ${theme.colors.muted};
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
-`
-
 const Title = styled.h1`
   font-size: clamp(2.4rem, 6vw, 4rem);
   font-weight: 700;
   text-transform: lowercase;
   letter-spacing: -1px;
   line-height: 1;
-`
-
-const Lede = styled.p`
-  font-family: 'Cutive Mono', monospace;
-  font-size: 0.9rem;
-  color: ${theme.colors.subtext};
-  max-width: 40ch;
-  text-align: right;
 `
 
 const Grid = styled.div`
@@ -95,11 +79,7 @@ export const ProjectsPage = withNavigation(() => {
   return (
     <Wrapper>
       <Header>
-        <div>
-          <Kicker>Catalogue of</Kicker>
-          <Title>the work</Title>
-        </div>
-        <Lede>Each project is a stamp in the album. Click any to read its README.</Lede>
+        <Title>the work</Title>
       </Header>
       <Grid>
         {projects?.map((project, i) => (

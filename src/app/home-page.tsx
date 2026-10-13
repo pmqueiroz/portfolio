@@ -6,7 +6,7 @@ import Typewriter from 'typewriter-effect'
 import styled from 'styled-components'
 
 import { withNavigation } from '../hocs'
-import { ProjectCard, Seal } from '../components'
+import { ProjectCard } from '../components'
 import { useGithubRepos, useVisited } from '../hooks'
 import { GHRepo } from '../types'
 import { theme } from '../styles/theme'
@@ -15,42 +15,12 @@ const Main = styled.div`
   flex-grow: 1;
 `
 
-const Rule = styled.section`
-  max-width: ${theme.global.sizes.maxWidth};
-  margin: 0 auto;
-  padding: 2rem 2rem 0;
-
-  div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 0.68rem;
-    letter-spacing: 2px;
-    color: ${theme.colors.muted};
-    text-transform: uppercase;
-    border-bottom: 1px solid #cfc6b2;
-    padding-bottom: 0.6rem;
-  }
-`
-
 const Hero = styled.section`
   position: relative;
   max-width: ${theme.global.sizes.maxWidth};
   margin: 0 auto;
   padding: 4.5rem 2rem 3.5rem;
   text-align: center;
-`
-
-const SealHolder = styled.div`
-  position: absolute;
-  top: 2.2rem;
-  right: 2rem;
-  transform: rotate(8deg);
-  opacity: 0.92;
-
-  @media (max-width: ${theme.global.breakpoints.mobile}px) {
-    display: none;
-  }
 `
 
 const Title = styled.h1`
@@ -162,18 +132,7 @@ export const HomePage = withNavigation(() => {
 
   return (
     <Main>
-      <Rule>
-        <div>
-          <span>No. 042</span>
-          <span>BR</span>
-        </div>
-      </Rule>
-
       <Hero>
-        <SealHolder>
-          <Seal />
-        </SealHolder>
-
         <Title>
           <Typewriter
             options={{ cursor: '_', delay: 105 }}
