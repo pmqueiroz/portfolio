@@ -56,9 +56,15 @@ a tab, add it to the `tabs` list in `window.tsx`.
 
 ## Projects and stamps
 
-Projects are the user's public GitHub repos with the `portfolio-visible`
-topic (`featuredRepos` in `components/desktop`). Each renders as a postage
-stamp (`components/stamp`), with face data from `helpers/stamp.ts`:
+Projects are a fixed, ordered list of repo names in `helpers/projects.ts`
+(`projectNames`). `useGithubRepos` fetches the user's public repos
+(`per_page=100`) and `selectProjects` picks the listed ones in list order,
+silently skipping any name that is missing, renamed or private. The desktop
+shows the first three; the work window shows all. To change what is shown,
+edit the list — GitHub topics play no part.
+
+Each renders as a postage stamp (`components/stamp`), with face data from
+`helpers/stamp.ts`:
 
 - **Mint** (never opened): ink-black glyph on a neutral striped ground.
 - **Canceled** (README opened at least once): glyph and stripes take the
@@ -134,8 +140,11 @@ hierarchy comes from weight, italics and underline only.
 - The visitor counter (`004217`) and the 88×31 footer badges are static
   decoration.
 - "guestbook" in the sidebar is a `mailto:` link; there is no guestbook page.
-- README fetching assumes a `master` branch and a lower-case `readme.md`;
-  repos that differ show only their description.
+- GitHub calls are unauthenticated, so each visitor gets 60 requests an
+  hour. The repo list is one call; every README opened is another
+  (`/repos/<repo>/readme`, which resolves the default branch and filename).
+- Repo descriptions are shown as-is: `:shortcode:` emoji are not converted
+  and some emoji fall back to a missing-glyph box in the monospace fonts.
 - Relative image paths inside READMEs are not rewritten, so they break.
 - `typewriter-effect` and `react-anchor-link-smooth-scroll` are still in
   `package.json` but no longer imported.

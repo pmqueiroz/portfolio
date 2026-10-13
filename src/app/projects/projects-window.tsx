@@ -6,12 +6,12 @@ import styled from 'styled-components'
 import reactHtmlParser from 'react-html-parser'
 
 import { BevelButton } from '../../components/bevel-button'
-import { featuredRepos } from '../../components/desktop'
 import { Prose } from '../../components/prose'
 import { Stamp } from '../../components/stamp'
 import { Kicker, Window } from '../../components/window'
 import { useGithubRepos, useRepoReadme, useVisited } from '../../hooks'
 import { parseEmojis } from '../../helpers/parse-emojis'
+import { selectProjects } from '../../helpers/projects'
 import { stampMeta } from '../../helpers/stamp'
 import { GHRepo } from '../../types'
 
@@ -48,7 +48,7 @@ export const ProjectsWindow = () => {
   const { isVisited, markVisited } = useVisited()
   const { repos, isLoading } = useGithubRepos('pmqueiroz')
 
-  const projects = featuredRepos(repos)
+  const projects = selectProjects(repos)
   const index = projects.findIndex(r => r.name === params?.get('repo'))
   const repo = index === -1 ? undefined : projects[index]
   const { readme, isLoading: readmeLoading } = useRepoReadme(repo?.full_name ?? '')

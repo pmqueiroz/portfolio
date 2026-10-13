@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 import { useGithubRepos, useTypeLoop, useTypeOnce, useVisited } from '../../hooks'
+import { selectProjects } from '../../helpers/projects'
 import { GHRepo, PostSummary } from '../../types'
 import { BevelLink } from '../bevel-button'
 import { JournalList } from '../journal-list'
@@ -37,9 +38,6 @@ const badges = [
   ['4.01', 'VALID HTML']
 ]
 
-export const featuredRepos = (repos?: GHRepo[]) =>
-  repos?.filter(r => r.topics.includes('portfolio-visible')) ?? []
-
 interface DesktopProps {
    posts: PostSummary[]
    updated: string
@@ -51,7 +49,7 @@ export const Desktop = ({ posts, updated }: DesktopProps) => {
   const tagline = useTypeLoop(taglines)
   const { isVisited } = useVisited()
   const { repos } = useGithubRepos('pmqueiroz')
-  const featured = featuredRepos(repos).slice(0, 3)
+  const featured = selectProjects(repos).slice(0, 3)
 
   const openRepo = (repo: GHRepo) => router.push(`/projects?repo=${encodeURIComponent(repo.name)}`)
 
