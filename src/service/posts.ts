@@ -37,7 +37,7 @@ const parseFrontmatter = (raw: string): { meta: Record<string, string>; body: st
 const splitChapters = (body: string): Chapter[] => {
   const lines = body.split(/\r?\n/)
   const chapters: { name: string; lines: string[] }[] = []
-  let preamble: string[] = []
+  const preamble: string[] = []
   let current: { name: string; lines: string[] } | null = null
   let inFence = false
 
