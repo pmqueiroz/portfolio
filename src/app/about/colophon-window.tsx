@@ -64,6 +64,7 @@ export const ColophonWindow = ({ age }: { age: number }) => {
             <dt>TYPE</dt><dd>JetBrains Mono, Cutive Mono</dd>
             <dt>PAPER</dt><dd>{theme.colors.base} / {theme.colors.card}</dd>
             <dt>INK</dt><dd>{theme.colors.dark}</dd>
+            <dt>EMOJI</dt><dd><a href="https://github.com/SerenityOS/serenity">SerenityOS</a> pixel set, <a href="/emoji/LICENSE">BSD-2</a></dd>
             <dt>CONTACT</dt><dd><a href="mailto:contact@pmqueiroz.dev">contact@pmqueiroz.dev</a></dd>
           </Facts>
         </Panel>
