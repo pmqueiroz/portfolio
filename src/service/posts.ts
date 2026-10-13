@@ -1,8 +1,9 @@
 import fs from 'fs'
 import path from 'path'
 
-import { Post } from '../types'
+import { Post, PostSummary } from '../types'
 import { parseMarkdown } from '../helpers/parse-markdown'
+import { readTime } from '../helpers/read-time'
 
 const POSTS_DIR = path.join(process.cwd(), 'content', 'posts')
 
@@ -33,7 +34,6 @@ const parseFrontmatter = (raw: string): { meta: Record<string, string>; body: st
   return { meta, body: match[2] }
 }
 
-// Split a markdown body into chapters by `## ` headings (ignoring fenced code).
 const splitChapters = (body: string): Chapter[] => {
   const lines = body.split(/\r?\n/)
   const chapters: { name: string; lines: string[] }[] = []
@@ -99,14 +99,12 @@ const readRawPost = (slug: string): { post: Post; raw: Chapter[] } | undefined =
 
 export const getAllSlugs = (): string[] => listSlugs()
 
-// List view — chapters keep raw markdown (used for read-time estimate only).
 export const getPosts = async (): Promise<Post[]> => {
   return listSlugs()
     .map(slug => readRawPost(slug)?.post)
     .filter((p): p is Post => Boolean(p))
 }
 
-// Single post — chapter markdown is rendered to HTML.
 export const getPostBySlug = async ({ slug }: { slug: string }): Promise<Post | undefined> => {
   const entry = readRawPost(slug)
   if (!entry) return
@@ -119,4 +117,15 @@ export const getPostBySlug = async ({ slug }: { slug: string }): Promise<Post | 
   )
 
   return { ...entry.post, chapters }
+}
+
+export const getPostSummaries = async (): Promise<PostSummary[]> => {
+  const posts = await getPosts()
+  return posts.map(post => ({
+    slug: post.slug,
+    title: post.title,
+    description: post.description,
+    draft: post.draft,
+    minutes: readTime(post)
+  }))
 }

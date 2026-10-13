@@ -112,3 +112,11 @@ export interface Post {
    slug: string
    chapters: Chapter[]
 }
+
+export interface PostSummary {
+   slug: string
+   title: string
+   description: string
+   draft?: boolean
+   minutes: number
+}
