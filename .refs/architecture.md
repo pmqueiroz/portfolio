@@ -116,12 +116,31 @@ deploy date and refresh on every build.
 compatibility; prefer the semantic ones.
 
 `theme.fonts.mono` / `theme.fonts.type` resolve to the `next/font` CSS
-variables, each followed by Noto Emoji. Noto Emoji is monochrome, so every
-emoji on the site renders as a single-ink glyph (the old-phone look) instead
-of the OS colour set; `next/font` serves it in unicode-range slices, so only
-the emoji actually used are downloaded. `:shortcode:` emoji in READMEs and
-repo descriptions are converted by `helpers/parse-emojis.ts` (gemoji, plus
-GitHub-only aliases such as `:shipit:`). Never hard-code `'JetBrains Mono'`: `next/font` serves the face
+variables.
+
+### Emoji
+
+Emoji render as SerenityOS's colourful pixel-art set (Win98-era look,
+BSD-2), vendored in `public/emoji/` with its `LICENSE` and credited in the
+colophon. MSN/Windows emoticons were the reference but are Microsoft
+artwork, so they cannot be shipped.
+
+- `scripts/sync-emoji.sh [commit]` re-downloads the set from a pinned
+  SerenityOS commit and regenerates `src/helpers/emoji-manifest.json`, the
+  list of available files. Files are named by codepoint, `_`-joined, with
+  `U+FE0F` dropped (`U+1F1E7_U+1F1F7.png`).
+- `helpers/emoji.ts` matches emoji that display as emoji by default, or are
+  followed by `U+FE0F`, so text-style characters such as `©`, `™` and `↗`
+  stay text. A sequence with no file retries without skin-tone modifiers,
+  then falls back to the plain character.
+- `emojifyHtml` converts HTML strings (READMEs, post bodies) outside `pre`
+  and `code`; `<Emojify text>` converts plain strings (titles,
+  descriptions, stamp blurbs).
+- `img.emoji` in `global.ts` draws them at `1.25em` with
+  `image-rendering: pixelated`.
+- `:shortcode:` emoji in READMEs and repo descriptions are first converted
+  to characters by `helpers/parse-emojis.ts` (gemoji, plus GitHub-only
+  aliases such as `:shipit:`). Never hard-code `'JetBrains Mono'`: `next/font` serves the face
 under a hashed family name, so the literal name only works where the font
 happens to be installed locally.
 
@@ -144,8 +163,10 @@ status bar cells.
   READMEs.
 - `Stamp` — `featured` (desktop) and `full` (work window) sizes.
 
-Global CSS keeps the printed feel: code blocks get no syntax colours, and
-hierarchy comes from weight, italics and underline only.
+The site is no longer held to a monochrome paper-and-ink rule; colour is
+welcome where it reads as late-90s/2000s (window title bars, pixel emoji,
+stamp inks). Code blocks currently still get no syntax colours, with
+hierarchy from weight, italics and underline.
 
 ## Known gaps
 
