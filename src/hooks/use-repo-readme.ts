@@ -4,16 +4,28 @@ import { useQuery } from 'react-query'
 
 import { githubApi } from '../service'
 import { marked } from 'marked'
+import { ReadmeLocation, resolveReadmeUrls } from '../helpers/resolve-readme-urls'
+
+interface ReadmeResponse extends ReadmeLocation {
+  content: string
+}
+
+const decodeBase64 = (content: string) =>
+  new TextDecoder().decode(Uint8Array.from(atob(content.replace(/\s/g, '')), c => c.charCodeAt(0)))
 
 export const useRepoReadme = (repoFullName: string) => {
   const { data: axiosResponse, ...restQuery } = useQuery(
-    ['repo-readme', repoFullName], 
+    ['repo-readme', repoFullName],
     () => githubApi({
-      url: dynamicTemplate('/repos/${repoFullName}/readme', { repoFullName }),
-      headers: { Accept: 'application/vnd.github.raw' },
-      responseType: 'text'
-    }) as Promise<AxiosResponse<string>> | undefined, {
+      url: dynamicTemplate('/repos/${repoFullName}/readme', { repoFullName })
+    }) as Promise<AxiosResponse<ReadmeResponse>> | undefined, {
       enabled: Boolean(repoFullName)
     })
-  return { readme: marked.parse(axiosResponse?.data || '', { gfm: true }) , ...restQuery }
+
+  const data = axiosResponse?.data
+  const readme = data
+    ? resolveReadmeUrls(marked.parse(decodeBase64(data.content), { gfm: true }), data)
+    : ''
+
+  return { readme, ...restQuery }
 }
