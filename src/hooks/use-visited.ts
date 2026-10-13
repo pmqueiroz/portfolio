@@ -4,27 +4,48 @@ import { useCallback, useEffect, useState } from 'react'
 
 const KEY = 'pmq_visited'
 
+let visited: Record<string, boolean> | null = null
+const listeners = new Set<() => void>()
+const empty: Record<string, boolean> = {}
+
+const read = () => {
+  if (visited) return visited
+  visited = {}
+  try {
+    const stored = JSON.parse(localStorage.getItem(KEY) || '[]') as string[]
+    visited = Object.fromEntries(stored.map(k => [k, true]))
+  } catch (e) {
+    return visited
+  }
+  return visited
+}
+
+const subscribe = (listener: () => void) => {
+  listeners.add(listener)
+  return () => { listeners.delete(listener) }
+}
+
 export const useVisited = () => {
-  const [visited, setVisited] = useState<Record<string, boolean>>({})
+  const [map, setMap] = useState(empty)
 
   useEffect(() => {
-    try {
-      const stored = JSON.parse(localStorage.getItem(KEY) || '[]') as string[]
-      const map: Record<string, boolean> = {}
-      stored.forEach(k => { map[k] = true })
-      setVisited(map)
-    } catch (e) { /* ignore */ }
+    const sync = () => setMap(read())
+    sync()
+    return subscribe(sync)
   }, [])
 
-  const isVisited = useCallback((name: string) => Boolean(visited[name]), [visited])
+  const isVisited = useCallback((name: string) => Boolean(map[name]), [map])
 
   const markVisited = useCallback((name: string) => {
-    setVisited(prev => {
-      if (prev[name]) return prev
-      const next = { ...prev, [name]: true }
-      try { localStorage.setItem(KEY, JSON.stringify(Object.keys(next))) } catch (e) { /* ignore */ }
-      return next
-    })
+    const current = read()
+    if (current[name]) return
+    visited = { ...current, [name]: true }
+    listeners.forEach(l => l())
+    try {
+      localStorage.setItem(KEY, JSON.stringify(Object.keys(visited)))
+    } catch (e) {
+      return
+    }
   }, [])
 
   return { isVisited, markVisited }
