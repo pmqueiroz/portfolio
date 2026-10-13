@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import type { Metadata } from 'next'
-import { JetBrains_Mono, Cutive_Mono } from 'next/font/google'
+import { JetBrains_Mono, Cutive_Mono, Noto_Emoji } from 'next/font/google'
 import moment from 'moment'
 import { cn } from '../helpers/cn'
 import { Desktop } from '../components/desktop'
@@ -23,6 +23,13 @@ const cutiveMono = Cutive_Mono({
   variable: '--font-cutive-mono',
 })
 
+const notoEmoji = Noto_Emoji({
+  weight: ['500'],
+  subsets: ['emoji'],
+  display: 'swap',
+  variable: '--font-noto-emoji',
+})
+
 export const metadata: Metadata = {
   title: 'pmqueiroz'
 }
@@ -37,6 +44,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
         className={cn(
           jetBrainsMono.variable,
           cutiveMono.variable,
+          notoEmoji.variable,
           'antialiased font-[family-name:var(--font-jetbrains-mono)]',
         )}
       >
