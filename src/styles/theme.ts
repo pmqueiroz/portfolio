@@ -32,8 +32,8 @@ export const theme = {
     orangeLight: '#f8961e60'
   },
   fonts: {
-    mono: 'var(--font-jetbrains-mono), var(--font-noto-emoji), monospace',
-    type: 'var(--font-cutive-mono), var(--font-noto-emoji), monospace'
+    mono: 'var(--font-jetbrains-mono), monospace',
+    type: 'var(--font-cutive-mono), monospace'
   },
   global: {
     sizes: {
