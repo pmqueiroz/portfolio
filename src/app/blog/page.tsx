@@ -1,10 +1,8 @@
-import { getPosts } from '../../service/posts'
-import { ListPage } from './list-page'
+import { getPostSummaries } from '../../service/posts'
+import { JournalWindow } from './journal-window'
 
-export default async function() {
-  const posts = await getPosts()
+export default async function Page() {
+  const posts = await getPostSummaries()
 
-  return (
-    <ListPage posts={posts} />
-  )
+  return <JournalWindow posts={posts} />
 }

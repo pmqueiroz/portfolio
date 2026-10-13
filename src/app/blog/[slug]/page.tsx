@@ -1,15 +1,25 @@
-import { getAllSlugs, getPostBySlug } from '../../../service/posts'
-import {PostPage} from './post-page'
+import { getAllSlugs, getPostBySlug, getPostSummaries } from '../../../service/posts'
+import { entryNumber } from '../../../helpers/entry-number'
+import { PostWindow } from './post-window'
 
-export default async function({ params }: { params: { slug: string } }) {
+export default async function Page({ params }: { params: { slug: string } }) {
   const post = await getPostBySlug({ slug: params.slug })
 
   if (!post) {
     return null
   }
 
+  const posts = await getPostSummaries()
+  const index = posts.findIndex(p => p.slug === post.slug)
+
   return (
-    <PostPage post={post} />
+    <PostWindow
+      post={post}
+      number={entryNumber(posts.length, index)}
+      minutes={posts[index].minutes}
+      prev={posts[index + 1]?.slug}
+      next={posts[index - 1]?.slug}
+    />
   )
 }
 

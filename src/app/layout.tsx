@@ -1,7 +1,10 @@
 import type { ReactNode } from 'react'
 import type { Metadata } from 'next'
 import { JetBrains_Mono, Cutive_Mono } from 'next/font/google'
+import moment from 'moment'
 import { cn } from '../helpers/cn'
+import { Desktop } from '../components/desktop'
+import { getPostSummaries } from '../service/posts'
 import { Providers } from './providers'
 
 const jetBrainsMono = JetBrains_Mono({
@@ -24,7 +27,10 @@ export const metadata: Metadata = {
   title: 'pmqueiroz'
 }
 
-export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+export default async function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+  const posts = await getPostSummaries()
+  const updated = moment().format('D MMM YYYY').toLowerCase()
+
   return (
     <html lang="en">
       <body
@@ -35,6 +41,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         )}
       >
         <Providers>
+          <Desktop posts={posts} updated={updated} />
           {children}
         </Providers>
       </body>

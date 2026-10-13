@@ -1,7 +1,10 @@
-import { ProjectsPage } from './project-page'
+import { Suspense } from 'react'
+import { ProjectsWindow } from './projects-window'
 
 export default function Page() {
   return (
-    <ProjectsPage />
+    <Suspense fallback={null}>
+      <ProjectsWindow />
+    </Suspense>
   )
 }
