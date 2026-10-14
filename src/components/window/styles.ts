@@ -32,7 +32,7 @@ export const Frame = styled.div<{ $floating: boolean }>`
    background: ${theme.colors.bevel};
    padding: 3px;
    ${raised}
-   box-shadow: inset -1px -1px 0 ${theme.colors.shadow}, inset 1px 1px 0 ${theme.colors.paper}, 6px 6px 0 ${theme.colors.shadow};
+   box-shadow: inset -1px -1px 0 ${theme.colors.shadow}, inset 1px 1px 0 ${theme.colors.paper};
 
    ${narrow} {
       height: 100%;
