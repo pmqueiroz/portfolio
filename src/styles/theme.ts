@@ -46,8 +46,8 @@ export const theme = {
     wordArt: 'linear-gradient(180deg, #fff 0%, #9fd3ff 35%, #1c4fb8 52%, #0a246a 100%)'
   },
   fonts: {
-    mono: "var(--font-jetbrains-mono), monospace, 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji'",
-    type: "var(--font-cutive-mono), monospace, 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji'"
+    mono: 'var(--font-jetbrains-mono), monospace, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji"',
+    type: 'var(--font-cutive-mono), monospace, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji"'
   },
   global: {
     sizes: {
