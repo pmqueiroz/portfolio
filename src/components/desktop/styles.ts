@@ -1,8 +1,13 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { theme } from '../../styles/theme'
 import { pressed, raised } from '../../styles/bevel'
 import { BevelButton } from '../bevel-button'
 import { Panel } from '../panel'
+
+const scroll = keyframes`
+   from { transform: translateX(0); }
+   to { transform: translateX(-100%); }
+`
 
 const narrow = `@media (max-width: ${theme.global.breakpoints.narrow - 1}px)`
 
@@ -47,7 +52,25 @@ export const Ticker = styled.div`
    border-bottom: 2px solid ${theme.colors.dark};
    white-space: nowrap;
    overflow: hidden;
-   text-overflow: ellipsis;
+
+   span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: ${scroll} 22s linear infinite;
+   }
+
+   &:hover span {
+      animation-play-state: paused;
+   }
+
+   @media (prefers-reduced-motion: reduce) {
+      text-overflow: ellipsis;
+
+      span {
+         display: inline;
+         padding-left: 0;
+      }
+   }
 `
 
 export const Tagline = styled.div`

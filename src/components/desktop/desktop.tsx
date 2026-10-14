@@ -86,9 +86,11 @@ export const Desktop = ({ posts, updated }: DesktopProps) => {
 
         {flashy && (
           <S.Ticker>
-            ★ WELCOME TO MY HOMEPAGE! ★
-            {posts.length > 0 && ` NEW: blog post #${entryNumber(posts.length, 0)} is up ★`}
-            {' '}don&apos;t forget to sign my guestbook ★ you are visitor #{visitors} ★
+            <span>
+              ★ WELCOME TO MY HOMEPAGE! ★
+              {posts.length > 0 && ` NEW: blog post #${entryNumber(posts.length, 0)} is up ★`}
+              {' '}don&apos;t forget to sign my guestbook ★ you are visitor #{visitors} ★
+            </span>
           </S.Ticker>
         )}
 
