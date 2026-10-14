@@ -123,7 +123,7 @@ export const Desktop = ({ posts, updated }: DesktopProps) => {
               </div>
             </S.Counter>
             <S.ReadingToggle type="button" aria-pressed={reading} onClick={toggleReading}>
-              {reading ? '☑ READING MODE — show the 2000s junk' : '☐ READING MODE (hide fillers)'}
+              {reading ? '☑ READING MODE' : '☐ READING MODE'}
             </S.ReadingToggle>
           </S.Aside>
 
@@ -211,9 +211,7 @@ export const Desktop = ({ posts, updated }: DesktopProps) => {
             ))}
           </S.Badges>
           <span className="notice">
-            © {new Date().getFullYear()} Pedro Queiroz · hand-coded in São Paulo
-            <br />
-            best viewed at 1024×768 — or honestly any size
+            © {new Date().getFullYear()} Pedro Queiroz
           </span>
         </S.Footer>
       </S.Page>
