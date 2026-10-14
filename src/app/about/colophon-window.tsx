@@ -2,7 +2,6 @@
 
 import styled from 'styled-components'
 
-import { Panel } from '../../components/panel'
 import { Window } from '../../components/window'
 import { theme } from '../../styles/theme'
 
@@ -31,19 +30,6 @@ const Sign = styled.div`
   font-style: italic;
 `
 
-const Facts = styled.dl`
-  display: grid;
-  grid-template-columns: 110px 1fr;
-  gap: 6px 12px;
-  padding: 10px;
-  font-family: ${theme.fonts.mono};
-  font-size: 12px;
-
-  dt {
-    color: ${theme.colors.subtext};
-  }
-`
-
 export const ColophonWindow = ({ age }: { age: number }) => {
   return (
     <Window title="about me" section="about" path="/about">
@@ -58,15 +44,6 @@ export const ColophonWindow = ({ age }: { age: number }) => {
           scratch — most recently Umbra, a small programming language.
         </p>
         <Sign>— pmq</Sign>
-        <Panel title="About this site">
-          <Facts>
-            <dt>TYPE</dt><dd>JetBrains Mono, Cutive Mono</dd>
-            <dt>PAPER</dt><dd>{theme.colors.base} / {theme.colors.card}</dd>
-            <dt>INK</dt><dd>{theme.colors.dark}</dd>
-            <dt>EMOJI</dt><dd><a href="https://github.com/SerenityOS/serenity">SerenityOS</a> pixel set, <a href="/emoji/LICENSE">BSD-2</a></dd>
-            <dt>CONTACT</dt><dd><a href="mailto:contact@pmqueiroz.dev">contact@pmqueiroz.dev</a></dd>
-          </Facts>
-        </Panel>
       </Body>
     </Window>
   )
