@@ -108,7 +108,7 @@ from `false` and syncs in an effect, so readers see the junk for one frame.
 
 Filler images live in `public/junk/` and render through `RetroImage`
 (outset-bordered `img`). Files: `handshake-laptops.jpg`, `globe-cable.webp`,
-`crt-handshake.jpeg`, `handshake-desk.jpeg`, `support-agent.jpeg`,
+`crt-handshake.jpeg`, `thumbs-up-laptop.jpeg`, `support-agent.jpeg`,
 `project.gif`, `mailbox.gif`.
 
 ## Journal
