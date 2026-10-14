@@ -28,8 +28,8 @@ const umbra = 'https://github.com/pmqueiroz/umbra'
 
 const navigation = [
   { href: '/projects', label: 'work' },
-  { href: '/blog', label: 'journal' },
-  { href: '/about', label: 'colophon' },
+  { href: '/blog', label: 'blog' },
+  { href: '/about', label: 'about me' },
   { href: guestbook, label: 'guestbook' }
 ]
 
@@ -87,7 +87,7 @@ export const Desktop = ({ posts, updated }: DesktopProps) => {
         {flashy && (
           <S.Ticker>
             ★ WELCOME TO MY HOMEPAGE! ★
-            {posts.length > 0 && ` NEW: journal entry #${entryNumber(posts.length, 0)} is up ★`}
+            {posts.length > 0 && ` NEW: blog post #${entryNumber(posts.length, 0)} is up ★`}
             {' '}don&apos;t forget to sign my guestbook ★ you are visitor #{visitors} ★
           </S.Ticker>
         )}
@@ -150,7 +150,7 @@ export const Desktop = ({ posts, updated }: DesktopProps) => {
 
             <S.Actions>
               <BevelLink href="/projects">BROWSE THE WORK →</BevelLink>
-              <BevelLink href="/blog">READ THE JOURNAL</BevelLink>
+              <BevelLink href="/blog">READ THE BLOG</BevelLink>
             </S.Actions>
 
             <Panel title="Selected work" action={<Link href="/projects">all work »</Link>}>
@@ -171,7 +171,7 @@ export const Desktop = ({ posts, updated }: DesktopProps) => {
               </S.Featured>
             </Panel>
 
-            <Panel title="Latest journal entries">
+            <Panel title="Latest blog posts">
               <JournalList posts={posts} variant="compact" limit={3} />
             </Panel>
           </S.Main>

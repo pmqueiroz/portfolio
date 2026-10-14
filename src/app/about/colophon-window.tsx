@@ -46,9 +46,9 @@ const Facts = styled.dl`
 
 export const ColophonWindow = ({ age }: { age: number }) => {
   return (
-    <Window title="colophon" section="colophon" path="/about">
+    <Window title="about me" section="about" path="/about">
       <Body>
-        <h1>Colophon</h1>
+        <h1>About me</h1>
         <p>
           I&rsquo;m Pedro Queiroz, a front-end developer from Brazil, {age} years old, writing
           software professionally since 2017.
@@ -57,7 +57,6 @@ export const ColophonWindow = ({ age }: { age: number }) => {
           I like <span className="typo">typescript</span>, open source, and building tools from
           scratch — most recently Umbra, a small programming language.
         </p>
-        <p>This site is hand-built and set entirely in monospace.</p>
         <Sign>— pmq</Sign>
         <Panel title="About this site">
           <Facts>

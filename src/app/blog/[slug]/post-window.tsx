@@ -6,9 +6,9 @@ import styled from 'styled-components'
 import reactHtmlParser from 'react-html-parser'
 
 import { DraftBadge } from '../../../components/badge'
+import { Prose } from '../../../components/prose'
 import { Emojify } from '../../../components/emoji'
 import { emojifyHtml } from '../../../helpers/emoji'
-import { Prose } from '../../../components/prose'
 import { Kicker, Window } from '../../../components/window'
 import { theme } from '../../../styles/theme'
 import { Post } from '../../../types'
@@ -51,10 +51,10 @@ interface PostWindowProps {
 }
 
 export const PostWindow = ({ post, number, minutes, prev, next }: PostWindowProps) => (
-  <Window title="journal » entry" section="journal" path={`/blog/${post.slug}`}>
+  <Window title="blog » post" section="blog" path={`/blog/${post.slug}`}>
     <Article>
       <Kicker>
-        ENTRY {number} · {minutes} min {post.draft && <DraftBadge />}
+        POST #{number} · {minutes} min {post.draft && <DraftBadge />}
       </Kicker>
       <Title><Emojify text={post.title} /></Title>
       {post.description && <Lede><Emojify text={post.description} /></Lede>}
@@ -66,13 +66,13 @@ export const PostWindow = ({ post, number, minutes, prev, next }: PostWindowProp
           </Fragment>
         ))}
       </Prose>
-      <Ring aria-label="Journal entries">
+      <Ring aria-label="Blog posts">
         [
-        {prev ? <Link href={`/blog/${prev}`}>« prev entry</Link> : <span>« prev entry</span>}
+        {prev ? <Link href={`/blog/${prev}`}>« prev post</Link> : <span>« prev post</span>}
         |
-        <Link href="/blog">all entries</Link>
+        <Link href="/blog">all posts</Link>
         |
-        {next ? <Link href={`/blog/${next}`}>next entry »</Link> : <span>next entry »</span>}
+        {next ? <Link href={`/blog/${next}`}>next post »</Link> : <span>next post »</span>}
         ]
       </Ring>
     </Article>

@@ -25,7 +25,7 @@ No hard copy rules are enforced yet. The house style the site already
 follows:
 
 - Page titles, the handle and nav labels are lower-case (`pmqueiroz`,
-  `work`, `journal`, `colophon`).
+  `work`, `blog`, `about me`).
 - Kickers, panel title bars and footer notices are UPPER-CASE with wide
   letter-spacing (`SELECTED WORK`, `README.md · GO · MINT`).
 - Em dashes are fine and used on purpose (`— pmq`, the window titles).

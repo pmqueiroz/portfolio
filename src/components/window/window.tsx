@@ -8,12 +8,12 @@ import { Menu, MenuBar } from '../menu-bar'
 
 import * as S from './styles'
 
-type Section = 'work' | 'journal' | 'colophon'
+type Section = 'work' | 'blog' | 'about'
 
 const sections: { key: Section; href: string; label: string }[] = [
   { key: 'work', href: '/projects', label: 'Work' },
-  { key: 'journal', href: '/blog', label: 'Journal' },
-  { key: 'colophon', href: '/about', label: 'Colophon' }
+  { key: 'blog', href: '/blog', label: 'Blog' },
+  { key: 'about', href: '/about', label: 'About me' }
 ]
 
 const source = 'https://github.com/pmqueiroz/portfolio'
