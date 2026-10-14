@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import reactHtmlParser from 'react-html-parser'
 
 import { Prose } from '../../components/prose'
-import { Stamp } from '../../components/stamp'
+import { ProjectCard } from '../../components/project-card'
 import { Kicker, Window } from '../../components/window'
 import { useGithubRepos, useRepoReadme, useVisited } from '../../hooks'
 import { parseEmojis } from '../../helpers/parse-emojis'
@@ -22,7 +22,7 @@ const Stack = styled.div<{ $gap: number }>`
 
 const Grid = styled.div`
   display: flex;
-  gap: 22px;
+  gap: 14px;
   flex-wrap: wrap;
   justify-content: center;
 `
@@ -58,7 +58,7 @@ export const ProjectsWindow = () => {
         section="work"
         path={`/projects?repo=${repo.name}`}
         status={readmeLoading ? 'Loading' : 'Done'}
-        info={`README.md · ${meta.lang} · ${isVisited(repo.name) ? 'CANCELED' : 'MINT'}`}
+        info={`README.md · ${meta.lang}`}
         menus={[{
           label: 'File',
           items: [
@@ -81,10 +81,10 @@ export const ProjectsWindow = () => {
   return (
     <Window title="work" section="work" path="/projects" status={isLoading ? 'Loading' : 'Done'}>
       <Stack $gap={18}>
-        <Kicker>WORK · {projects.length} {projects.length === 1 ? 'REPOSITORY' : 'REPOSITORIES'} · CLICK A STAMP TO READ</Kicker>
+        <Kicker>WORK · {projects.length} {projects.length === 1 ? 'REPOSITORY' : 'REPOSITORIES'} · CLICK A PROJECT TO READ</Kicker>
         <Grid>
           {projects.map((project, i) => (
-            <Stamp
+            <ProjectCard
               key={project.id}
               repo={project}
               index={i}

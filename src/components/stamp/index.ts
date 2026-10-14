@@ -1,1 +1,0 @@
-export { Stamp } from './stamp'

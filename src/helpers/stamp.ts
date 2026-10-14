@@ -14,33 +14,15 @@ export interface StampMeta {
 }
 
 const languagePalette: Record<string, { ink: string; ground: string }> = {
-  TypeScript: { ink: '#1f5c54', ground: '#cfe0d6' },
-  JavaScript: { ink: '#6b5a1f', ground: '#e8dcaf' },
-  Go: { ink: '#33396b', ground: '#d2d5e6' },
-  Python: { ink: '#5a2f57', ground: '#e1cfdd' },
-  Lua: { ink: '#33396b', ground: '#d2d5e6' },
-  EJS: { ink: '#7c2d2a', ground: '#e7cdb6' }
+  TypeScript: { ink: '#008080', ground: '#c0c0c0' },
+  JavaScript: { ink: '#808000', ground: '#c0c0c0' },
+  Go: { ink: '#000080', ground: '#c0c0c0' },
+  Python: { ink: '#800080', ground: '#c0c0c0' },
+  Lua: { ink: '#000080', ground: '#c0c0c0' },
+  EJS: { ink: '#800000', ground: '#c0c0c0' }
 }
 
-const defaultPalette = { ink: '#7c2d2a', ground: '#e7cdb6' }
-
-const mintInk = '#17150f'
-const mintGround = '#e8e2d3'
-const mintPattern = 'repeating-linear-gradient(135deg,#d8d0bd 0 2px,#e8e2d3 2px 7px)'
-const canceledPattern = (ink: string) =>
-  `repeating-linear-gradient(135deg,${ink}24 0 1.5px,transparent 1.5px 6px)`
-
-export interface StampFace {
-  status: 'MINT' | 'CANCELED'
-  ink: string
-  ground: string
-  pattern: string
-}
-
-export const stampFace = (meta: StampMeta, visited: boolean): StampFace =>
-  visited
-    ? { status: 'CANCELED', ink: meta.ink, ground: meta.ground, pattern: canceledPattern(meta.ink) }
-    : { status: 'MINT', ink: mintInk, ground: mintGround, pattern: mintPattern }
+const defaultPalette = { ink: '#800000', ground: '#c0c0c0' }
 
 const glyphs = ['{ }', '¶', '~/', ':)', 'Aa', '▤', '/*', '<>', '#!', '=>', '::', '%']
 
