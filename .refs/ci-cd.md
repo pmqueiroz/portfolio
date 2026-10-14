@@ -13,6 +13,13 @@ it was deployed keeps getting the 404 for up to 4 hours. Hard-refresh to
 check a new asset. Setting Cloudflare's Browser Cache TTL to
 "Respect Existing Headers" would stop it.
 
+## Environment
+
+- `UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN` (or the Marketplace's
+  `KV_REST_API_URL` + `KV_REST_API_TOKEN`) — guestbook storage. Without
+  them the site builds and runs; only the guestbook reports offline. See
+  [guestbook.md](./guestbook.md).
+
 ## Local gates
 
 Run these before committing. `next build` runs lint and the type check
@@ -20,7 +27,8 @@ itself and fails on any lint error.
 
 - `pnpm lint` — `next lint` with `.eslintrc.json` (2-space indent, single
   quotes, no semicolons).
-- `pnpm build` — production build. Every route is statically prerendered;
+- `pnpm build` — production build. Every page is statically prerendered
+  (`/api/guestbook` is the one dynamic function);
   `/blog/[slug]` uses `generateStaticParams` over `content/posts`.
 
 ## Not set up yet

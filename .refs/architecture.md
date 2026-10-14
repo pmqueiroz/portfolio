@@ -44,7 +44,7 @@ button, a Win98-style menu bar (`components/menu-bar`), a sunken scrolling
 viewport and a status bar showing `Done — https://pmqueiroz.dev<path>`.
 
 - Every window gets the standard menus: **File** (Close · Esc), **Go**
-  (Work / Blog / About me with a `●` on the current section, then
+  (Work / Blog / Guestbook / About me with a `●` on the current section, then
   Desktop) and **Help** (About → `/about`, View source ↗ → the portfolio
   repo).
 - A window adds its own commands via `menus`: a menu whose label matches a
@@ -244,6 +244,8 @@ status bar cells.
   with `…`, like Win98 commands that open a dialog. They share one css
   block; use `BevelLink` for navigation because styled-components' `as`
   prop collides with `Link`'s own `as`.
+- `TextField` / `TextArea` — sunken Win98 input and textarea; one css
+  block, used by `SearchBox` and the guestbook form.
 - `SearchBox` — sunken Win98 text field plus a `Go` button; submitting
   pushes `/search?q=…` (and degrades to a plain GET form). Used in the
   desktop sidebar's Search box and at the top of the search window.
@@ -263,7 +265,8 @@ hierarchy from weight, italics and underline.
 
 - The visitor counter (`004217`), the 88×31 footer badges, the ticker and
   the UmbraHost ad are static decoration. Webring links point at `#`.
-- "guestbook" in the sidebar is a `mailto:` link; there is no guestbook page.
+- "guestbook" in the sidebar, the ticker and the guestbook strip lead to
+  the `/guestbook` window — see [guestbook.md](./guestbook.md).
 - GitHub calls are unauthenticated, so each visitor gets 60 requests an
   hour. The repo list is one call; every README opened is another
   (`/repos/<repo>/readme`, which resolves the default branch and filename).

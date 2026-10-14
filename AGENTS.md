@@ -11,6 +11,8 @@ explain the *why* and the gotchas.
   extension points, conventions. Fill in as the project takes shape.
 - [ci-cd.md](./.refs/ci-cd.md) — CI/CD pipeline: jobs, toolchain pin, what's
   not set up yet.
+- [guestbook.md](./.refs/guestbook.md) — Upstash Redis storage, API,
+  approve-first moderation CLI, anti-spam, caching gotcha.
 - [incidents/](./.refs/incidents/README.md) — postmortems + standing rules;
   **read before any migration or destructive op**.
 
