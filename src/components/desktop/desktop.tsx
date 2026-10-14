@@ -1,8 +1,10 @@
 'use client'
 
+import { useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
-import { useGithubRepos, useReadingMode, useTypeLoop, useTypeOnce } from '../../hooks'
+import { forgetWindowPosition, useGithubRepos, useReadingMode, useTypeLoop, useTypeOnce } from '../../hooks'
 import { selectProjects } from '../../helpers/projects'
 import { stampMeta } from '../../helpers/stamp'
 import { entryNumber } from '../../helpers/entry-number'
@@ -61,6 +63,11 @@ export const Desktop = ({ posts, updated }: DesktopProps) => {
   const { repos } = useGithubRepos('pmqueiroz')
   const featured = selectProjects(repos).slice(0, 3).map(stampMeta)
   const flashy = !reading
+  const pathname = usePathname()
+
+  useEffect(() => {
+    if (pathname === '/') forgetWindowPosition()
+  }, [pathname])
 
   return (
     <S.Screen>

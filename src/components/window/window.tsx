@@ -3,6 +3,8 @@
 import { ReactNode, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 
+import { useWindowPosition } from '../../hooks'
+
 import * as S from './styles'
 
 type Section = 'work' | 'journal' | 'colophon'
@@ -24,6 +26,9 @@ interface WindowProps {
 export const Window = ({ title, section, path, status = 'Done', children }: WindowProps) => {
   const router = useRouter()
   const viewport = useRef<HTMLDivElement>(null)
+  const frame = useRef<HTMLDivElement>(null)
+  const { position, dragHandlers } = useWindowPosition(frame)
+
   const close = () => router.push('/')
 
   useEffect(() => {
@@ -43,8 +48,16 @@ export const Window = ({ title, section, path, status = 'Done', children }: Wind
 
   return (
     <S.Backdrop onClick={close}>
-      <S.Frame role="dialog" aria-modal="true" aria-labelledby="window-title" onClick={e => e.stopPropagation()}>
-        <S.TitleBar>
+      <S.Frame
+        ref={frame}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="window-title"
+        $floating={position !== null}
+        style={position ? { left: position.x, top: position.y } : undefined}
+        onClick={e => e.stopPropagation()}
+      >
+        <S.TitleBar $draggable={position !== null} {...dragHandlers}>
           <h2 id="window-title">pmqueiroz — {title}</h2>
           <S.Close type="button" aria-label="Close" onClick={close}>×</S.Close>
         </S.TitleBar>

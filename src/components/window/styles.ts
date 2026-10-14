@@ -20,10 +20,14 @@ export const Backdrop = styled.div`
    }
 `
 
-export const Frame = styled.div`
+export const Frame = styled.div<{ $floating: boolean }>`
    width: 100%;
    max-width: ${theme.global.sizes.windowWidth};
    max-height: 100%;
+   ${({ $floating }) => $floating && `
+      position: absolute;
+      max-height: calc(100% - 32px);
+   `}
    display: flex;
    flex-direction: column;
    background: ${theme.colors.bevel};
@@ -36,8 +40,11 @@ export const Frame = styled.div`
    }
 `
 
-export const TitleBar = styled.div`
+export const TitleBar = styled.div<{ $draggable: boolean }>`
    background: ${theme.gradients.window};
+   cursor: ${({ $draggable }) => ($draggable ? 'move' : 'default')};
+   touch-action: none;
+   user-select: none;
    color: ${theme.colors.card};
    display: flex;
    justify-content: space-between;
