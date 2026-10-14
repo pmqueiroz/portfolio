@@ -5,7 +5,6 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import styled from 'styled-components'
 import reactHtmlParser from 'react-html-parser'
 
-import { BevelButton } from '../../components/bevel-button'
 import { Prose } from '../../components/prose'
 import { Stamp } from '../../components/stamp'
 import { Kicker, Window } from '../../components/window'
@@ -28,15 +27,6 @@ const Grid = styled.div`
   gap: 22px;
   flex-wrap: wrap;
   justify-content: center;
-`
-
-const Toolbar = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  font-size: 12px;
 `
 
 const Name = styled.h1`
@@ -70,13 +60,16 @@ export const ProjectsWindow = () => {
         section="work"
         path={`/projects?repo=${repo.name}`}
         status={readmeLoading ? 'Loading' : 'Done'}
+        info={`README.md · ${meta.lang} · ${isVisited(repo.name) ? 'CANCELED' : 'MINT'}`}
+        menus={[{
+          label: 'File',
+          items: [
+            { label: 'Back to work', onSelect: () => router.push('/projects') },
+            { label: 'Open in GitHub', href: repo.html_url, external: true }
+          ]
+        }]}
       >
         <Stack $gap={14}>
-          <Toolbar>
-            <BevelButton $compact onClick={() => router.push('/projects')}>« Back</BevelButton>
-            <a href={repo.html_url} target="_blank" rel="noreferrer">open in github ↗</a>
-          </Toolbar>
-          <Kicker>README.md · {meta.lang} · {isVisited(repo.name) ? 'CANCELED' : 'MINT'}</Kicker>
           <Name>{meta.name}</Name>
           <Prose>
             <p><Emojify text={meta.blurb} /></p>

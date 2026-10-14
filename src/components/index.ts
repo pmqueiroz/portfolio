@@ -1,5 +1,6 @@
 export * from './desktop'
 export * from './window'
+export * from './menu-bar'
 export * from './panel'
 export * from './stamp'
 export * from './journal-list'

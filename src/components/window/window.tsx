@@ -4,26 +4,59 @@ import { ReactNode, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 
 import { useWindowPosition } from '../../hooks'
+import { Menu, MenuBar } from '../menu-bar'
 
 import * as S from './styles'
 
 type Section = 'work' | 'journal' | 'colophon'
 
-const tabs: { key: Section; href: string; label: string }[] = [
+const sections: { key: Section; href: string; label: string }[] = [
   { key: 'work', href: '/projects', label: 'Work' },
   { key: 'journal', href: '/blog', label: 'Journal' },
   { key: 'colophon', href: '/about', label: 'Colophon' }
 ]
+
+const source = 'https://github.com/pmqueiroz/portfolio'
+
+const standardMenus = (section: Section, close: () => void): Menu[] => [
+  { label: 'File', items: [{ label: 'Close', shortcut: 'Esc', onSelect: close }] },
+  {
+    label: 'Go',
+    items: [
+      ...sections.map(({ key, href, label }) => ({ label, href, checked: key === section })),
+      'separator',
+      { label: 'Desktop', href: '/' }
+    ]
+  },
+  {
+    label: 'Help',
+    items: [
+      { label: 'About pmqueiroz', href: '/about' },
+      { label: 'View source', href: source, external: true }
+    ]
+  }
+]
+
+const mergeMenus = (standard: Menu[], extra: Menu[]): Menu[] => {
+  const merged = standard.map(menu => {
+    const match = extra.find(e => e.label === menu.label)
+    return match ? { ...menu, items: [...match.items, 'separator' as const, ...menu.items] } : menu
+  })
+  const added = extra.filter(e => !standard.some(menu => menu.label === e.label))
+  return [...merged.slice(0, -1), ...added, ...merged.slice(-1)]
+}
 
 interface WindowProps {
    title: string
    section: Section
    path: string
    status?: string
+   menus?: Menu[]
+   info?: ReactNode
    children: ReactNode
 }
 
-export const Window = ({ title, section, path, status = 'Done', children }: WindowProps) => {
+export const Window = ({ title, section, path, status = 'Done', menus = [], info, children }: WindowProps) => {
   const router = useRouter()
   const viewport = useRef<HTMLDivElement>(null)
   const frame = useRef<HTMLDivElement>(null)
@@ -61,13 +94,7 @@ export const Window = ({ title, section, path, status = 'Done', children }: Wind
           <h2 id="window-title">pmqueiroz — {title}</h2>
           <S.Close type="button" aria-label="Close" onClick={close}>×</S.Close>
         </S.TitleBar>
-        <S.Tabs>
-          {tabs.map(tab => (
-            <S.Tab key={tab.key} href={tab.href} $active={tab.key === section}>
-              {tab.label}
-            </S.Tab>
-          ))}
-        </S.Tabs>
+        <MenuBar menus={mergeMenus(standardMenus(section, close), menus)} aside={info} />
         <S.Viewport ref={viewport}>{children}</S.Viewport>
         <S.StatusBar>
           <span>{status} — https://pmqueiroz.dev{path}</span>

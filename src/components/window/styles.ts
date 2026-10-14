@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import styled from 'styled-components'
 import { theme } from '../../styles/theme'
 import { pressed, raised, sunken } from '../../styles/bevel'
@@ -80,24 +79,6 @@ export const Close = styled.button`
       ${pressed}
       box-shadow: none;
    }
-`
-
-export const Tabs = styled.nav`
-   display: flex;
-   gap: 16px;
-   padding: 5px 8px;
-   font-size: 12px;
-   border-bottom: 1px solid ${theme.colors.shadow};
-   flex-wrap: wrap;
-`
-
-export const Tab = styled(Link)<{ $active: boolean }>`
-   &,
-   &:visited {
-      color: ${theme.colors.dark};
-   }
-   text-decoration: ${({ $active }) => ($active ? 'underline' : 'none')};
-   font-weight: ${({ $active }) => ($active ? 700 : 400)};
 `
 
 export const Viewport = styled.div`
