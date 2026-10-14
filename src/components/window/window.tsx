@@ -18,13 +18,14 @@ const sections: { key: Section; href: string; label: string }[] = [
 
 const source = 'https://github.com/pmqueiroz/portfolio'
 
-const standardMenus = (section: Section, close: () => void): Menu[] => [
+const standardMenus = (section: Section | undefined, close: () => void): Menu[] => [
   { label: 'File', items: [{ label: 'Close', shortcut: 'Esc', onSelect: close }] },
   {
     label: 'Go',
     items: [
       ...sections.map(({ key, href, label }) => ({ label, href, checked: key === section })),
       'separator',
+      { label: 'Search…', href: '/search' },
       { label: 'Desktop', href: '/' }
     ]
   },
@@ -48,7 +49,7 @@ const mergeMenus = (standard: Menu[], extra: Menu[]): Menu[] => {
 
 interface WindowProps {
    title: string
-   section: Section
+   section?: Section
    path: string
    status?: string
    menus?: Menu[]

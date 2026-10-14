@@ -125,6 +125,10 @@ export const SideBox = styled(Panel)`
    }
 `
 
+export const SearchSlot = styled.div`
+   padding: 8px;
+`
+
 export const LinkList = styled.nav`
    display: flex;
    flex-direction: column;

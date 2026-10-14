@@ -14,6 +14,7 @@ import { JournalList } from '../journal-list'
 import { Logo } from '../logo'
 import { Panel } from '../panel'
 import { RetroImage } from '../retro-image'
+import { SearchBox } from '../search-box'
 
 import * as S from './styles'
 
@@ -102,6 +103,11 @@ export const Desktop = ({ posts, updated }: DesktopProps) => {
                   <Link key={label} href={href}>» {label}</Link>
                 ))}
               </S.LinkList>
+            </S.SideBox>
+            <S.SideBox title="Search">
+              <S.SearchSlot>
+                <SearchBox />
+              </S.SearchSlot>
             </S.SideBox>
             <S.SideBox title="Elsewhere">
               <S.LinkList>
