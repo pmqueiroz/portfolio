@@ -43,7 +43,7 @@ export default createGlobalStyle`
 
    ::selection {
       background: ${theme.colors.selection};
-      color: ${theme.colors.dark};
+      color: ${theme.colors.card};
    }
 
    @keyframes blink {

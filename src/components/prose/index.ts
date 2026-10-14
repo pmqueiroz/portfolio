@@ -5,7 +5,7 @@ export const Prose = styled.div`
    font-family: ${theme.fonts.type};
    font-size: 16px;
    line-height: 1.6;
-   color: #2b2820;
+   color: ${theme.colors.dark};
    overflow-wrap: break-word;
 
    > :first-child {
@@ -55,7 +55,7 @@ export const Prose = styled.div`
       font-size: 0.85em;
       background: ${theme.colors.bevel};
       padding: 1px 5px;
-      border: 1px solid #d3cab4;
+      border: 1px solid ${theme.colors.line};
    }
 
    table {

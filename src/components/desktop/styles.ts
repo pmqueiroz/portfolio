@@ -248,7 +248,7 @@ export const Actions = styled.div`
 export const Featured = styled.div`
    display: flex;
    flex-direction: column;
-   background: #fffef2;
+   background: ${theme.colors.card};
 `
 
 export const FeaturedRow = styled.div<{ $thumb: boolean }>`
