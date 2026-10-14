@@ -110,6 +110,10 @@ Filler images live in `public/junk/` and render through `RetroImage`
 (outset-bordered `img`). Files: `handshake-laptops.jpg`, `globe-cable.webp`,
 `crt-handshake.jpeg`, `thumbs-up-laptop.jpeg`, `support-agent.jpeg`,
 `project.gif`, `mailbox.gif`.
+Keep them at roughly 2× their display size with metadata stripped
+(`magick <f> -strip -resize …`; for GIFs add `-coalesce` before and
+`-layers optimize` after). The originals from the design project were up to
+1300px and carried C2PA blocks; the whole set is ~100 KB.
 
 ## Journal
 
