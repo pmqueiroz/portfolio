@@ -7,7 +7,7 @@ const Box = styled.section`
 `
 
 export const TitleBar = styled.div`
-   background: ${theme.colors.dark};
+   background: ${theme.gradients.panel};
    color: ${theme.colors.card};
    font-size: 10px;
    letter-spacing: 2px;

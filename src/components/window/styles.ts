@@ -37,7 +37,7 @@ export const Frame = styled.div`
 `
 
 export const TitleBar = styled.div`
-   background: ${theme.colors.titleBar};
+   background: ${theme.gradients.window};
    color: ${theme.colors.card};
    display: flex;
    justify-content: space-between;

@@ -17,7 +17,6 @@ export const theme = {
     selection: '#dcd3bd',
     highlight: '#dcd3bd',
     bevel: '#e3ddcc',
-    titleBar: '#33396b',
     backdrop: '#17150f33',
     counter: '#e8dcaf',
     link: '#33396b',
@@ -29,7 +28,22 @@ export const theme = {
     orange: '#6b5a1f',
     blue: '#33396b',
     green: '#1f5c54',
-    orangeLight: '#f8961e60'
+    orangeLight: '#f8961e60',
+    desktop: '#3a7f99',
+    alarm: '#a8231c',
+    sun: '#ffe45c',
+    highlighter: '#fff200',
+    sky: '#d6ecff',
+    navy: '#1c2a7a',
+    outset: '#dddddd'
+  },
+  gradients: {
+    panel: 'linear-gradient(90deg, #1c2a7a, #3a8fb7)',
+    window: 'linear-gradient(90deg, #0a246a, #a6caf0)',
+    header: 'linear-gradient(180deg, #fff6b8, #ffd24a)',
+    footer: 'linear-gradient(180deg, #d6ecff, #a6caf0)',
+    ad: 'linear-gradient(90deg, #0a246a, #2f6fd0)',
+    wordArt: 'linear-gradient(180deg, #fff 0%, #9fd3ff 35%, #1c4fb8 52%, #0a246a 100%)'
   },
   fonts: {
     mono: 'var(--font-jetbrains-mono), monospace',
