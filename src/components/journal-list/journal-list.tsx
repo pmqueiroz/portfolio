@@ -5,7 +5,6 @@ import { PostSummary } from '../../types'
 import { theme } from '../../styles/theme'
 import { entryNumber } from '../../helpers/entry-number'
 import { DraftBadge, NewBadge } from '../badge'
-import { Emojify } from '../emoji'
 
 type Variant = 'compact' | 'full'
 
@@ -62,11 +61,11 @@ export const JournalList = ({ posts, variant = 'full', limit }: JournalListProps
         <Num>{entryNumber(posts.length, i)}</Num>
         <Body>
           <Title $variant={variant}>
-            <Link href={`/blog/${post.slug}`}><Emojify text={post.title} /></Link>
+            <Link href={`/blog/${post.slug}`}>{post.title}</Link>
             {i === 0 && <NewBadge />}
             {variant === 'full' && post.draft && <DraftBadge />}
           </Title>
-          {variant === 'full' && post.description && <Desc><Emojify text={post.description} /></Desc>}
+          {variant === 'full' && post.description && <Desc>{post.description}</Desc>}
         </Body>
         <Min>{post.minutes} min</Min>
       </Row>

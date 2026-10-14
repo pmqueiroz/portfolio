@@ -68,7 +68,7 @@ export const Prose = styled.div`
       font-size: 10px;
    }
 
-   img:not(.emoji) {
+   img {
       max-width: 100%;
       border: 1.5px solid ${theme.colors.dark};
    }

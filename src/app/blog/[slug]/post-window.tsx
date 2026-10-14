@@ -7,8 +7,6 @@ import reactHtmlParser from 'react-html-parser'
 
 import { DraftBadge } from '../../../components/badge'
 import { Prose } from '../../../components/prose'
-import { Emojify } from '../../../components/emoji'
-import { emojifyHtml } from '../../../helpers/emoji'
 import { Kicker, Window } from '../../../components/window'
 import { theme } from '../../../styles/theme'
 import { Post } from '../../../types'
@@ -56,13 +54,13 @@ export const PostWindow = ({ post, number, minutes, prev, next }: PostWindowProp
       <Kicker>
         POST #{number} · {minutes} min {post.draft && <DraftBadge />}
       </Kicker>
-      <Title><Emojify text={post.title} /></Title>
-      {post.description && <Lede><Emojify text={post.description} /></Lede>}
+      <Title>{post.title}</Title>
+      {post.description && <Lede>{post.description}</Lede>}
       <Prose>
         {post.chapters.map(({ name, content }) => (
           <Fragment key={name}>
             <h2 id={name}>{name}</h2>
-            {reactHtmlParser(emojifyHtml(content))}
+            {reactHtmlParser(content)}
           </Fragment>
         ))}
       </Prose>

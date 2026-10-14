@@ -10,7 +10,6 @@ import { stampMeta } from '../../helpers/stamp'
 import { entryNumber } from '../../helpers/entry-number'
 import { PostSummary } from '../../types'
 import { BevelLink } from '../bevel-button'
-import { Emojify } from '../emoji'
 import { JournalList } from '../journal-list'
 import { Logo } from '../logo'
 import { Panel } from '../panel'
@@ -166,7 +165,7 @@ export const Desktop = ({ posts, updated }: DesktopProps) => {
                         <Link href={`/projects?repo=${encodeURIComponent(project.name)}`}>{project.name}</Link>{' '}
                         <span className="lang">[{project.lang}]</span>
                       </S.FeaturedName>
-                      <S.FeaturedBlurb><Emojify text={project.blurb} /></S.FeaturedBlurb>
+                      <S.FeaturedBlurb>{project.blurb}</S.FeaturedBlurb>
                     </div>
                   </S.FeaturedRow>
                 ))}

@@ -9,8 +9,6 @@ import { Prose } from '../../components/prose'
 import { Stamp } from '../../components/stamp'
 import { Kicker, Window } from '../../components/window'
 import { useGithubRepos, useRepoReadme, useVisited } from '../../hooks'
-import { Emojify } from '../../components/emoji'
-import { emojifyHtml } from '../../helpers/emoji'
 import { parseEmojis } from '../../helpers/parse-emojis'
 import { selectProjects } from '../../helpers/projects'
 import { stampMeta } from '../../helpers/stamp'
@@ -72,8 +70,8 @@ export const ProjectsWindow = () => {
         <Stack $gap={14}>
           <Name>{meta.name}</Name>
           <Prose>
-            <p><Emojify text={meta.blurb} /></p>
-            {reactHtmlParser(emojifyHtml(parseEmojis(readme)))}
+            <p>{meta.blurb}</p>
+            {reactHtmlParser(parseEmojis(readme))}
           </Prose>
         </Stack>
       </Window>
