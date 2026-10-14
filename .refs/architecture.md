@@ -43,6 +43,17 @@ Code is the truth. This file explains the *why* behind the shape it takes.
 button, tabs (Work / Journal / Colophon), a sunken scrolling viewport and a
 status bar showing `Done — https://pmqueiroz.dev<path>`.
 
+- On screens at least `narrow` (640px) wide the frame floats: it spawns at
+  a random spot and is dragged by its title bar (`hooks/use-window-position.ts`,
+  pointer capture, so a drag that ends over the backdrop does not close it).
+  It is clamped 16px inside the viewport and re-clamped on resize or when
+  its content grows. Below 640px it stays fullscreen and does not move.
+- The position lives in a module variable, so switching tabs (each route
+  mounts its own `<Window>`) keeps the window where it is. `Desktop` calls
+  `forgetWindowPosition()` whenever the path returns to `/`, so the next
+  window opened spawns somewhere new, however the last one was closed.
+- Server HTML renders the frame centred; it jumps to its spot in a layout
+  effect on hydration, so a direct load of `/projects` etc. moves once.
 - Close (×), Escape, and a click on the backdrop all `router.push('/')`.
 - Body scroll is locked while a window is mounted.
 - The viewport scrolls back to the top whenever `path` changes, so moving
