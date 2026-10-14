@@ -27,7 +27,7 @@ follows:
 - Page titles, the handle and nav labels are lower-case (`pmqueiroz`,
   `work`, `blog`, `about me`).
 - Kickers, panel title bars and footer notices are UPPER-CASE with wide
-  letter-spacing (`SELECTED WORK`, `README.md · GO · MINT`).
+  letter-spacing (`SELECTED WORK`, `README.md · GO`).
 - Em dashes are fine and used on purpose (`— pmq`, the window titles).
 
 Add a rule here before enforcing anything stricter.

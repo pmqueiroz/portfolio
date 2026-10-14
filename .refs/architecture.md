@@ -50,7 +50,7 @@ viewport and a status bar showing `Done — https://pmqueiroz.dev<path>`.
 - A window adds its own commands via `menus`: a menu whose label matches a
   standard one has its items prepended above a separator; a new label is
   inserted before Help. `info` renders right-aligned in the menu bar — the
-  README view uses it for `README.md · <lang> · MINT|CANCELED`, and puts
+  README view uses it for `README.md · <lang>`, and puts
   Back to work / Open in GitHub in File instead of an in-content toolbar.
 - `MenuBar`: click a label to open, hover switches while one is open, a
   pointerdown outside or Escape closes it. Escape inside the bar stops
@@ -82,22 +82,23 @@ component wrapping its content in `<Window title section path>` (`section`
 is optional; the search window has none, so nothing is ticked in Go). If it needs
 a Go-menu entry, add it to the `sections` list in `window.tsx`.
 
-## Projects and stamps
+## Projects
 
 Projects are a fixed, ordered list of repo names in `helpers/projects.ts`
 (`projectNames`). `useGithubRepos` fetches the user's public repos
 (`per_page=100`) and `selectProjects` picks the listed ones in list order,
 silently skipping any name that is missing, renamed or private. The desktop
 shows the first three as a plain "Selected work" list (name, `[LANG]`,
-blurb, linking to the README); the work window shows all as stamps. To change what is shown,
+blurb, linking to the README); the work window shows all as project cards. To change what is shown,
 edit the list — GitHub topics play no part.
 
-In the work window each renders as a postage stamp (`components/stamp`), with face data from
-`helpers/stamp.ts`:
-
-- **Mint** (never opened): ink-black glyph on a neutral striped ground.
-- **Canceled** (README opened at least once): glyph and stripes take the
-  repo language's ink and ground colour.
+In the work window each renders as a raised Win98 card
+(`components/project-card`, bevels from `styles/bevel.ts`) with data from
+`helpers/stamp.ts` (`stampMeta`; the name is historical — projects used to be
+postage stamps): a sunken icon tile filled with the language's Win98
+16-colour ink (teal TS, olive JS, navy Go/Lua, purple Python, maroon
+otherwise) showing the repo glyph, the name as a link (blue, purple once
+visited), the blurb in a sunken white well, and a `LANG · NEW|OPENED` foot.
 
 READMEs come from GitHub's `/repos/<repo>/readme` JSON (base64 content plus
 `download_url` / `html_url`), so the default branch and filename case are
@@ -113,7 +114,7 @@ export.
 
 Visited state lives in `src/hooks/use-visited.ts`: one module-level store
 backed by `localStorage` (`pmq_visited`) with subscribers, so the desktop's
-featured stamps and the window's stamps update together. Every hook starts
+desktop list and the window's cards update together. Every hook starts
 from an empty map and syncs in an effect, so server and first client render
 agree.
 
@@ -253,12 +254,11 @@ status bar cells.
 - `JournalList` — `compact` on the desktop, `full` in the blog window.
 - `Prose` — long-form markdown styles for blog posts and repository
   READMEs.
-- `Stamp` — `full` (work window) size; `featured` is no longer used by the
-  desktop.
+- `ProjectCard` — one repo in the work window grid.
 
 The site is no longer held to a monochrome rule; colour is
 welcome where it reads as late-90s/2000s (window title bars, emoji,
-stamp inks). Code blocks currently still get no syntax colours, with
+project icon inks). Code blocks currently still get no syntax colours, with
 hierarchy from weight, italics and underline.
 
 ## Known gaps
