@@ -39,7 +39,7 @@ Code is the truth. This file explains the *why* behind the shape it takes.
 
 ## Windows
 
-`src/components/window` renders the modal frame: navy title bar with close
+`src/components/window` renders the modal frame: navy-to-sky gradient title bar with close
 button, tabs (Work / Journal / Colophon), a sunken scrolling viewport and a
 status bar showing `Done — https://pmqueiroz.dev<path>`.
 
@@ -60,10 +60,11 @@ Projects are a fixed, ordered list of repo names in `helpers/projects.ts`
 (`projectNames`). `useGithubRepos` fetches the user's public repos
 (`per_page=100`) and `selectProjects` picks the listed ones in list order,
 silently skipping any name that is missing, renamed or private. The desktop
-shows the first three; the work window shows all. To change what is shown,
+shows the first three as a plain "Selected work" list (name, `[LANG]`,
+blurb, linking to the README); the work window shows all as stamps. To change what is shown,
 edit the list — GitHub topics play no part.
 
-Each renders as a postage stamp (`components/stamp`), with face data from
+In the work window each renders as a postage stamp (`components/stamp`), with face data from
 `helpers/stamp.ts`:
 
 - **Mint** (never opened): ink-black glyph on a neutral striped ground.
@@ -88,6 +89,28 @@ featured stamps and the window's stamps update together. Every hook starts
 from an empty map and syncs in an effect, so server and first client render
 agree.
 
+## Look and reading mode
+
+The desktop is a loud late-90s homepage (design: `Homepage v2` in the
+claude.ai design project): teal desktop behind the page, yellow gradient
+header with a WordArt `pmqueiroz.dev` logo (`components/logo`), red ticker,
+blue-gradient panel title bars, a guestbook/ad strip and a sky-blue footer
+with a webring and coloured 88×31 badges. Window title bars use the same
+navy-to-sky gradient as Win98.
+
+The "READING MODE" bevel button in the sidebar (`hooks/use-reading-mode.ts`,
+persisted in `localStorage` as `pmq_reading`) removes **only the filler**:
+the ticker, the clip-art (sidebar pair, main gallery, project thumbnails),
+the "NEW!!" Umbra banner, the guestbook/ad strip, and the logo's shine and
+`v2.0!` sticker. Layout, colours, panels, badges and the webring stay, so
+the page keeps the same format. Default is off (junk shown); the hook starts
+from `false` and syncs in an effect, so readers see the junk for one frame.
+
+Filler images live in `public/junk/` and render through `RetroImage`
+(outset-bordered `img`). Files: `handshake-laptops.jpg`, `globe-cable.webp`,
+`crt-handshake.jpeg`, `handshake-desk.jpeg`, `support-agent.jpeg`,
+`project.gif`, `mailbox.gif`.
+
 ## Journal
 
 - Entries are listed in loader order and treated as newest first. Entry
@@ -111,9 +134,12 @@ deploy date and refresh on every build.
 `src/styles/theme.ts` groups colours as paper and ink (`base`, `card`,
 `paper`, `dark`), muted text (`muted`, `subtext`), rules and shadows
 (`line`, `dashed`, `shadow`, `highlight`), window chrome (`bevel`,
-`titleBar`, `backdrop`, `counter`) and links (`link`, `linkVisited`). The
+`backdrop`, `counter`) and links (`link`, `linkVisited`). The
 `gray`/`red`/`orange`/`blue`/`green` keys are legacy names kept for
-compatibility; prefer the semantic ones.
+compatibility; prefer the semantic ones. The homepage chrome adds `desktop`,
+`alarm`, `sun`, `highlighter`, `sky`, `navy` and `outset`, and
+`theme.gradients` holds the `panel`, `window`, `header`, `footer`, `ad` and
+`wordArt` fills.
 
 `theme.fonts.mono` / `theme.fonts.type` resolve to the `next/font` CSS
 variables.
@@ -153,7 +179,10 @@ status bar cells.
 
 ### Components
 
-- `Panel` — bordered box with an ink title bar and an optional action link.
+- `Panel` — bordered box with a blue-gradient title bar and an optional
+  action link.
+- `Logo` — WordArt handle; `flashy` adds the shine sweep and sticker.
+- `RetroImage` — clip-art `img` with a 2px outset border.
 - `BevelButton` / `BevelLink` — the raised button, as a `<button>` or a Next
   `Link`. They share one css block; use `BevelLink` for navigation because
   styled-components' `as` prop collides with `Link`'s own `as`.
@@ -161,7 +190,8 @@ status bar cells.
 - `JournalList` — `compact` on the desktop, `full` in the journal window.
 - `Prose` — long-form markdown styles for journal entries and repository
   READMEs.
-- `Stamp` — `featured` (desktop) and `full` (work window) sizes.
+- `Stamp` — `full` (work window) size; `featured` is no longer used by the
+  desktop.
 
 The site is no longer held to a monochrome paper-and-ink rule; colour is
 welcome where it reads as late-90s/2000s (window title bars, pixel emoji,
@@ -170,8 +200,8 @@ hierarchy from weight, italics and underline.
 
 ## Known gaps
 
-- The visitor counter (`004217`) and the 88×31 footer badges are static
-  decoration.
+- The visitor counter (`004217`), the 88×31 footer badges, the ticker and
+  the UmbraHost ad are static decoration. Webring links point at `#`.
 - "guestbook" in the sidebar is a `mailto:` link; there is no guestbook page.
 - GitHub calls are unauthenticated, so each visitor gets 60 requests an
   hour. The repo list is one call; every README opened is another
