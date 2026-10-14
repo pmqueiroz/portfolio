@@ -124,8 +124,8 @@ export const Desktop = ({ posts, updated }: DesktopProps) => {
             {flashy && (
               <>
                 <S.Gallery>
-                  <RetroImage src="/junk/crt-handshake.jpeg" alt="Man reaching out of a CRT monitor for a handshake" width={150} height={100} />
-                  <RetroImage src="/junk/handshake-desk.jpeg" alt="Handshake over an office desk" width={150} height={100} />
+                  <RetroImage src="/junk/crt-handshake.jpeg" alt="Two hands shaking between CRT monitors" width={150} height={100} />
+                  <RetroImage src="/junk/thumbs-up-laptop.jpeg" alt="Man in a tie giving a thumbs-up while holding a laptop" width={150} height={100} />
                   <RetroImage src="/junk/support-agent.jpeg" alt="Support agent with headset" width={150} height={100} />
                 </S.Gallery>
                 <S.Announcement>
