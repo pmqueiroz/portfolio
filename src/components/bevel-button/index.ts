@@ -1,31 +1,53 @@
 import Link from 'next/link'
 import styled, { css } from 'styled-components'
 import { theme } from '../../styles/theme'
-import { pressed, raised } from '../../styles/bevel'
 
-const bevelButton = css<{ $compact?: boolean }>`
-   display: inline-block;
+const { bevel, card, dark, shadow, lightGray } = theme.colors
+
+const edges = css`
+   border: 1px solid;
+   border-color: ${card} ${dark} ${dark} ${card};
+   box-shadow: inset -1px -1px 0 ${shadow}, inset 1px 1px 0 ${lightGray};
+`
+
+const bevelButton = css<{ $default?: boolean }>`
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   gap: 6px;
+   min-width: 75px;
+   padding: 4px 14px;
    font-family: inherit;
-   cursor: pointer;
-   background: ${theme.colors.bevel};
+   font-size: 12px;
+   line-height: 1.3;
    white-space: nowrap;
    text-decoration: none;
-   font-size: 11px;
-   letter-spacing: ${({ $compact }) => ($compact ? 0 : 2)}px;
-   padding: ${({ $compact }) => ($compact ? '5px 12px' : '8px 14px')};
-   ${raised}
+   cursor: pointer;
+   background: ${bevel};
+   ${edges}
+   ${({ $default }) => $default && css`
+      outline: 1px solid ${dark};
+      outline-offset: 0;
+   `}
 
    &,
    &:visited,
    &:hover {
-      color: ${theme.colors.dark};
+      color: ${dark};
+   }
+
+   &:focus-visible {
+      outline: 1px dotted ${dark};
+      outline-offset: -5px;
    }
 
    &:active {
-      ${pressed}
+      border-color: ${dark};
+      box-shadow: inset 1px 1px 0 ${shadow};
+      padding: 5px 13px 3px 15px;
    }
 `
 
-export const BevelButton = styled.button<{ $compact?: boolean }>`${bevelButton}`
+export const BevelButton = styled.button<{ $default?: boolean }>`${bevelButton}`
 
-export const BevelLink = styled(Link)<{ $compact?: boolean }>`${bevelButton}`
+export const BevelLink = styled(Link)<{ $default?: boolean }>`${bevelButton}`

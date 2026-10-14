@@ -150,8 +150,8 @@ export const Desktop = ({ posts, updated }: DesktopProps) => {
             </S.Intro>
 
             <S.Actions>
-              <BevelLink href="/projects">BROWSE THE WORK →</BevelLink>
-              <BevelLink href="/blog">READ THE BLOG</BevelLink>
+              <BevelLink $default href="/projects">📁 Browse my work…</BevelLink>
+              <BevelLink href="/blog">📝 Read the blog…</BevelLink>
             </S.Actions>
 
             <Panel title="Selected work" action={<Link href="/projects">all work »</Link>}>
