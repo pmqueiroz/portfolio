@@ -120,3 +120,17 @@ export interface PostSummary {
    draft?: boolean
    minutes: number
 }
+
+export interface GuestbookEntry {
+   id: string
+   name: string
+   message: string
+   website?: string
+   createdAt: number
+}
+
+export interface GuestbookDraft {
+   name: string
+   message: string
+   website?: string
+}

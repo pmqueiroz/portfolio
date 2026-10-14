@@ -22,7 +22,7 @@ const handleName = 'pmqueiroz'
 
 const taglines = ['developer', 'front-end', 'open-source enthusiast', 'typescript lover']
 
-const guestbook = 'mailto:contact@pmqueiroz.dev?subject=guestbook'
+const guestbook = '/guestbook'
 
 const umbra = 'https://github.com/pmqueiroz/umbra'
 
@@ -187,7 +187,7 @@ export const Desktop = ({ posts, updated }: DesktopProps) => {
         {flashy && (
           <S.Guestbook>
             <RetroImage src="/junk/mailbox.gif" alt="Mailbox LED sign" width={90} height={48} $fit="contain" />
-            <a className="sign" href={guestbook}>✎ SIGN MY GUESTBOOK ✎</a>
+            <Link className="sign" href={guestbook}>✎ SIGN MY GUESTBOOK ✎</Link>
             <S.Ad href={umbra} aria-label="Ad: UmbraHost">
               <span className="free">FREE!</span>
               <span className="copy">

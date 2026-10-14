@@ -8,11 +8,12 @@ import { Menu, MenuBar } from '../menu-bar'
 
 import * as S from './styles'
 
-type Section = 'work' | 'blog' | 'about'
+type Section = 'work' | 'blog' | 'guestbook' | 'about'
 
 const sections: { key: Section; href: string; label: string }[] = [
   { key: 'work', href: '/projects', label: 'Work' },
   { key: 'blog', href: '/blog', label: 'Blog' },
+  { key: 'guestbook', href: '/guestbook', label: 'Guestbook' },
   { key: 'about', href: '/about', label: 'About me' }
 ]
 

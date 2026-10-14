@@ -5,9 +5,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "guestbook": "node --env-file=.env.local scripts/guestbook.mjs"
   },
   "dependencies": {
+    "@upstash/redis": "^1.39.0",
     "axios": "^0.24.0",
     "babel-plugin-prismjs": "^2.1.0",
     "clsx": "^2.1.1",
