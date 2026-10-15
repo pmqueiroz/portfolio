@@ -29,12 +29,16 @@ blue screen, "best viewed in IE6").
 
 - Canvas 640×320 internal, scaled to width by CSS. Loop is one
   `requestAnimationFrame`; world state is in a ref so the loop never
-  re-subscribes. React state only holds phase / score / best for the UI.
+  re-subscribes. Physics runs on a **fixed 60 Hz tick** (`tick`), decoupled
+  from the display: each frame pays off the elapsed time in whole ticks, so
+  a 144 Hz monitor plays at the same speed as a 60 Hz one. Owed time is capped
+  at 5 ticks so a backgrounded tab doesn't fast-forward into a crash. React state only holds phase / score / best for the UI.
 - Hold pointer, Space or ↑ to climb. Keys are listened on `window` and
   `preventDefault`ed so Space doesn't scroll the window viewport.
 - The cave is a list of 8px slices drawn with a sub-slice offset
   (`distance % slice`) so scrolling is smooth. The gap shrinks 8px every
-  600 distance down to 150px; speed rises to 6px/frame. Blocks spawn every
+  600 distance down to 150px; speed ramps from 2 to 4px/tick over the
+  first 6000 distance (`pace`). Blocks spawn every
   260px inside the gap.
 - Score = distance / 10. Best score is per-browser in `localStorage`
   (`pmq_helicopter_best`). No global leaderboard — scores would be trivially
