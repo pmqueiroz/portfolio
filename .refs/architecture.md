@@ -44,7 +44,7 @@ button, a Win98-style menu bar (`components/menu-bar`), a sunken scrolling
 viewport and a status bar showing `Done — https://pmqueiroz.dev<path>`.
 
 - Every window gets the standard menus: **File** (Close · Esc), **Go**
-  (Work / Blog / Guestbook / About me with a `●` on the current section, then
+  (Work / Blog / Guestbook / Arcade / About me with a `●` on the current section, then
   Desktop) and **Help** (About → `/about`, View source ↗ → the portfolio
   repo).
 - A window adds its own commands via `menus`: a menu whose label matches a
@@ -133,7 +133,7 @@ The "READING MODE" bevel button in the sidebar (`hooks/use-reading-mode.ts`,
 persisted in `localStorage` as `pmq_reading`) removes **only the filler**:
 the ticker, the clip-art (sidebar pair, main gallery, project thumbnails),
 the "NEW!!" Umbra banner, the guestbook/ad strip, and the logo's shine and
-`v2.0!` sticker. Layout, colours, panels, badges and the webring stay, so
+`v2.0!` sticker, the cursor trail and Clippy. Layout, colours, panels, badges and the webring stay, so
 the page keeps the same format. Default is off (junk shown); the hook starts
 from `false` and syncs in an effect, so readers see the junk for one frame.
 
@@ -255,6 +255,8 @@ status bar cells.
 - `Prose` — long-form markdown styles for blog posts and repository
   READMEs.
 - `ProjectCard` — one repo in the work window grid.
+- `LedCounter`, `Minesweeper`, `Helicopter`, `Clippy`, `CursorTrail`,
+  `BlueScreen` — arcade and 2000s extras, see [arcade.md](./arcade.md).
 
 The site is no longer held to a monochrome rule; colour is
 welcome where it reads as late-90s/2000s (window title bars, emoji,
@@ -263,7 +265,8 @@ hierarchy from weight, italics and underline.
 
 ## Known gaps
 
-- The visitor counter (`004217`), the 88×31 footer badges, the ticker and
+- The visitor counter (`004217`), the 88×31 footer badges (including the
+  IE 6.0 one), the ticker and
   the UmbraHost ad are static decoration. Webring links point at `#`.
 - "guestbook" in the sidebar, the ticker and the guestbook strip lead to
   the `/guestbook` window — see [guestbook.md](./guestbook.md).

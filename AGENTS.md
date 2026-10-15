@@ -13,6 +13,8 @@ explain the *why* and the gotchas.
   not set up yet.
 - [guestbook.md](./.refs/guestbook.md) — Upstash Redis storage, API,
   approve-first moderation CLI, anti-spam, caching gotcha.
+- [arcade.md](./.refs/arcade.md) — arcade games (Minesweeper, Helicopter),
+  Clippy, cursor trail, Konami blue screen, IE6 badge.
 - [incidents/](./.refs/incidents/README.md) — postmortems + standing rules;
   **read before any migration or destructive op**.
 
