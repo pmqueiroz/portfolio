@@ -9,7 +9,10 @@ import { LedCounter } from '../led-counter'
 const width = 640
 const height = 320
 const heli = { x: 110, w: 34, h: 16 }
-const physics = { gravity: 0.32, lift: -0.58, maxFall: 7, maxRise: -6 }
+const physics = { gravity: 0.24, lift: -0.42, maxFall: 5, maxRise: -4.5 }
+const pace = { start: 2, extra: 2, rampOver: 6000 }
+const tickMs = 1000 / 60
+const maxCatchUp = 5
 const cave = { slice: 8, minGap: 150, startGap: 230, drift: 14, shrinkEvery: 600 }
 const block = { w: 22, h: 70, every: 260 }
 const ink = { wall: '#00c000', bg: '#000000', heli: '#ffffff', block: '#00c000', smoke: '#808080' }
@@ -144,13 +147,15 @@ export const Helicopter = () => {
     const ctx = canvas.current?.getContext('2d')
     if (!ctx) return
     let frame = 0
+    let last = performance.now()
+    let owed = 0
 
-    const step = () => {
+    const tick = () => {
       const w = world.current
       if (phaseRef.current === 'flying') {
         w.vy = Math.max(physics.maxRise, Math.min(physics.maxFall, w.vy + (holding.current ? physics.lift : physics.gravity)))
         w.y += w.vy
-        const speed = 3 + Math.min(3, w.distance / 3000)
+        const speed = pace.start + pace.extra * Math.min(1, w.distance / pace.rampOver)
         w.distance += speed
         const shift = speed
         w.blocks.forEach(b => { b.x -= shift })
@@ -180,7 +185,13 @@ export const Helicopter = () => {
           })
         }
       }
-      draw(ctx, w, phaseRef.current)
+    }
+
+    const step = (now: number) => {
+      owed = Math.min(owed + now - last, tickMs * maxCatchUp)
+      last = now
+      for (; owed >= tickMs; owed -= tickMs) tick()
+      draw(ctx, world.current, phaseRef.current)
       frame = requestAnimationFrame(step)
     }
 
