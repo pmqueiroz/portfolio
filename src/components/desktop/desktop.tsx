@@ -30,7 +30,8 @@ const navigation = [
   { href: '/projects', label: 'work' },
   { href: '/blog', label: 'blog' },
   { href: '/about', label: 'about me' },
-  { href: guestbook, label: 'guestbook' }
+  { href: guestbook, label: 'guestbook' },
+  { href: '/arcade', label: 'arcade' }
 ]
 
 const elsewhere = [
