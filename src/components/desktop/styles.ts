@@ -426,3 +426,8 @@ export const Badge = styled.span`
       font-weight: 700;
    }
 `
+
+export const BestViewed = styled.span`
+   font-size: 11px;
+   color: ${theme.colors.subtext};
+`

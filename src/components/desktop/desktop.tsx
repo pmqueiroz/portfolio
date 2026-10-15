@@ -1,15 +1,18 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import { forgetWindowPosition, useGithubRepos, useReadingMode, useTypeLoop, useTypeOnce } from '../../hooks'
+import { forgetWindowPosition, useGithubRepos, useKonami, useReadingMode, useTypeLoop, useTypeOnce } from '../../hooks'
 import { selectProjects } from '../../helpers/projects'
 import { stampMeta } from '../../helpers/stamp'
 import { entryNumber } from '../../helpers/entry-number'
 import { PostSummary } from '../../types'
 import { BevelLink } from '../bevel-button'
+import { BlueScreen } from '../blue-screen'
+import { Clippy } from '../clippy'
+import { CursorTrail } from '../cursor-trail'
 import { JournalList } from '../journal-list'
 import { Logo } from '../logo'
 import { Panel } from '../panel'
@@ -47,7 +50,8 @@ const badges = [
   { top: 'written in', main: 'TYPESCRIPT', ink: '#2f5fa8', ground: '#dce8fb', title: 'TypeScript' },
   { top: 'try my lang', main: 'UMBRA', ink: '#5a2f57', ground: '#f1dcef', title: 'Umbra' },
   { top: 'subscribe', main: 'RSS FEED', ink: '#b4561a', ground: '#fde7cf', title: 'RSS' },
-  { top: 'code on', main: 'GITHUB', ink: '#1f6b3a', ground: '#d8f0dd', title: 'GitHub' }
+  { top: 'code on', main: 'GITHUB', ink: '#1f6b3a', ground: '#d8f0dd', title: 'GitHub' },
+  { top: 'best viewed in', main: 'IE 6.0', ink: '#0a246a', ground: '#fff6b8', title: 'Best viewed in Internet Explorer 6' }
 ]
 
 const webring = ['« prev site', 'random', 'next site »']
@@ -65,6 +69,10 @@ export const Desktop = ({ posts, updated }: DesktopProps) => {
   const featured = selectProjects(repos).slice(0, 3).map(stampMeta)
   const flashy = !reading
   const pathname = usePathname()
+  const [crashed, setCrashed] = useState(false)
+  const recover = useCallback(() => setCrashed(false), [])
+
+  useKonami(() => setCrashed(true))
 
   useEffect(() => {
     if (pathname === '/') forgetWindowPosition()
@@ -218,11 +226,17 @@ export const Desktop = ({ posts, updated }: DesktopProps) => {
               </S.Badge>
             ))}
           </S.Badges>
+          <S.BestViewed>
+            Best viewed in <b>Internet Explorer 6</b> at <b>800×600</b> · 256 colours
+          </S.BestViewed>
           <span className="notice">
             © {new Date().getFullYear()} Pedro Queiroz
           </span>
         </S.Footer>
       </S.Page>
+      {flashy && <CursorTrail />}
+      {flashy && <Clippy />}
+      {crashed && <BlueScreen onDismiss={recover} />}
     </S.Screen>
   )
 }
